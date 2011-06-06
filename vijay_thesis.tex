@@ -1,0 +1,136 @@
+\documentclass [12pt,letterpaper]{report}
+
+% Standard packages
+\usepackage{amsmath}		% Extra math definitions
+\usepackage{graphics}		% PostScript figures
+\usepackage{setspace}		% 1.5 spacing
+\usepackage{longtable}          % Tables spanning pages
+\usepackage{verbatim}
+
+% Custom packages
+\usepackage[first]{datestamp}	% Datestamp on first page of each chapter
+\usepackage[fancyhdr]{McECEThesis}	% Thesis style
+\usepackage{McGillLogo}		% McGill University crest
+
+% $Id: ThesisEx.tex,v 1.1 2005/06/09 12:48:46 kabal Exp $
+
+\usepackage{color}
+\def\headrulehook{\color{red}}		% Color the header rule
+
+%===== page layout
+% Define the side margins for a right-side page
+\insidemargin = 1.3in
+\outsidemargin = 0.8in
+
+% Above margin is space above the header
+% Below margin is space below footer
+\abovemargin = 1.1in
+\belowmargin = 0.75in
+
+%========= Document start
+
+\begin {document}
+
+%===== Title page
+
+\title{A Tool for Configuring Mappings for Musical Systems using Wireless Sensor Networks}
+\author{Vijay Rudraraju}
+\date{\Month\ \number\year}
+\organization{%
+  \\[0.05in]
+  \McGillCrest {!}{1in}\\	% McGill University crest
+  \\[0.05in]
+  Music Technology Area\\
+  Schulich School of Music\\
+  McGill University\\
+  Montreal, Canada}
+\note{%
+  {\color{red} \hrule height 0.4ex}
+  \vskip 2ex
+  A thesis submitted to McGill University in partial fulfillment of the
+  requirements for the degree of Master of Arts.
+  \vskip 2ex
+  \copyright\ \the\year\ Vijay Rudraraju
+}
+
+\maketitle
+
+%===== Justification, spacing for the main text
+\raggedbottom
+\onehalfspacing
+\pagenumbering{roman}
+
+%===== Abstract, Sommaire & Acknowledgments
+\section*{\centering Abstract}
+
+Digital musical instruments, which are defined here as interactive musical systems containing a control mechanism and a sound generation mechanism, are powerful tools for analyzing performance practice and for transforming and reimagining the bounds of musical performance. However, the transitory nature of digital technology and the complexity of maintaining and configuring a digital musical instrument involving tens, if not hundreds, of interconnected, discrete components presents a unique problem. 
+
+Even the most mechanically complex acoustic musical instruments, like a piano, are robust enough to withstand the daily grind without expert intervention by someone with intimate knowledge of the material and mechanical construction of the instrument. Furthermore, they are standardized enough that repairs can be conducted by any number of trained professionals. By contrast, digital musical instruments are often configured differently for each performance (this configurability being one of the virtues of a digital musical instrument), incorporate any number of non-standard pieces of hardware and software, and often can only be reliably configured by their creator.
+
+This problem is exacerbated as the number of sensors that make up the control mechanism in an instrument increases and the interaction of the control mechanism with the sound generation mechanism grows more complex. This relationship between the control mechanism and the sound generation mechanism is referred to here as the "mapping" of the instrument. The mapping for an instrument represents the aspect of an instrument that is usually most configurable because it is defined by software (as opposed to hardware) and also most crucial to the character of the instrument. In the case of a digital musical instrument, being able to easily configure the musical instrument becomes a point of artistic freedom in addition to a point of maintainability.
+
+This thesis builds upon work encompassed in two projects at the Input Devices and Musical Interaction Lab, the Digital Orchestra Project and libmapper, to tackle the problem of building an interface/system for configuring a complex musical system without expert programming skills. The intent is to present a targeted survey of user interface design and data visualization design research through the years to inform the design of a graphical user interface for performing this configuration task.
+
+\newpage
+
+\section*{\centering Acknowledgments}
+
+Thesis regulations require that contributions by others in the collection of
+ materials and data, the design and construction of apparatus, the performance
+ of experiments, the analysis of data, and the preparation of the thesis be
+ acknowledged.
+
+%========== Tables of contents, figures, tables
+\tableofcontents
+\listoffigures
+\listoftables
+
+\newpage
+\chapter*{List of Acronyms}\markright{List of Terms}
+
+\begin{longtable}{ll}
+  DMI		&	Digital Musical Instrument\\
+  EMI		&	Electronic Musical Instrument\\
+  OSC	&	Open Sound Control
+\end{longtable}
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+%========== Chapters
+\typeout{}
+\include{introduction}
+
+%==========
+\typeout{}
+\include{mapping}
+
+%==========
+\typeout{}
+\include{user_interface_and_data_visualization_design}
+
+%==========
+\typeout{}
+\include{vizmapper}
+
+%==========
+\typeout{}
+\include{conclusions}
+
+%========== Appendices
+\appendix
+
+%==========
+\begin{comment}
+\typeout{}
+\input{A-A}
+\end{comment}
+
+%========== Bibliography
+\typeout{}
+\begin{singlespace}
+  \bibliography{vijay_thesis}
+  \bibliographystyle{ieeetr}
+\end{singlespace}
+
+\end{document}
