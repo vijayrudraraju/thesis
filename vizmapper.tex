@@ -11,17 +11,11 @@ The task of mapping is understood to be creating connections and mappings betwee
 The context in which the task of mapping is performed is understood to be one to many programmers, engineers, composers, and/or musicians interested in experimenting with interactive musical systems for use in a creative (as opposed to business productivity or analysis) context.
 
 \section{Task Analysis}
-
-Task analysis is the primarily observational and heuristic analysis of the physical, mental, and contextual requirements for performing a specific task. As such, even in its most rigorous and quantitative forms, task analysis typically involves methods like discourse analysis, contextual inquiry, and video analysis. 
 \begin{comment}
 Task analysis and human-computer interaction: approaches, techniques, and levels of analysis - Abe Crystal, Beth Ellington
 \end{comment}
 
-The roots of scientific task analysis go back to 1911 when Frederick Taylor published \emph{The Principles of Scientific Management} \cite{crystal2004}. Taylor was interested in improving manufacturing productivity and incorporating understanding of human factors into work methods. Known commonly as Taylorism, he argued that managers should rigorously systematize the organization of workers based on empirical evidence. Of course, it is more accurate to refer to Taylor's discipline as something like job design; however, the relevant point here is that effort was being made to examine the efficacy of performing a task in one way as opposed to another. The psychological component of such job design was first examined by Harvard Business School between 1927 and 1932 at the Western Electric Hawthorne Plant. The studies essentially concluded that the psychology of individuals with the workplace contribute significantly to what workers produce and expect from their jobs.
-
-It soon became commonplace for industrial engineers to incorporate analyses of production methods to improve interaction between humans and machines. As computers became a common machine that humans were interacting with in the workplace and the power and flexibility of computers as tools has expanded, human-computer interaction (HCI) is now a dedicated discipline. However, HCI, and thus user interface and data visualization design, has borne the fingerprints of a discipline that was ultimately derived from the standpoint of increasing productivity and improving job performance.
-
-This may or may not present a problem, depending on whether we choose the characterize the use of computer in the context of accomplishing the task of mapping as an act of expression or an act of productivity. Atau Tanaka offers a line of thinking that is of use in resolving this problem \cite{tanaka2000}.
+The previous section on task analysis concluded that as a technique it is best-suited to understanding how to design interfaces that maximize productivity as opposed to channeling creative expression. This may or may not present a problem, depending on whether we choose the characterize the use of computer in the context of accomplishing the task of mapping as an act of expression or an act of productivity. Atau Tanaka offers a line of thinking that is of use in attempting to resolve this problem \cite{tanaka2000}.
 
 \begin{quote}
 A tool can be improved to be more efficient, can take on new features to help in realizing its task, and can even take on other, new tasks not part of the original design specification. In the ideal case, a tool expands the limits of what it can do. It should be easy to use, and be accessible to [sic] wide range of naive users. Limitations or defaults are seen as aspects that can be improved upon.
@@ -30,14 +24,52 @@ A musical instrument's raison-d'etre, on the other hand, is not at all utilitari
 
 Computers are generalist machines with which tools are programmed. By itself, a computer is a tabula rasa, full of potential, but without specific inherent orientation. Software applications endow the computer with specific capabilities. It is with such a machine that we seek to create instruments with which we can establish a profound musical rapport.
 
-The input device is the gateway through which the user accesses the computer software's functionality. As a generalist device, generalized input devices like the keyboard or mouse allow the manipulation of a variety of different software tools. Music software can be written to give musically specific capabilities to the computer. Input devices can be built to exploit the specific capabilities of this software. On this general platform, then, we begin to build a specialized system, each component becoming part of the total instrument description.
+The input device is the gateway through which the user accesses the computer software's functionality. As a generalist device, generalized input devices like the keyboard or mouse allow the manipulation of a variety of different software tools. Music software can be written to give musically specific capabilities to the computer. Input devices can be built to exploit the specific capabilities of this software. On this general platform, then, we begin to build a specialized system, each component becoming part of the total instrument description. 
 \end{quote}
 
 This line of thinking suggests that the extent to which Vizmapper is a tool limits the extent to which the principles of user interface and data visualization design ought to play a role in the design process. HCI is much better suited to evaluating more objective notions like utility, tasks, and functionality than more subjective notions like personality, quality of sound, and musical rapport.
 
 It is clear from Tanaka's definitions that a cursory analysis would conclude that Vizmapper serves as a tool than an instrument. However, the fact that Vizmapper is specifically a tool to accomplish the task of creating and modifying mappings \emph{within a musical instrument} suggests that the design must be treated more subtly in this particular context. As the purpose of Vizmapper is partly to make the connections between components in a musical instrument more malleable and more susceptible to experimentation for groups of non-programmers, the task bears some resemblance to a non-utilitarian task.
 
+To see this, examine the task and to decompose the complex task of designing a musical instrument using a thought process to \emph{Hierarchical Task Analysis} \cite{annett1967}. 
 
+Mark Marshall nicely distills the last decade of thinking into understanding the abstract components of a digital musical instruments by decomposing a digital musical instrument into 3 main components:
+
+\begin{description}
+\item \emph{The physical interface} containing the sensors, actuators, and physical body of the instrument.
+\item \emph{The software synthesis system} which creates both the sonic output of the instrument and any visual, haptic and/or vibrotactile feedback.
+\item \emph{The mapping system} in which connections are made between parameters of the physical interface and those of the synthesis system.
+\end{description}
+
+The design of these 3 components can be regarded as the 3 main subtasks of the overall task of designing a musical instrument. Each of these subtasks are themselves composed of more granular tasks, thus forming the beginnings of a hierarchical structure representing an analysis of the overall task.
+
+\begin{description}
+\item \emph{The physical interface}
+\begin{description}
+\item choose sensors that are capable of detecting the desired physical phenomena/gestures
+\item choose actuators that are capable of inducing the desired physical phenomena/feedback
+\item choose sensors that are made available as outputs for connections to the inputs of the synthesis system
+\item choose actuators that are made available as inputs for connections from the outputs of the synthesis system
+\item choose structural/aesthetic materials that combined with the sensors and actuators will form the composite form of the physical interface
+\item design the shape of the composite physical interface
+\end{description}
+\item \emph{The software synthesis system}
+\begin{description}
+\item choose mechanism/algorithm for performing sound synthesis in software
+\item choose mechanism/algorithm for generating visual, haptic, and/or vibrotactile feedback
+\item choose parameters of sound synthesis that are made available as inputs for connections from the outputs of the physical interface and/or other components of the composite synthesis system
+\item choose parameters of visual, haptic, and/or vibrotactile feedback synthesis that are made available as inputs for connections from the outputs of the physical interface and/or other components of the composite synthesis system
+\item choose parameters of sound, visual, haptic, and/or vibrotactile synthesis that are made available as outputs for connections to the physical interface and/or other components of the synthesis system
+\end{description}
+\item \emph{The mapping system}
+\begin{description}
+	\item choose a collection of available outputs to start connections from
+	\item choose a collection of available inputs to connect to specific outputs
+	\item create mappings that specify how (if at all) to modify source signals from outputs to generate the desired destination signals for the inputs
+\end{description}
+\end{description}
+
+This model of musical instrument design generalizes well to anything from a self-contained handheld instrument to a massively distributed system spread over a large physical environment. It also works regardless of whether it is an individual or a team that is engaged in the instrument design. This decomposition also makes more clear why perhaps the mapping system is deserving of a dedicated system and user interface to manipulate. A good analogy is the choice of what collection of LEGO blocks to use as opposed to how to put the LEGO blocks together once the blocks are chosen. Practically, it makes sense to choose the blocks before deciding how to put the blocks together. Similarly, it makes sense to design most of the physical interface and the software synthesis system before deciding how the mapping system will put the two collections of inputs/outputs together.
 
 \section{System Design}
 
