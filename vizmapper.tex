@@ -29,7 +29,7 @@ The input device is the gateway through which the user accesses the computer sof
 
 This line of thinking suggests that the extent to which Vizmapper is a tool limits the extent to which the principles of user interface and data visualization design ought to play a role in the design process. HCI is much better suited to evaluating more objective notions like utility, tasks, and functionality than more subjective notions like personality, quality of sound, and musical rapport.
 
-It is clear from Tanaka's definitions that a cursory analysis would conclude that Vizmapper serves as a tool than an instrument. However, the fact that Vizmapper is specifically a tool to accomplish the task of creating and modifying mappings \emph{within a musical instrument} suggests that the design must be treated more subtly in this particular context. As the purpose of Vizmapper is partly to make the connections between components in a musical instrument more malleable and more susceptible to experimentation for groups of non-programmers, the task bears some resemblance to a non-utilitarian task.
+It is clear from Tanaka's definitions that Vizmapper serves as a tool rather than an instrument. However, the fact that Vizmapper is specifically a tool for accomplishing the task of creating and modifying mappings \emph{within a musical instrument} suggests that the design must be treated more subtly in this particular context. As the purpose of Vizmapper is partly to make the connections between components in a musical instrument more malleable and more susceptible to experimentation for groups of non-programmers, the task bears some resemblance to a non-utilitarian task.
 
 To see this, examine the task and to decompose the complex task of designing a musical instrument using a thought process to \emph{Hierarchical Task Analysis} \cite{annett1967}. 
 
@@ -69,9 +69,41 @@ The design of these 3 components can be regarded as the 3 main subtasks of the o
 \end{description}
 \end{description}
 
-This model of musical instrument design generalizes well to anything from a self-contained handheld instrument to a massively distributed system spread over a large physical environment. It also works regardless of whether it is an individual or a team that is engaged in the instrument design. This decomposition also makes more clear why perhaps the mapping system is deserving of a dedicated system and user interface to manipulate. A good analogy is the choice of what collection of LEGO blocks to use as opposed to how to put the LEGO blocks together once the blocks are chosen. Practically, it makes sense to choose the blocks before deciding how to put the blocks together. Similarly, it makes sense to design most of the physical interface and the software synthesis system before deciding how the mapping system will put the two collections of inputs/outputs together.
+This model of musical instrument design generalizes well to anything from a self-contained handheld instrument to a massively distributed system spread over a large physical environment. It also works regardless of whether it is an individual or a team that is engaged in the instrument design. This decomposition also makes more clear why perhaps the mapping system is deserving of a dedicated system and user interface to manipulate. A good analogy is the choice of what collection of LEGO blocks to use as opposed to how to put the LEGO blocks together once the blocks are chosen. Procedurally, one chooses what types of blocks to use before deciding how to put the blocks together. Once a coll Similarly, it makes sense to design most of the physical interface and the software synthesis system before deciding how the mapping system will put the two collections of inputs/outputs together.
 
 \section{System Design}
+
+As a piece of software, there are a limited number of options for implementing the system while ensuring that the system can be reliably used on the variety of systems that a team designing a musical system might have. As of the time that this system has been implemented, the most common form factors for computers are desktops, laptops, tablets, and smartphones. Each form factor is typically loaded with one of a small collection of operating systems that are widely available and are easy to find expert knowledge about.
+
+\begin{description}
+\item \emph{Desktops/Laptops}
+\begin{description}
+\item Windows (XP, Vista, 7)
+\item Mac OSX
+\item Linux (Ubuntu, Debian, Gentoo)
+\end{description}
+\item \emph{Tablets/Smartphones}
+\begin{description}
+\item Android
+\item iOS
+\end{description}
+\end{description}
+
+This is not intended to be a rigorous list, however the point is that it is not practical (especially in a research context) to develop and maintain several versions of a software system that will work on a wide variety of operating systems and devices. However, the fact is that people will use whatever system they have available and the variety of devices that an artist or engineer is likely to use to interact with a sensor network is increasing. To design a system that is meant to work in a collaborative context, it is crucial that this reality be adapted to.
+
+Before beginning development on a piece of software one must choose a development environment and a deployment environment.
+
+There are any number of very stable development environments that enable a software developer to write a single corpus of computer code and create applications that can run on Windows, OSX, and Linux.
+
+There are three common ways for a user to run a piece of software on their chosen machine.
+
+The user can install a pre-compiled binary image of the piece of software, which means that the developer has written code and produced a file that can be executed without any translation on the user's specific device/operating system combination.
+
+The user can obtain the source code of the software and produce a file that works on their specific machine.
+
+Virtual machines.
+
+Scripts and interpreted environments. Included in this is a browser.
 
 \section{Application of User Interface Design Principles}
 
