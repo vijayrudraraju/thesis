@@ -39,6 +39,44 @@ With the modified definitions, we get the following.
 
 \section{Definition}
 
+texture mapping
+conceptual metaphor
+function
+morphism
+
+The term \emph{mapping} is used in mathematics, computer science, and related technical fields to encapsulate the concept of a function and other related concepts. \emph{Mapping} is often shortened to \emph{map}. Like most technical terms used in multiple technical fields, the meaning of \emph{mapping} varies according to the context of the field that it is used. However in the case of mapping, the variation is subtle enough that a cursory understanding of the way mapping is used in a couple of contexts outside of DMIs might illuminate why it is a necessary and valuable concept to encapsulate in the context of new musical interfaces.
+
+In mathematics terminology, the use of the term mapping varies subtly according to sub-discipline within mathematics and often between specific mathematicians, however it is acceptable to use the word as a synonym for \emph{function}. A function in mathematics describes an associative relationship between two sets of numbers. One set of numbers is referred to as a domain or set of inputs and the other set is referred to as a codomain, range, or set of outputs. Mathematicians often say that a function maps a domain to or onto a range, hence the reason for using the term \emph{mapping} as a synonym for \emph{function}.
+
+Strictly speaking in mathematics, a function can only represent a \emph{one-to-one mapping}. This means that every element in the input (domain) set is associated by the function with one and only one element in the output (range) set. The corollary statement about a one-to-one mapping is that every element in the output set might be associated to one element, many elements, no elements, or all elements in the input set.
+
+The following are examples of equations that represent one-to-one mappings:
+
+\begin{equation} \label{eq1}
+y = f(x) = x + 1
+\end{equation}
+\begin{equation} \label{eq2}
+z = g(x) = x^{2}
+\end{equation}
+
+Common types of functions (one-to-one mappings) like \ref{eq1} and \ref{eq2} often use the set of all real numbers (any number that can be expressed in decimal notation) as both the input set and the output set. Since the set of all real numbers is infinitely large, the association from one input element to one output element is described by a mathematical transformation that when applied to any element of the input set (the set of all real numbers) produces the element of the output set (the set of all real numbers) that the input element is associated to or mapped onto. This is convenient because that means the function can be written very concisely in one line. 
+
+\ref{eq1} represents a mapping labeled \begin{math}f\end{math} where the input element is labeled \begin{math}x\end{math} and the output element is labeled \begin{math}y\end{math}. \ref{eq2} represents a mapping labeled \begin{math}g\end{math} where the input element is labeled \begin{math}x\end{math} and the output element is labeled \begin{math}z\end{math}.
+
+In computer science terminology, a mapping is an abstract data type or concrete data structure, commonly referred to as an \emph{associative array} or \emph{dictionary}.  
+
+Abstractly and simply, the only way to store data of any kind (text, image, sound, signal) in a computer of any kind, such that one can retrieve the data later, is to put the data in a bucket that has a label. If the data has no label that is associated with it, then practically, it cannot be retrieved. 
+
+In music information studies terminology, if one wants to be able to store a large amount of sheet music such that it can be found later, one needs a some system to catalog or index the material such that a piece of sheet music can be referred to by some label. In the case of a library, this label is often a call number, the title of the piece, or the name of the composer.
+
+Just like a library can use many different labeling systems to catalog sheet music in a library so that it can be retrieved with minimum headaches, a computer system can utilize many different abstract data types or concrete data structures. In both cases, the best choice is dependent on the material or data being cataloged or indexed. A mapping in computer science parlance then, can be understood as a particular system for labeling data.
+
+In particular, a mapping is a labeling system that uses a \emph{collection} of labels (keys) and a \emph{collection} of pieces of data (values), where every label in the first collection is associated with one or many of the pieces of data in the second collection. Then this structure encompassing the two collections and the list of associations between the two collections is given a higher level label that refers to the mapping as a whole.
+
+This reframing of the term in the computer science context, as opposed to the mathematical context, clarifies one implication of the concept of mapping. One can specify multiple, unique mappings that each operate on the same collection of labels and the same pieces of data. Similarly, one can specify multiple, unique functions that each operate on the same input set and the same output set. 
+
+So in a computer system, one can create multiple mappings that associate the same group of labels to the same pieces of data. This characteristic of mappings is one of the most useful in the context of digital musical instruments. 
+
 \section{Importance of Mapping in Musical Systems}
 
 \section{A Dedicated Mapping System: libmapper}
