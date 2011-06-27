@@ -39,10 +39,12 @@ With the modified definitions, we get the following.
 
 \section{Definition}
 
+\begin{comment}
 texture mapping
 conceptual metaphor
 function
 morphism
+\end{comment}
 
 The term \emph{mapping} is used in mathematics, computer science, and related technical fields to encapsulate the concept of a \emph{function} and other related concepts. \emph{Mapping} is often shortened to \emph{map}. Like most technical terms used in multiple technical disciplines, the meaning of \emph{mapping} varies according to the context of the field that it is used. However in the case of mapping, the variation is subtle enough that a cursory understanding of the way mapping is used in a couple of contexts outside of DMIs might illuminate why it is a necessary and valuable concept to encapsulate in the context of new musical interfaces.
 
@@ -103,11 +105,21 @@ Similarly, a team of people building a digital musical instrument will often mak
 
 Because such iterative development is so beneficial to the development of DMIs, people often use various platforms and frameworks as common building blocks for such systems. For the control hardware there are platforms like Arduino. Coding environments like Max/MSP and code libraries like STK simplify the development of synthesizer modules. In an effort to provide a similar foundation for creating mapping systems, the Digital Orchestra Toolbox was created as part of the McGill Digital Orchestra project and includes components representing the common subroutines used in a mapping system. 
 
-More recently, this functionality has been reimplemented as a C library called libmapper at the IDMIL at McGill University. Libmapper has several characteristics which make it a desirable system for configuring mappings. Seen from a high conceptual level, Libmapper is an implementation of a communication protocol that was created for mappings. 
+More recently, this functionality has been reimplemented as a C library called libmapper at the IDMIL at McGill University. Libmapper has several characteristics which make it a desirable system for configuring mappings. 
 
-A communications protocol is a rigorous and formal description of a message format and rules for exchanging said messages. The protocol is distinct from the implementation of the protocol. A protocol without an implementation is metaphorically like a constitution without a government. The mapping protocol is itself defined in terms of the Open Sound Control (OSC) protocol. This is a common practice. The Internet is essentially a particular stack of protocols that are layered on top of each other and specify how devices and routers are to be addressed, open connections with each other, and interpret messages. In the case of Libmapper, the protocol layer that OSC itself is implemented on top of is called the User Datagram Protocol (UDP). The other common protocol that can be used at this protocol layer is the Transmission Control Protocol (TCP) which is the protocol that the well-known Hypertext Transfer Protocol (HTTP) that webpages typically use sits atop of. As a protocol, OSC does not assume a particular Transport (the name given to the layer in the protocol that UDP and TCP occupy - HTTP occupies the layer on top of the Transport layer, known as an Application layer) protocol that it is to be implemented as. This is opposed to HTTP, which is specifically a TCP-based protocol.
+One is that a mapping between control and sound generation can be modified without recompiling any code, restarting any system, or reloading any script. Typically, if a mapping is specified in software through a Max/MSP program, C program, etc. the part of the code that specifies the mapping must be modified and recompiled or reinterpreted before the new mapping becomes active. Any DMI that embeds libmapper in its control and sound generation software can have its mapping modified simply by being sent specific messages as specified by the mapping protocol. 
 
-Libmapper embeds into any module or device that allows for modifiable code that can interface with a C library and allows this libmapper-enabled module to create connections between components using the UDP network protocol, one of the protocols used to connect computers to the Internet. 
+Another useful characteristic is that in the case of a local network with many different control mechanisms and sound generation mechanisms available, no central device is need to facilitate communication between devices. If one component on the network expriences some difficulties, the other devices will still be able to keep the mappings between the remaining devices operating.  
+
+Lastly, and of particular relevance to the primary topic of this paper, is that the current state of mappings between various devices on the network can be viewed and modified by any graphical user interface that embeds Libmapper. In libmapper parlance, these applications can register as \emph{monitors}. Because of this capability, multiple members of a team can be viewing and modifying the same mapping using different computers and using different graphical user interfaces.  
+
+Seen from a high conceptual level, libmapper is an implementation of a communication protocol that was created for mappings. 
+
+A communications protocol is a rigorous and formal description of a message format and rules for exchanging said messages. The protocol is distinct from the implementation of the protocol. A protocol without an implementation is metaphorically like a constitution without a government. The mapping protocol is itself defined in terms of the Open Sound Control (OSC) protocol. This is a common practice for constructing higher level protocols. The Internet is essentially a particular stack of protocols that are layered on top of each other and specify how devices and routers are to be addressed, open connections with each other, and interpret messages. 
+
+In the case of Libmapper, the protocol layer that OSC itself is implemented on top of is called the User Datagram Protocol (UDP). The other common protocol that can be used at this protocol layer is the Transmission Control Protocol (TCP) which is the protocol that the well-known Hypertext Transfer Protocol (HTTP) that webpages typically use sits atop of. As a protocol, OSC does not assume a particular Transport (the name given to the layer in the protocol that UDP and TCP occupy - HTTP occupies the layer on top of the Transport layer, known as an Application layer) protocol that it is to be implemented as. This is opposed to, for example, HTTP, which is specifically a TCP-based protocol.
+
+Libmapper then allows one to configure a mapping relationship between any two modules by embedding Libmapper into the module, thus allowing the module to speak the mapping protocol.
 The implementation
 
 \section{Usability and Graphical User Interfaces}
