@@ -101,9 +101,13 @@ In physical terms, when two formerly intrinsically coupled aspects of system are
 
 In the context of DMI research this new degree of freedom is called a choice of \emph{mapping}. Mapping as used in this context is very similar to how the term is used in the mathematics and computer science context. The set of sensors embedded in the control mechanism produces a set of signals. The sound generation mechanism produces a specific sound depending on a set of signals dictated by the specifics of the software that composes the sound generation. Therefore, for any given control mechanism and sound generation mechanism there is a choice of how to associate the two sets of signals with each other. Importantly, this is a choice that is not independently available when constructing, for example, a violin because the two sets of signals (if this distinction between control mechanism and sound generation mechanism can be imagined in a violin) in that case are physically coupled and inseparable. It is not a choice that is explicitly made when constructing an acoustic instrument.
 
+Furthermore, because it is unlikely that any given signal output by a control device is calibrated to all possible input signals in a sound generation device that one can associate with the given output signal, we require a second set of relations beyond a binary associated/not associated. Any given output signal might be capable of outputting values that are outside the set of values that a particular input handles. In this case, a mapping in the functional, mathematics sense of the word is necessary to transform the output signal so that the values reliable fall within the set of acceptable input values.
+
+A complete mapping system would specify not only the associations between two sets of signals (pairs of connected signals), but associate a function with each pair of connected signals that specifies how to transform the signal before copying the value to an input. This function might in fact be simply \begin{math}y = x\end{math}, however it is not safe to assume that this will always be an acceptable mapping function between an output and input.
+
 This physical decoupling between the control mechanism, the mapping system, and the sound generation mechanism creates a modularity between the three components that can be exploited to simplify the DMI development and maintenance process.
 
-\section{A Dedicated Mapping System: libmapper}
+\section{A Dedicated Mapping System: Libmapper}
 
 The creation, evolution, and stabilization of the design a digital musical instrument is inherently a tightly iterative process. A violin luthier must be comfortable enough playing a violin to develop an aesthetic sense of what effect the countless decisions that are made in the process of building a violin have on the experiential quality of the instrument that they are creating. Whether a particular decision is the right one can only truly be evaluated after the decision is made and someone plays the violin. 
 
@@ -111,15 +115,15 @@ Similarly, a team of people building a DMI will often make a construction decisi
 
 Because such iterative development is so beneficial to the development of DMIs, people often use various platforms and frameworks as common building blocks for such systems. Common platforms allow one too quickly test ideas for a DMI and focus on experimenting with the aspects of the control mechanism and sound generation that are unique to the particular project before investing too much time and money into custom parts without assurance that the ideas are even viable in a general sense. For the control hardware there are platforms like Arduino. Coding environments like Max/MSP and code libraries like STK simplify the development of synthesizer modules for sound generation. In an effort to provide a similar foundation for creating mapping systems, the Digital Orchestra Toolbox was created as part of the McGill Digital Orchestra project and includes components representing the common subroutines used in a mapping system. 
 
-More recently, this functionality has been reimplemented as a C library called libmapper at the IDMIL at McGill University. Libmapper has several characteristics which make it a desirable system for configuring mappings. 
+More recently, this functionality has been reimplemented as a C library called Libmapper at the IDMIL at McGill University. Libmapper has several characteristics which make it a desirable system for configuring mappings. 
 
-One is that a mapping between control and sound generation can be modified without recompiling any code, restarting any system, or reloading any script. Typically, if a mapping is specified in software through a Max/MSP program, C program, etc. the part of the code that specifies the mapping must be modified and recompiled or reinterpreted before the new mapping becomes active. Any DMI that embeds libmapper in its control and sound generation software can have its mapping modified simply by being sent specific messages as specified by the mapping protocol. 
+One is that a mapping between control and sound generation can be modified without recompiling any code, restarting any system, or reloading any script. Typically, if a mapping is specified in software through a Max/MSP program, C program, etc. the part of the code that specifies the mapping must be modified and recompiled or reinterpreted before the new mapping becomes active. Any DMI that embeds Libmapper in its control and sound generation software can have its mapping modified simply by being sent specific messages as specified by the mapping protocol. 
 
 Another useful characteristic is that in the case of a local network with many different control mechanisms and sound generation mechanisms available, no central device is need to facilitate communication between devices. If one component on the network expriences some difficulties, the other devices will still be able to keep the mappings between the remaining devices operating.  
 
 Lastly, and of particular relevance to the primary topic of this paper, is that the current state of mappings between various devices on the network can be viewed and modified by any graphical user interface that embeds Libmapper. In Libmapper parlance, these applications can register as \emph{monitors}. Because of this capability, multiple members of a team can be viewing and modifying the same mappings for multiple DMIs using different computers and using different graphical user interfaces.  
 
-Seen from a high conceptual level, libmapper is an implementation of a communication protocol that was created for specifying mappings over a distributed network \cite{Malloch2009}. 
+Seen from a high conceptual level, Libmapper is an implementation of a communication protocol that was created for specifying mappings over a distributed network \cite{Malloch2009}. 
 
 A communications protocol is a rigorous and formal description of a message format and rules for exchanging messages adhering to the protocol. The term protocol usually refers to the formal description of the protocol and is distinct from the implementation of the protocol. A protocol without an implementation is metaphorically like a constitution without a government. The mapping protocol is itself defined in terms of the Open Sound Control (OSC) protocol. This is a common practice for constructing higher level protocols. The Internet is essentially a particular stack of protocols that are layered on top of each other and specify how devices and routers are to be addressed, open connections with each other, and interpret messages.
 
@@ -127,9 +131,13 @@ In the case of Libmapper, the protocol layer that OSC itself is implemented on t
 
 Libmapper then allows one to configure a mapping relationship between any collection of devices (control devices, sound generation devices, and anything else) by embedding Libmapper into the code for each device and creating an instance of Libmapper upon startup of each device, thus allowing any system on a local network to easily implement the mapping protocol without in depth knowledge of the protocol.
 
+\subsection{Open Sound Control Protocol}
+
+
+
 \subsection{Mapper Protocol}
 
-The semantics for the common set of OSC messages that the \emph{Mapper Protocol} (the name that will be used to describe the specification implied by Libmapper in this paper) is intended to be as useful as possible for configuring mappings between output and input signals without assuming too much about what form the control or sound generation will take. The set of messages proposed by the Mapper Protocol allows each device composing a distributed system to \emph{announce} its presence, \emph{discover}, \emph{describe} itself, \emph{link} to another device, \emph{connect} one of its datastreams to a datastream on a device it is linked to, and \emph{condition or transform} a signal with a basic mathematical function \cite{Malloch2009}.
+The semantics for the common set of OSC messages that the \emph{Mapper Protocol} (the name that will be used to describe the specification implied by Libmapper in this paper) is intended to be as useful as possible for configuring mappings between output and input signals without assuming too much about what form the control or sound generation will take. The set of messages proposed by the Mapper Protocol allows each device composing the global distributed system to \emph{announce} its presence, \emph{discover}, \emph{describe} itself, \emph{link} to another device, \emph{connect} one of its datastreams (also referred to as signals) to a datastream on a device it is linked to, and \emph{condition or transform} a signal with a basic mathematical function \cite{Malloch2009}.
 
 \subsubsection{Announcement}
 
@@ -142,17 +150,17 @@ After a device appears on the network, announces itself and receives a unique na
 New device sends:
 
 \begin{quote}
-\verb#/device/who#
+\verb#/who#
 \end{quote}
 
 Other devices respond with (for example):
 
 \begin{quote}
-\verb#/device/registered /tstick/1 @inputs 1 @outputs 52 @class /tstick# 
+\verb#/registered /tstick.1 @inputs 1 @outputs 52 @class /tstick# 
 
 \verb#  @IP 192.168.0.3 @port 8001#
 
-\verb#/device/registered /granul8/1 @inputs 80 @outputs 0 @class /granul8#
+\verb#/registered /granul8.1 @inputs 80 @outputs 0 @class /granul8#
 
 \verb#  @IP 192.168.0.4 @port 8000#
 \end{quote}
@@ -164,7 +172,7 @@ In this way any device or monitor (in the case of a graphical user interface) ca
 To create a direct network link between two devices, the Mapper Protocol specifies the following message:
 
 \begin{quote}
-\verb#/link /tstick/1 /granul8/1#
+\verb#/link /tstick.1 /granul8.1#
 \end{quote}
 
 Libmapper creates a router, which can be thought of as a special virtual device distinct from control devices and sound generation devices, for each pair of linked devices. In Mapper Protocol terminology, a link is created between a \emph{source} device and a \emph{destination} device. Every router is tasked with the signal conditioning and message transformation for the data streams between the source/destination device link it was created by Libmapper to manage. This Libmapper design decision allows each device acting as a source in a link to handle the traffic and processing of the links that it is involved in, thus distributing the work load over all source devices as opposed to assuming a single central router handling all traffic between all linked devices in the system.
@@ -172,49 +180,49 @@ Libmapper creates a router, which can be thought of as a special virtual device 
 When the Libmapper instance in the source device sucessfully creates a router for the link and completes initialization of the connection after receiving a \verb#/link# message, it responds with:
 
 \begin{quote}
-\verb#/linked /tstick/1 /granul8/1#
+\verb#/linked /tstick.1 /granul8.1#
 \end{quote}
 
 Two devices are unlinked by sending the following message:
 
 \begin{quote}
-\verb#/linked /tstick/1 /granul8/1#
+\verb#/linked /tstick.1 /granul8.1#
 \end{quote}
 
 The source device then destroys the router handling this link after receiving a \verb#/unlink# message, and responds with:
 
 \begin{quote}
-\verb#/unlinked /tstick/1 /granul8/1#
+\verb#/unlinked /tstick.1 /granul8.1#
 \end{quote}
 
 \subsubsection{Datastream Connection}
 
-Once a router has been created between a source and destination by requesting a link, specific output datastreams can be connected to specific inputs. Once a T-Stick (\verb#/tstick/1#) has been linked to the Granul8 granular synthesizer (\verb#/granul8/1#), the individual datastreams produced by the touch sensors, accelerometers, etc. in the T-Stick can be routed to specific inputs in the granular synthesizer. Without specifying connections between output datastreams/signals and inputs that accept datastreams than gestures performed with the control source device will have no affect on the audio samples produced by the sound generation destination device. 
+Once a router has been created between a source and destination by requesting a link, specific output datastreams can be connected to specific inputs. Once a T-Stick (\verb#/tstick.1#) has been linked to the Granul8 granular synthesizer (\verb#/granul8.1#), the individual datastreams produced by the touch sensors, accelerometers, etc. in the T-Stick can be routed to specific inputs in the granular synthesizer. Without specifying connections between output datastreams/signals and inputs that accept datastreams than gestures performed with the control source device will have no affect on the audio samples produced by the sound generation destination device. 
 
 In the Mapper Protocol, this is accomplished by sending a message similar to these:
 
 \begin{quote}
-\verb#/connect /tstick/1/raw/pressure/1 /granul8/1/gain#
+\verb#/connect /tstick.1/raw/pressure/1 /granul8.1/gain#
 
-\verb#/connect /tstick/1/raw/pressure/1 /granul8/1/gain#
+\verb#/connect /tstick.1/raw/pressure/1 /granul8.1/gain#
 
 \verb#  @scaling expression @expression x*10 @clipping minimum 0#
 \end{quote}
 
-The router managing the link between \verb#/tstick/1# and \verb#/granul8/1# records all the relevant information communicated by the \verb#/connect# message, sets up the address translation and transformation required to connection the output datastream to its input, and responds with:
+The router managing the link between \verb#/tstick.1# and \verb#/granul8.1# records all the relevant information communicated by the \verb#/connect# message, sets up the address translation and transformation required to connection the output datastream to its input, and responds with:
 
 \begin{quote}
-\verb#/connected /tstick/1/raw/pressure/1 /granul8/1/gain#
+\verb#/connected /tstick.1/raw/pressure/1 /granul8.1/gain#
 
-\verb#/properties /tstick/1/raw/pressure/1 /granul8/1/gain#
+\verb#/properties /tstick.1/raw/pressure/1 /granul8.1/gain#
 
 \verb#  @scaling expression#
 
-\verb#/properties /tstick/1/raw/pressure/1 /granul8/1/gain#
+\verb#/properties /tstick.1/raw/pressure/1 /granul8.1/gain#
 
 \verb#  @expression x*10#
 
-\verb#/properties /tstick/1/raw/pressure/1 /granul8/1/gain#
+\verb#/properties /tstick.1/raw/pressure/1 /granul8.1/gain#
 
 \verb#  @clipping minimum 0#
 \end{quote}
@@ -222,25 +230,38 @@ The router managing the link between \verb#/tstick/1# and \verb#/granul8/1# reco
 A datastream is disconnected by sending:
 
 \begin{quote}
-\verb#/disconnect /tstick/1/raw/pressure/1 /granul8/1/gain#
+\verb#/disconnect /tstick.1/raw/pressure/1 /granul8.1/gain#
 \end{quote}
 
 The router responds with:
 
 \begin{quote}
-\verb#/disconnected /tstick/1/raw/pressure/1 /granul8/1/gain#
+\verb#/disconnected /tstick.1/raw/pressure/1 /granul8.1/gain#
 \end{quote}
 
 The properties of a connection can be queried with:
 
 \begin{quote}
-\verb#/connection/properties/get /tstick/1/raw/pressure/1 /granul8/1/gain#
+\verb#/connection/properties/get /tstick.1/raw/pressure/1 /granul8.1/gain#
 \end{quote}
 
 The syntax of the message for modifying properties of a connection is similar to \verb#/connect# except \verb#/connect# is replaced with \verb#/connection/modify#.
 
-\section{Usability and Graphical User Interfaces}
+These special OSC messages as defined by their message headers and syntax comprise what is referred to in this paper as the \emph{Mapper Protocol}. By sending messages from this set of messages recognized by Libmapper it is possible to configure mappings between an arbritrarily large collection of devices on a local network.
 
 \section{Sensor Networks}
 
+A \emph{sensor network} is a term used in electrical engineering literature to refer to a system that employs a (typically) large number of distributed sensors that are connected to each other through autonomous, intermediary nodes capable of processing and communicating the data obtained from the particular sensors it is attached to and relaying that information to other nodes on the network. If the nodes communicate with each other through some form of wireless radio then the network can be referred to as a \emph{wireless sensor network}. The key functional difference being that in the wireless scenario, the nodes are not tethered to a particular physical location and are free to move provided they remain within radio range. Libmapper can, in principle, with few to no modifications operate in either scenario and the phrase \emph{sensor network} will be used to encapsulate both.
+
+The concept of a sensor network is useful because it strikes a good balance of specificity and abstraction when describing a particular network topology and implementation. Sensor networks, particularly wireless sensor networks, are an active field of research in a diverse array of research fields including defense, environmental monitoring, energy/heat systems, and structural engineering. In these and related situations, the function of the sensor network is to sense, measure, and gather information from the environment and/or actors in the environment and use the capability of distributed processing nodes to make decisions about where the information should be routed \cite{survey2008}. The majority of research applications do not focus on the use of these datastreams to output sound, visuals, or control actuators in realtime, however there the definition of a sensor network does not preclude the nodes in the network from being connected to actuators as well as sensors.
+
 \section{Digital Musical Instruments as Localized Sensor Networks}
+
+A DMI can be understood as a particular form of sensor network. Particularly, if all of the sensors, processing nodes (perhaps each running an instance of Libmapper), and sound generation mechanism are all housed in a single physical object. Typically, no academic would refer to such a DMI as a sensor network, however it would technically fall under the working definition used in this paper.
+
+Framing a DMI as a sensor network affords one the ability to imagine what form a more sensor network-like DMI might take. Additionally, because the task of mapping is fundementally a task of network topology configuration it is better term to use when focusing on the mapping layer of a musical system. A single DMI might consist of many spatially-distributed control devices that each output signals connected to the inputs of a sound generation device. Or an orchestra of DMIs might be understood to be one musical sensor network that together produce one collection of sound. The argument is that understanding what is being built in terms of a sensor network, as opposed to individual DMIs that may or may not be played together, better reflects the pecularities of what a DMI is and why the task of building a DMI is different from building an acoustic musical instrument. Additionally, perhaps such a reframing might better work \emph{with} the pecularities of a DMI and lessen the extent to which design teams work against the inate characteristics of a computers attempting to make DMIs in the image of acoustic musical instruments. After all, as previously discussed, this fundemental difference between a DMI and acoustic musical instrument is what introduces the task of mapping as unique to DMIs in the first place. For convenience, the term musical sensor network (MSN) will be used in the remainder of this paper to reference this particular framing of the DMI concept in contexts that might be helped by this alternative concept. However, the two terms can usually be used interchangably. 
+
+\section{Usability and Graphical User Interfaces}
+
+Imagine a MSN comprised of more than ten Libmapper-enabled devices, some of them are control devices and some are sound generation devices. Each device might output, or receive as inputs, around ten signals. So to create a mapping layer over this distributed network of devices, one might send hundreds of Mapper Protocol messages to link, unlink, connect, disconnect, etc. various pairs of devices and signals as one attempts to determine through trial and error the specific set of connections and functional transformations that best fit the particular sensors, devices, context, and design intentions of the people constructing the system. It may be that it is unclear what control device ought to be linked to what sound generation device, much less what signals within the control device to connect to what particular signals within the sound generation device. When experimenting with a mapping layer for a specific MSN it is necessary to view the current network mapping, modify the current mapping, test the new mapping, evaluate its effectiveness and then repeat the process until the mapping is satisfactory. Any tools and interfaces that speed up this iterative process and reduce the amount of Libmapper-specific/Mapper Protocol knowledge improves the usability of Libmapper and allows for a wider diversity of skill sets to participate in the mapping task for a musical system. 
+
