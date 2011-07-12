@@ -4,9 +4,17 @@
 
 \section{General History}
 
-The concerns of user interface designers has changed considerably since people first started interacting with programmable digital computers for processing, storing, and retrieving information. 
+The concerns of user interface designers have changed considerably since people first started interacting with programmable digital computers for processing, storing, and retrieving information. 
 
-The first interfaces depended on punch cards and paper tape as control mechanisms and line printers for output and program feedback. During the 1950s and 1960s, in order to input a program and a dataset into a computer, first one prepares a deck of punched cards using a typewriter-like machine, then one feeds the deck to the computer. Optionally on some machines, one can mount reels of magnetic tape that store oft-used or previously generated datasets or software. On these early machines, a particular job being run from a deck of punch cards would occupy the entire computer. A program 
+The first interfaces often depended on punch cards and paper tape as control mechanisms and line printers for output and program feedback. On machines used during the 1950s and 1960s, in order to input a program and a dataset into a computer, first one prepares a deck of punched cards using a typewriter-like machine, then one feeds the deck to the computer \cite{oshistory2011}. Optionally on some machines, one can mount reels of magnetic tape that store oft-used or previously generated datasets or compiled software. On these early machines, a particular program being run from a deck of punch cards would occupy the resources of the entire computer. Any hardware devices required by a particular program like punch card readers and line printers had to be handled completely by the program. 
+
+\emph{Operating systems} development grew out of the growing complexity of computer systems involving many cooperating devices and the mirrored growth of the complexity of the programs that were written for them. It makes little sense for a user of a machine to write basic operating software for interfacing with standardized perhipheral devices everytime they want to run a program on such a machine. Especially, since any user of a computer during the 1960s likely needed to enter a queue to reserve time to run their program on a single shared machine and any time wasted debugging low-level interactions with input and output devices was surely frusterating. Predictably, machines begain appearing with libraries of code that took care of low-level control and provided easier access to input and output devices as always resident services. This collection of software that is permenantly resident on a machine became known as a \emph{batch monitor} \cite{os2000}. A user's program could link to these preloaded libraries without including the operating logic explicitly within their own program code. This shift is often cited as the genesis of the modern operating system.
+
+In addition to providing access to input/output devices, the monitor often provided services to perform error checking on user submitted programs and generating useful feedback to the user concerning the progress of execution of a user program. The idea of generating "useful" feedback, and what that might mean, can be understood as the first instance of an explicitly designed user interface \cite{unix2008}.
+
+Command-line interfaces are the next step in the evolution of computer interfaces and the link between batch systems of the 1950s and what would be recognized as a graphical user interface today. With continual, steady reduction of the amount of time needed to complete an operation cycle, it became possible to interact with the computer with a series of requests and responses expressed as specially formatted strings of text using a specialized vocabulary. Requests could be completed in seconds, no longer hours and days, and it made sense for the user to simply wait for the request to be completed before entering in the request. As opposed to queueing up a mult-stage program and waiting for all the stages to be completed, the user can change their mind about the structure of later stages in the program in response to feedback from earlier stages. This introduces the possibility for software to explore a set of possibilities with the guidance of the user and allows for a type of interactivity not possible in the 1950s. 
+
+Although the earliest command-line systems borrowed typewriter-like teletypes (used for telegraph transmission) as the input and output mechanism, by the 1970s video display terminals were used with computers for providing text feedback on a virtual canvas of pixels that could be rapidly and reversibly modified (unlike teletype printers) and it became possible for a program to display an interface that could be called visual as opposed to textual \cite{unix2008}.
 
 \section{Task Analysis}
 
@@ -47,6 +55,7 @@ Visual Information Seeking: Tight Coupling of Dynamic Query Filters with Starfie
 \end{comment}
 \section{Hierarchies and Taxonomies}
 \begin{comment}
+Magic number seven, George Miller
 The Structure of the Information Visualization Design Space, Section 2
 enclosure
 \end{comment}
