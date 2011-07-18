@@ -2,21 +2,25 @@
 
 \chapter{User Interface and Data Visualization Design}
 
-\section{Relevant History of Human-Computer Interfaces}
+The scope of the discipline of \emph{human-computer interaction} (and even the legitimacy of the endevour) varies depending on who is asked, however at present it is understood to involve "the design, implementation and evaluation of interactive systems in the context of the user's task and work" \cite{hci1998}. Within the broad domain of interactive systems, various aspects of a system are often treated modularly. Two aspects of interactive systems that are particularly relevant to the development of Vizmapper are user interfaces and data visualization.
 
-The concerns of user interface designers have changed considerably since people first started interacting with programmable digital computers for processing, storing, and retrieving information. 
+\section{Short History of User Interfaces}
+
+Taking a view of the history of computer systems, the term \emph{user interface} makes sense only in the context of current computing culture. The use of \emph{user interface} as a distinct concept was not needed when the \emph{user} was certain to be the engineer or programmer involved in the creation of the program and/or the machine that was to run the program; at the very least, they were comfortable interacting with the software in the same mode as the original programmer and did not require an explicit interface to augment the usability of the system \cite{continuity1990}. The term \emph{computer interface} might more precisely communicate the aspect of the system that is trying to be addressed, namely the computer's interface to the world - whether the \emph{user} is assumed to be a programmer, a musician, another machine, the larger environment, or a dog. 
+
+The concerns of user interface designers have changed considerably since people first started interacting with programmable digital computers for processing, storing, and retrieving information. Understanding the context of and nature of the interdependant effect that fundemental developments in computing and their accompanying user interfaces had on each other is essential for appreciating the meaningful impact that a seemingly frivolous thing like user interface can have on the development of the basic functionality of the computer - for example, using a computer for creating mappings between a distributed network of devices.  
 
 \subsection{Punch cards}
 
-The first interfaces often depended on punch cards and paper tape as control mechanisms and line printers for output and program feedback. On machines used during the 1950s and 1960s, in order to input a program and a dataset into a computer, first one prepares a deck of punched cards using a typewriter-like machine, then one feeds the deck to the computer \cite{oshistory2011}. Optionally on some machines, one can mount reels of magnetic tape that store oft-used or previously generated datasets or compiled software. On these early machines, a particular program being run from a deck of punch cards would occupy the resources of the entire computer. Any hardware devices required by a particular program like punch card readers and line printers had to be handled completely by the program. 
+The first interfaces often depended on punch cards and paper tape as control mechanisms and line printers for output and program feedback. On machines used during the 1950s and 1960s, in order to input a program and a dataset into a computer, first one prepares a deck of punched cards using a typewriter-like machine, then one feeds the deck to the computer \cite{oshistory2011}. Optionally on some machines, one can mount reels of magnetic tape that store oft-used or previously generated datasets or compiled software. On these early machines, a particular program being run from a deck of punch cards would be given control of the resources of the entire computer. There would be no other resident software running on the machine handling auxilery tasks. Any hardware devices required by a particular program like punch card readers and line printers had to be handled completely by the user program contained in the deck of cards fed to the machine. 
 
-\emph{Operating systems} development grew out of the growing complexity of computer systems involving many cooperating devices and the mirrored growth of the complexity of the programs that were written for them. It makes little sense for a user of a machine to write basic operating software for interfacing with standardized perhipheral devices everytime they want to run a program on such a machine. Especially, since any user of a computer during the 1960s likely needed to enter a queue to reserve time to run their program on a single shared machine and any time wasted debugging low-level interactions with input and output devices was surely frusterating. Predictably, machines begain appearing with libraries of code that took care of low-level control and provided easier access to input and output devices as always resident services. This collection of software that is permenantly resident on a machine became known as a \emph{batch monitor} \cite{os2000}. A user's program could link to these preloaded libraries without including the operating logic explicitly within their own program code. This shift is often cited as the genesis of the modern operating system.
+\emph{Operating systems} development grew out of the growing complexity of computer systems involving many cooperating devices and the mirrored growth of the complexity of the programs that were written for them. It makes little sense for a user of a machine to write basic operating software for interfacing with standardized perhipheral devices everytime they want to run a program on such a machine. Especially, since any user of a computer during the 1960s likely needed to enter a queue to reserve time to run their program on a single shared machine and any time wasted debugging low-level interactions with input and output devices was valuable, wasted machine time. Consequently, machines begain appearing with libraries of code that took care of low-level control and provided easier access to input and output devices as always resident services. This collection of software that is permenantly resident on a machine became known as a \emph{batch monitor} \cite{os2000}. A user's program could link to these preloaded libraries without including the operating logic explicitly within their own program code. This shift is often cited as the genesis of the modern operating system.
 
 In addition to providing access to input/output devices, the monitor often provided services to perform error checking on user submitted programs and generating useful feedback to the user concerning the progress of execution of a user program. The idea of generating "useful" feedback, and what that might mean, can be understood as the first instance of an explicitly designed user interface \cite{unix2008}.
 
 \subsection{Command-line}
 
-Command-line interfaces are the next step in the evolution of computer interfaces and the link between batch systems of the 1950s and what would be recognized as a \emph{graphical user interface} (GUI) today. With continual, steady reduction of the amount of time needed to complete a computation cycle, it became possible to interact with the computer with a series of requests and responses expressed as specially formatted strings of text using a specialized vocabulary. Requests could be completed in seconds, no longer hours and days, and it made sense for the user to simply wait for the request to be completed before entering in the request. As opposed to queueing up a mult-stage program and waiting for all the stages to be completed, the user can change their mind about the structure of later stages in the program in response to feedback from earlier stages. This introduces the possibility for software to explore a set of possibilities with the guidance of the user and allows for a type of interactivity not possible in the 1950s. 
+Command-line interfaces are the next step in the evolution of computer interfaces and the link between batch systems of the 1950s and what would be recognized as a \emph{graphical user interface} (GUI) today. With continual, steady reduction of the amount of time needed to complete a computation cycle, it became possible to interact with the computer with a series of requests to execute programs and responses expressed as specially formatted strings of text using a specialized vocabulary. Requests could be completed in seconds, no longer hours and days, and it made sense for the user to simply wait for the request to be completed before entering in the next request. As opposed to queueing up a mult-stage program and waiting for all the stages to be completed, the user can change their mind about the structure of later stages in the program in response to feedback from earlier stages. This introduces the possibility for software to explore a set of possibilities with the guidance of the user and allows for a type of interactivity not possible in the 1950s. 
 
 Although the earliest command-line systems borrowed typewriter-like teletypes (used for telegraph transmission) as the input and output mechanism, by the 1970s video display terminals were used with computers for providing text feedback on a virtual canvas of pixels that could be rapidly and reversibly modified (unlike teletype printers) and it became possible for a program to display an interface that could be called visual as well as textual \cite{unix2008}. This allowed programmers to create the first computer games and text editors that relied on this capability of video display terminals.
 
@@ -30,13 +34,24 @@ The second groundbreaking project, the Xerox Alto, came from the Xerox Palo Alto
 
 It is primarily the ideas that these two projects consolidated and introduced to the wider world that eventually became the impetus for the recognition of \emph{Human-Computer Interaction} and, of more precise relevance to this paper, \emph{User Interface Design} as important areas of study of significant relevance to the broader computer science community. 
 
+\subsection{Five Foci of Interface Development}
+
+It is clear that, in some sense, computing machines have always had user interfaces. What has changed is the the level of attention that any particular layer in the computing interface has received during various periods of history. Grudin \cite{continuity1990} introduces a helpful framework for understanding this change that took place during the second half of the 20th century. 
+
+Initially, during and before the days of punch cards, most users of computers were electrical engineers primarily concerned with working directly with the hardware (flipping switches, replacing vacuum tubes, wiring ports and circuits). Conceptually, the computer interface was located at the hardware itself. The primitive operating systems and batch monitors placed the majority of focus on the task of programming and the environment in which commands were executed and requests were made. The development of ever higher-level languages and environments eventually replaced the need to be familiar with hardware particulars. At this point, the interface is at the level of the software code. As machines began to perform their operations more quickly, systems became interactive and users were not expected to be able to interact with the computer through computer code, the interface grew into the canonical monitor, keyboard, and mouse of the 1990s and 2000s. It made sense for designers of computer systems to become aware of issues like perception and motor control. 
+
+In recent years it has become practical to interact with the computer in a more conversational/realtime manner and system designers focus on the entire process of a user interacting with the system over an extended period of time, from initial exposure to practiced expert interaction. The focus of the interface designer becomes less trained on issues of ergonomics and visual perception and more trained on deeper cognitive issues like learning and problem solving. The interface has grown to encompass the proclivities of the mind. Impressively, Grudin forsees the advent of social networking in what he labels \emph{groupware}, the fifth focus of interface development. When a single system serves a large group of people as opposed to an individual, the user interface becomes the dynamics of interaction between the members of the group.
+
+Ultimately, Grudin cites these observations within the context of the framwork of five foci to support the assertion that the history of the computer has been one of the computer extending its interface with the world outward from its hardware implementation and deep into the intanglible aspects of human life \cite{continuity1990}.
+
 \section{Task Analysis}
 
 Task analysis is a class of techniques used in HCI to guide the design of user interfaces. One of the central assumptions of user interface design and HCI is that different tasks require different interfaces. The corollary is that thinking carefully about the nature of the tasks that are meant to be accomplished by the interface will lead to better design decisions. Crystal and Ellington (2004) performed an in-depth comparative analysis of the dominant techniques and provide a good introduction to the motivations of task analysis:
 
 \begin{quote}
 Practitioners and researchers routinely advocate building user-centered systems which enable people to reach their goals, take account of natural human limitations, and generally are intuitive, efficient and pleasurable to use (Preece, Rogers and Sharp, 2002). Central to the design of such systems is a clear understanding of what users actually want to do: What are their tasks? What is the nature of those tasks? Many techniques have been proposed to help answer these questions. Task analysis techniques are particularly important because they enable rigorous, structured characterizations of user activity. They provide a framework for the investigation of existing practices to facilitate the design of complex systems.
-Task analysis is especially valuable in the context of human-computer interaction (HCI). User interfaces must be specified at an extremely low level (e.g. in terms of particular interaction styles and widgets), while still mapping effectively to users’ high-level tasks. Computer interfaces are often highly inflexible (when compared to interacting with a physical environment or another person). This inflexibility magnifies the impact of interface design problems, making the close integration of task structure and interface support especially crucial. \cite{crystal2004}
+
+Task analysis is especially valuable in the context of human-computer interaction (HCI). User interfaces must be specified at an extremely low level (e.g. in terms of particular interaction styles and widgets), while still mapping effectively to users high-level tasks. Computer interfaces are often highly inflexible (when compared to interacting with a physical environment or another person). This inflexibility magnifies the impact of interface design problems, making the close integration of task structure and interface support especially crucial. \cite{crystal2004}
 \end{quote}
 
 Broadly, task analysis consists of the observational and heuristic analysis of the physical, mental, and contextual requirements for performing a specific task. As such, even in its most rigorous and quantitative forms, task analysis typically involves methods like discourse analysis, contextual inquiry, and video analysis. 
@@ -55,7 +70,7 @@ The relevant point regarding the use of HCI techniques like task analysis to ana
 Graphics is the visual means of resolving logical problems. \cite{bertin1981}
 \end{quote}
 
-This idea from Bertin, who conducted one of the first attempts to provide a theoretical foundation to information visualization, summarizes the hope for an alternative interface for configuring a Libmapper network. 
+This idea from Bertin, who conducted one of the first attempts to provide a theoretical foundation to information visualization, summarizes the hope for a dedicated interface for configuring a Libmapper network. It is in this context that \emph{data visualization} or \emph{information visualization} is understood to be "the computer-assisted use of visual processing to gain understanding" by Card \cite{card1997}. 
 
 The task of mapping is a logical problem, as well as an artistic one. It is a logical problem in the sense that one cannot make connections haphazardly between any pair of input and output signals and expect the network mapping that is produced to be interesting as a DMI. One must still infer through some form of reasoning the suitability of a particular connection in the context of the particular devices on the network, the nature of the signals that the devices produce, and the broader artistic intentions of the design team. 
 
@@ -70,7 +85,19 @@ connection
 
 Visual Information Seeking: Tight Coupling of Dynamic Query Filters with Starfield Displays
 \end{comment}
-\section{Recognition vs. Recall}
+\section{Recall and Recognition}
+
+It is common to understand human information retrieval in terms of two types of retrieval, recall and recognition. In the recall process, information is reproduced from memory. In the recognition process, a piece of information induces the knowledge that the information is not new; it has been seen before and the information acts as a cue. In this respect, recognition is a less complex cognitive activity.
+
+Recall can be assisted with cues that allow an individual to speed access to the information in their memory. One proven cue is the use of categories.
+
+\section{Hierarchies and Taxonomies}
+\begin{comment}
+Magic number seven, George Miller
+The Structure of the Information Visualization Design Space, Section 2
+enclosure
+\end{comment}
+
 \section{Modal Interfaces}
 
 \section{Filtering}
@@ -79,10 +106,4 @@ The Structure of the Information Visualization Design Space, Section 5
 dynamic queries technique 
 
 Visual Information Seeking: Tight Coupling of Dynamic Query Filters with Starfield Displays
-\end{comment}
-\section{Hierarchies and Taxonomies}
-\begin{comment}
-Magic number seven, George Miller
-The Structure of the Information Visualization Design Space, Section 2
-enclosure
 \end{comment}
