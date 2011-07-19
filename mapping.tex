@@ -107,9 +107,25 @@ Two sets are defined to have the same \emph{cardinality} if there exists a bijec
 
 \subsection{Cardinality in Computer Science}
 
-Within computer science, cardinality is a concept used in relational database systems \cite{carddata1987}.
+Within computer science, cardinality is a concept used in relational database systems \cite{carddata1987}. 
 
-\ref{sec:Mappings in Computer Science}
+A relational database can be seen as a very robust and flexible data labeling system in reference to the discussion in section \ref{sec:Mappings in Computer Science}. A relational database is defined as a collection of relations, where a relation is defined as a set of lists of attributes. Each list in the set has the same attributes as every other list in the set. An attribute defines a property that can take any value constrained by the values that make sense for each particular attribute. A relation is usually described by a table as in Table \ref{tab:relation}.
+
+\begin{table}
+    \begin{center}
+    \begin{tabular}{ | l | l | l | }
+    \hline
+    Student ID : Integer  & Thesis Topic : String & Thesis Advisor : String \\ \hline
+    260311100 & A Tool for Configuring Mappings & Marcelo Wanderley \\ \hline
+    131033222 & An Invisible, Anti-Gravity Toaster & Ohno Hedidnt \\
+    \hline
+    \end{tabular}
+    \end{center}
+    \caption{Example of a database relation}
+    \label{tab:relation}
+\end{table}
+
+In a relational database, the cardinality of an attribute is the number of instances of that attribute that can be associated with a given set of instances for other attributes. In a database, it is largely sufficient to distinguish between a cardinality of \emph{one} and a cardinality of \emph{many}.
 
 \section{Importance of Mapping in Digital Musical Instruments}
 
@@ -147,6 +163,8 @@ Another useful characteristic is that in the case of a local network with many d
 
 Lastly, and of particular relevance to the primary topic of this paper, is that the current state of mappings between various devices on the network can be viewed and modified by any graphical user interface that embeds Libmapper. In Libmapper parlance, these applications can register as \emph{monitors}. Because of this capability, multiple members of a team can be viewing and modifying the same mappings for multiple DMIs using different computers and using different graphical user interfaces.  
 
+\subsection{Open Sound Control Protocol}
+
 Seen from a high conceptual level, Libmapper is an implementation of a communication protocol that was created for specifying mappings over a distributed network \cite{Malloch2009}. 
 
 A communications protocol is a rigorous and formal description of a message format and rules for exchanging messages adhering to the protocol. The term protocol usually refers to the formal description of the protocol and is distinct from the implementation of the protocol. A protocol without an implementation is metaphorically like a constitution without a government. The mapping protocol is itself defined in terms of the Open Sound Control (OSC) protocol. This is a common practice for constructing higher level protocols. The Internet is essentially a particular stack of protocols that are layered on top of each other and specify how devices and routers are to be addressed, open connections with each other, and interpret messages.
@@ -155,9 +173,18 @@ In the case of Libmapper, the protocol layer that OSC itself is implemented on t
 
 Libmapper then allows one to configure a mapping relationship between any collection of devices (control devices, sound generation devices, and anything else) by embedding Libmapper into the code for each device and creating an instance of Libmapper upon startup of each device, thus allowing any system on a local network to easily implement the mapping protocol without in depth knowledge of the protocol.
 
-\subsection{Open Sound Control Protocol}
+The specification of the OSC protocol can be found on the web \cite{osc2011}. In the opinion of the creators of the protocol \cite{osc2009}, OSC is a "weak" form of protocol because it does not define certain necessary aspects of any form of data transmission. It does not define the patterns of command and response, error handling or receipt acknowledgement only the format of the messages that are sent. These aspects are left as decisions to be made by particular implementations of the protocol.
 
+The complete definition of the OSC protocol is not important for the scope of this thesis however the following aspects of the protocol should give a sufficient sense of what is defined:
 
+\begin{description}
+\item a unit of transmission is a \emph{OSC Packet}, which consists of a continguous block of binary data that is the contents of the packet and a number reflecting the number of bytes of data in the contents
+\item the size of an \emph{OSC Packet} is always a multiple of 4
+\item the contents of an \emph{OSC Packet} is an \emph{OSC Message}
+\item an \emph{OSC Message} consists of an \emph{OSC Address Pattern} followed by an \emph{OSC Type Tag String} followed by zero or more \emph{OSC Arguments}
+\item an \emph{OSC Address Pattern} is a URL-like string strictly beginning with the '/' character
+\item an \emph{OSC Type Tag String} is a string strictly beginning with the ',' character followed a number of charcters corresponding to the number of \emph{OSC Arguments} each of which specifies the OSC defined data type of each argument
+\end{description}
 
 \subsection{Mapper Protocol}
 
