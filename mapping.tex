@@ -49,10 +49,11 @@ morphism
 The term \emph{mapping} is used in mathematics, computer science, and related technical fields to encapsulate the concept of a \emph{function} and other related concepts. \emph{Mapping} is often shortened to \emph{map}. Like most technical terms used in multiple technical disciplines, the meaning of \emph{mapping} varies according to the context of the field that it is used. However in the case of mapping, the variation is subtle enough that a cursory understanding of the way mapping is used in a couple of contexts outside of DMIs might illuminate why it is a necessary and valuable concept to encapsulate in the context of new musical interfaces.
 
 \subsection{Mappings in Mathematics}
+\label{sec:Mappings in Mathematics}
 
 In the mathematics context, the use of the term mapping varies subtly according to sub-discipline within mathematics and often between specific mathematicians, however it is acceptable to use the word as a synonym for \emph{function}. A function in mathematics describes an associative relationship between two sets of numbers. One set of numbers is referred to as a domain or set of inputs and the other set is referred to as a codomain, range, or set of outputs. Mathematicians often say that a function "maps" a domain to or onto a range, hence the reason for using the term \emph{mapping} as a synonym for \emph{function} \cite{functionMapping}.
 
-Strictly speaking in mathematics, a function can only represent a \emph{one-to-one mapping}. This means that every element in the input (domain) set is associated by the function with one and only one element in the output (range) set. A corollary statement about a one-to-one mapping is that every element in the output set might be associated to one element, many elements, no elements, or all elements in the input set.
+Strictly speaking in mathematics, a function can only represent a \emph{one-to-one mapping}. This means that every element in the input (domain) set is associated by the function with one and only one element in the output (range) set. A corollary statement about a one-to-one mapping is that every element in the output set might be associated to one element, many elements, no elements, or all elements in the input set. 
 
 The following are examples of equations that represent functions or equivalently one-to-one mappings:
 
@@ -70,6 +71,7 @@ Basic types of functions like \ref{eq1} and \ref{eq2} often use the set of all r
 To calculate the association that is implied by these two mathematical transformations, substitute any real number (since the set of all real numbers is the input set) for the symbol \begin{math}x\end{math}. By this logic, \ref{eq1} represents the set of associations where every real number \begin{math}x\end{math} is associated with the real number \begin{math}y\end{math} that is the value of \begin{math}x + 1\end{math}. \ref{eq1} represents the set of associations where every real number \begin{math}x\end{math} is associated with the real number \begin{math}z\end{math} that is the value of \begin{math}x^{2}\end{math}.
 
 \subsection{Mappings in Computer Science}
+\label{sec:Mappings in Computer Science}
 
 In the computer science context, a mapping is an abstract data type or concrete data structure, commonly referred to as an \emph{associative array} or \emph{dictionary} \cite{assocarray2008}.  
 
@@ -81,7 +83,7 @@ Just like a reference library can use many different labeling systems to catalog
 
 In particular, a mapping is a labeling system that is composed of a \emph{collection} of labels (keys) and a \emph{collection} of pieces of data (values), where every label in the first collection is associated with one or many of the pieces of data in the second collection. Then this structure encompassing the two collections and the list of associations between the two collections is given a higher order label that refers to the mapping as a whole. This allows one to construct a mapping of mappings, which lends itself nicely to hierarchical labeling systems.
 
-This reframing of the term in the computer science context, as opposed to the mathematical context, clarifies one implication of the concept of mapping. One can specify multiple, unique mappings that each operate on the same collection of labels and the same collection of pieces of data. Similarly, one can specify multiple, unique functions that each operate on the same input set and the same output set. 
+This reframing of the term in the computer science context, as opposed to the mathematical context, focuses on one implication of the concept of mapping. One can specify multiple, unique mappings that each operate on the same collection of labels and the same collection of pieces of data. Similarly, one can specify multiple, unique functions that each operate on the same input set and the same output set. 
 
 Note well, that although there is a subtle difference between a \emph{collection} and a \emph{set} in mathematical formalism, the colloquial understanding of the two terms, where they are interchangable, is sufficient for the purpose of this research and they will be used interchangably. 
 
@@ -89,7 +91,25 @@ So in a computer system, one can create multiple mappings that each associate th
 
 \subsection{Cardinality in Mathematics}
 
+There is more to be said about the concept of a one-to-one mapping. The framework for discussing different types of mappings is provided in one form by the mathematical concept of \emph{cardinality}.
+
+First, three additional concepts should be enumerated and elaborated upon. These concepts are \emph{injection}, \emph{surjection}, and \emph{bijection}.
+
+An \emph{injection} is a function that meets the condition that every element of the function's codomain (output) set is associated to no more than one element in the functions domain (input) set. Here, domain and codomain are used in the same way as in section \ref{sec:Mappings in Mathematics}.
+
+A \emph{surjection} is a function that meets the condition that every element in the codomain set is associated to at least one element in the domain set.
+
+A \emph{bijection} is a function that is both an \emph{injection} and a \emph{surjection}.
+
+Cardinality is a concept that allows one to reason about the relative sizes of different sets. It is particularly useful when comparing infinite sets. It allows one to reason, for example, that the infinite size of the set of all real numbers is larger than the set of all positive integers (natural numbers).
+
+Two sets are defined to have the same \emph{cardinality} if there exists a bijection between the two sets. It follows from the definition of injection that if there exists an injection from set \emph{A} to set \emph{B}, but no bijection, then the cardinality of B is greater than the cardinality of A \cite{cardmath2010}.
+
 \subsection{Cardinality in Computer Science}
+
+Within computer science, cardinality is a concept used in relational database systems \cite{carddata1987}.
+
+\ref{sec:Mappings in Computer Science}
 
 \section{Importance of Mapping in Digital Musical Instruments}
 
@@ -123,7 +143,7 @@ More recently, this functionality has been reimplemented as a C library called L
 
 One is that a mapping between control and sound generation can be modified without recompiling any code, restarting any system, or reloading any script. Typically, if a mapping is specified in software through a Max/MSP program, C program, etc. the part of the code that specifies the mapping must be modified and recompiled or reinterpreted before the new mapping becomes active. Any DMI that embeds Libmapper in its control and sound generation software can have its mapping modified simply by being sent specific messages as specified by the mapping protocol. 
 
-Another useful characteristic is that in the case of a local network with many different control mechanisms and sound generation mechanisms available, no central device is need to facilitate communication between devices. If one component on the network expriences some difficulties, the other devices will still be able to keep the mappings between the remaining devices operating.  
+Another useful characteristic is that in the case of a local network with many different control mechanisms and sound generation mechanisms available, no central device is needed to facilitate communication between devices. If one component on the network expriences some difficulties, the other devices will still be able to keep the mappings between the remaining devices operating.  
 
 Lastly, and of particular relevance to the primary topic of this paper, is that the current state of mappings between various devices on the network can be viewed and modified by any graphical user interface that embeds Libmapper. In Libmapper parlance, these applications can register as \emph{monitors}. Because of this capability, multiple members of a team can be viewing and modifying the same mappings for multiple DMIs using different computers and using different graphical user interfaces.  
 
