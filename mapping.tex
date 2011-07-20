@@ -89,6 +89,27 @@ Note well, that although there is a subtle difference between a \emph{collection
 
 So in a computer system, one can create multiple mappings that each associate the same collection of labels with the same collection of data differently. This characteristic of mappings is one of the primary reasons why mappings are a useful frame for understanding the potential of digital musical instruments. 
 
+\begin{figure}[ht]
+\centering
+\subfloat[Subfigure 1 list of figures text][Non-injective and non-surjective]{
+\includegraphics[width=0.3\textwidth]{200px-Total_function.png}
+\label{fig:figure1}}
+\qquad
+\subfloat[Subfigure 2 list of figures text][Injection]{
+\includegraphics[width=0.3\textwidth]{200px-Injection.png}
+\label{fig:figure2}}
+\qquad
+\subfloat[Subfigure 3 list of figures text][Surjection]{
+\includegraphics[width=0.3\textwidth]{200px-Surjection.png}
+\label{fig:figure3}}
+\qquad
+\subfloat[Subfigure 4 list of figures text][Bijection]{
+\includegraphics[width=0.3\textwidth]{200px-Bijection.png}
+\label{fig:figure4}}
+\caption{Four types of functions}
+\label{fig:globfig}
+\end{figure}
+
 \subsection{Cardinality in Mathematics}
 
 There is more to be said about the concept of a one-to-one mapping and two related concepts, one-to-many mappings and many-to-one mappings. The framework for discussing different types of mappings is provided in one form by the mathematical concept of \emph{cardinality}.
@@ -104,6 +125,8 @@ A \emph{bijection} is a function that is both an \emph{injection} and a \emph{su
 Cardinality is a concept that allows one to reason about the relative sizes of different sets. It is particularly useful when comparing infinite sets. It allows one to reason, for example, that the infinite size of the set of all real numbers is larger than the set of all positive integers (natural numbers).
 
 Two sets are defined to have the same \emph{cardinality} if there exists a bijection between the two sets. It follows from the definition of injection that if there exists an injection from set \emph{A} to set \emph{B}, but no bijection, then the cardinality of B is greater than the cardinality of A \cite{cardmath2010}.
+
+These mathematical concepts are useful for describing one-to-one mappings and many-to-one mappings, but not one-to-many mappings. In this terminology an injection is a one-to-one mapping and a non-injective.
 
 \subsection{Cardinality in Computer Science}
 
@@ -159,7 +182,7 @@ A relational database can be seen as a very robust and flexible \emph{data label
 
 In a relational database, the cardinality of an attribute is the number of instances of that attribute that can be associated with a given set of instances for other attributes. In a database, it is largely sufficient to distinguish between a cardinality of \emph{one} and a cardinality of \emph{many}.
 
-The simple database composed of the relations in Tables \ref{tab:studentrelation}, \ref{tab:facultyrelation}, and \ref{tab:relation} provides an example to reason about the cardinality of database relations. if every student (represented by their ID) has one advisor (also represented by their ID) but every advisor has many students, then the relation is one-to-many between Advisor ID to Student ID. Since the horizontal ordering of attributes has no meaning in a relation, we can also reason that the relation between Student ID to Advisor ID is many-to-one.
+The simple database composed of the relations in Tables \ref{tab:studentrelation}, \ref{tab:facultyrelation}, and \ref{tab:relation} provides an example to reason about the cardinality of database relations. if every student (represented by their ID) has one advisor (also represented by their ID) but every advisor has many students, then the relation is one-to-many from Advisor ID to Student ID. Since the horizontal ordering of attributes has no meaning in a relation, we can also reason that the relation from Student ID to Advisor ID is the reverse, many-to-one. Finally, every student has one thesis topic and each thesis topic is the topic of one student so the relation is one-to-one from Student ID to Thesis Topic.
 
 \section{Importance of Mapping in Digital Musical Instruments}
 
