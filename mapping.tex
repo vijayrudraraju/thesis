@@ -46,7 +46,7 @@ function
 morphism
 \end{comment}
 
-The term \emph{mapping} is used in mathematics, computer science, and related technical fields to encapsulate the concept of a \emph{function} and other related concepts. \emph{Mapping} is often shortened to \emph{map}. Like most technical terms used in multiple technical disciplines, the meaning of \emph{mapping} varies according to the context of the field that it is used. However in the case of mapping, the variation is subtle enough that a cursory understanding of the way mapping is used in a couple of contexts outside of DMIs might illuminate why it is a necessary and valuable concept to encapsulate in the context of new musical interfaces.
+The term \emph{mapping} is used in mathematics, computer science, and related technical fields to encapsulate the concept of a \emph{function} and other related concepts under one abstraction. \emph{Mapping} is often shortened to \emph{map}. Like most technical terms used in multiple technical disciplines, the meaning of \emph{mapping} varies according to the context of the field that it is used. However in the case of mapping, the variation is subtle enough that a cursory understanding of the way mapping is used in a couple of contexts outside of DMIs might illuminate why it is a necessary and valuable concept to encapsulate in the context of new musical interfaces.
 
 \subsection{Mappings in Mathematics}
 \label{sec:Mappings in Mathematics}
@@ -91,7 +91,7 @@ So in a computer system, one can create multiple mappings that each associate th
 
 \subsection{Cardinality in Mathematics}
 
-There is more to be said about the concept of a one-to-one mapping. The framework for discussing different types of mappings is provided in one form by the mathematical concept of \emph{cardinality}.
+There is more to be said about the concept of a one-to-one mapping and two related concepts, one-to-many mappings and many-to-one mappings. The framework for discussing different types of mappings is provided in one form by the mathematical concept of \emph{cardinality}.
 
 First, three additional concepts should be enumerated and elaborated upon. These concepts are \emph{injection}, \emph{surjection}, and \emph{bijection}.
 
@@ -109,23 +109,57 @@ Two sets are defined to have the same \emph{cardinality} if there exists a bijec
 
 Within computer science, cardinality is a concept used in relational database systems \cite{carddata1987}. 
 
-A relational database can be seen as a very robust and flexible data labeling system in reference to the discussion in section \ref{sec:Mappings in Computer Science}. A relational database is defined as a collection of relations, where a relation is defined as a set of lists of attributes. Each list in the set has the same attributes as every other list in the set. An attribute defines a property that can take any value constrained by the values that make sense for each particular attribute. A relation is usually described by a table as in Table \ref{tab:relation}.
+A relational database can be seen as a very robust and flexible \emph{data labeling system}, in reference to the discussion in section \ref{sec:Mappings in Computer Science}. A relational database is defined as a collection of relations, where a relation is defined as a set of lists of attributes. Each list in the set has the same attributes as every other list in the set. An attribute defines a property that can take any value constrained by the values that make sense for each particular attribute. A relation is usually described by a table as in Table \ref{tab:studentrelation}.
+
+\begin{table}
+    \begin{center}
+    \begin{tabular}{ | l | l | l | l | }
+    \hline
+    Student ID : Integer & Name : String & Thesis Topic : String \\ \hline
+    00001 & Alice & 4d Maps \\ \hline
+    00002 & Bob &  Anti-Gravity Toaster \\ \hline
+    00003 & Carl & Invisible Clothing \\ \hline
+    00004 & Doug & Personal Babel Fish \\
+    \hline
+    \end{tabular}
+    \end{center}
+    \caption{Example of a database relation - Student Table}
+    \label{tab:studentrelation}
+\end{table}
+
+\begin{table}
+    \begin{center}
+    \begin{tabular}{ | l | l | }
+    \hline
+    Faculty ID : Integer & Name : String \\ \hline
+    0001 & Marcelo Wanderley \\ \hline
+    0002 & Ohno Hedidnt \\
+    \hline
+    \end{tabular}
+    \end{center}
+    \caption{Example of a database relation - Faculty Table}
+    \label{tab:facultyrelation}
+\end{table}
 
 \begin{table}
     \begin{center}
     \begin{tabular}{ | l | l | l | }
     \hline
-    Student ID : Integer  & Thesis Topic : String & Thesis Advisor : String \\ \hline
-    260311100 & A Tool for Configuring Mappings & Marcelo Wanderley \\ \hline
-    131033222 & An Invisible, Anti-Gravity Toaster & Ohno Hedidnt \\
+    Pairing ID : Integer & Faculty ID : Integer & Student ID : Integer \\ \hline
+    00000001 & 0001 & 00004 \\ \hline
+    00000002 & 0002 & 00002 \\ \hline
+    00000003 & 0001 & 00003 \\ \hline
+    00000004 & 0001 & 00001 \\ 
     \hline
     \end{tabular}
     \end{center}
-    \caption{Example of a database relation}
+    \caption{Example of a database relation - Pairing Table}
     \label{tab:relation}
 \end{table}
 
 In a relational database, the cardinality of an attribute is the number of instances of that attribute that can be associated with a given set of instances for other attributes. In a database, it is largely sufficient to distinguish between a cardinality of \emph{one} and a cardinality of \emph{many}.
+
+The simple database composed of the relations in Tables \ref{tab:studentrelation}, \ref{tab:facultyrelation}, and \ref{tab:relation} provides an example to reason about the cardinality of database relations. if every student (represented by their ID) has one advisor (also represented by their ID) but every advisor has many students, then the relation is one-to-many between Advisor ID to Student ID. Since the horizontal ordering of attributes has no meaning in a relation, we can also reason that the relation between Student ID to Advisor ID is many-to-one.
 
 \section{Importance of Mapping in Digital Musical Instruments}
 
@@ -153,7 +187,7 @@ The creation, evolution, and stabilization of the design a digital musical instr
 
 Similarly, a team of people building a DMI will often make a construction decision, evaluate the effect of that decision, make some changes, and repeat. This is often referred to as iterative development and occurs in any serious design process whether or not it is ever made explicit \cite{iterative2003}. 
 
-Because such iterative development is so beneficial to the development of DMIs, people often use various platforms and frameworks as common building blocks for such systems. Common platforms allow one too quickly test ideas for a DMI and focus on experimenting with the aspects of the control mechanism and sound generation that are unique to the particular project before investing too much time and money into custom parts without assurance that the ideas are even viable in a general sense. For the control hardware there are platforms like Arduino. Coding environments like Max/MSP and code libraries like STK simplify the development of synthesizer modules for sound generation. In an effort to provide a similar foundation for creating mapping systems, the Digital Orchestra Toolbox was created as part of the McGill Digital Orchestra project and includes components representing the common subroutines used in a mapping system. 
+Because such iterative development is so beneficial to the development of DMIs, people often use various platforms and frameworks as common building blocks for such systems. Common platforms allow one to quickly test ideas for a DMI and focus on experimenting with the aspects of the control mechanism and sound generation that are unique to the particular project before investing too much time and money into custom parts without assurance that the ideas are even viable in a general sense. For the control hardware there are platforms like Arduino. Coding environments like Max/MSP and code libraries like STK simplify the development of synthesizer modules for sound generation. In an effort to provide a similar foundation for creating mapping systems, the Digital Orchestra Toolbox was created as part of the McGill Digital Orchestra project and includes components representing the common subroutines used in a mapping system. 
 
 More recently, this functionality has been reimplemented as a C library called Libmapper at the IDMIL at McGill University. Libmapper has several characteristics which make it a desirable system for configuring mappings. 
 
@@ -173,9 +207,9 @@ In the case of Libmapper, the protocol layer that OSC itself is implemented on t
 
 Libmapper then allows one to configure a mapping relationship between any collection of devices (control devices, sound generation devices, and anything else) by embedding Libmapper into the code for each device and creating an instance of Libmapper upon startup of each device, thus allowing any system on a local network to easily implement the mapping protocol without in depth knowledge of the protocol.
 
-The specification of the OSC protocol can be found on the web \cite{osc2011}. In the opinion of the creators of the protocol \cite{osc2009}, OSC is a "weak" form of protocol because it does not define certain necessary aspects of any form of data transmission. It does not define the patterns of command and response, error handling or receipt acknowledgement only the format of the messages that are sent. These aspects are left as decisions to be made by particular implementations of the protocol.
+The specification of the OSC protocol can be found on the web \cite{osc2011}. In the opinion of the creators of the protocol \cite{osc2009}, OSC is a "weak" form of protocol because it does not define certain necessary aspects of any form of data transmission. It does not define the patterns of command and response, error handling or receipt acknowledgement - only the format of the messages that are sent. These aspects are left as decisions to be made by particular implementations of the protocol.
 
-The complete definition of the OSC protocol is not important for the scope of this thesis however the following aspects of the protocol should give a sufficient sense of what is defined:
+The complete definition of the OSC protocol is not important for the scope of this thesis, however the following aspects of the protocol should give a sufficient sense of what is defined:
 
 \begin{description}
 \item a unit of transmission is a \emph{OSC Packet}, which consists of a continguous block of binary data that is the contents of the packet and a number reflecting the number of bytes of data in the contents
@@ -188,7 +222,7 @@ The complete definition of the OSC protocol is not important for the scope of th
 
 \subsection{Mapper Protocol}
 
-The semantics for the common set of OSC messages that the \emph{Mapper Protocol} (the name that will be used to describe the specification implied by Libmapper in this paper) is intended to be as useful as possible for configuring mappings between output and input signals without assuming too much about what form the control or sound generation will take. The set of messages proposed by the Mapper Protocol allows each device composing the global distributed system to \emph{announce} its presence, \emph{discover}, \emph{describe} itself, \emph{link} to another device, \emph{connect} one of its datastreams (also referred to as signals) to a datastream on a device it is linked to, and \emph{condition or transform} a signal with a basic mathematical function \cite{Malloch2009}.
+The semantics for the common set of OSC messages that the \emph{Mapper Protocol} (the name that will be used to describe the specification implemented by Libmapper in this paper) is intended to be as useful as possible for configuring mappings between output and input signals without assuming too much about what form the control or sound generation will take. The set of messages proposed by the Mapper Protocol allows each device composing the global distributed system to \emph{announce} its presence, \emph{discover}, \emph{describe} itself, \emph{link} to another device, \emph{connect} one of its datastreams (also referred to as signals) to a datastream on a device it is linked to, and \emph{condition or transform} a signal with a basic mathematical function \cite{Malloch2009}.
 
 \subsubsection{Announcement}
 
