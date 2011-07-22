@@ -51,11 +51,11 @@ The term \emph{mapping} is used in mathematics, computer science, and related te
 \subsection{Mappings in Mathematics}
 \label{sec:Mappings in Mathematics}
 
-In the mathematics context, the use of the term mapping varies subtly according to sub-discipline within mathematics and often between specific mathematicians, however it is acceptable to use the word as a synonym for \emph{function}. A function in mathematics describes an associative relationship between two sets of numbers. One set of numbers is referred to as a domain or set of inputs and the other set is referred to as a codomain, range, or set of outputs. Mathematicians often say that a function "maps" a domain to or onto a range, hence the reason for using the term \emph{mapping} as a synonym for \emph{function} \cite{functionMapping}.
+In the mathematics context, the use of the term \emph{mapping} varies subtly according to the sub-discipline within mathematics in which it is used and often between specific mathematicians; however it is acceptable to use the word as a synonym for \emph{function}. A function in mathematics describes an associative relationship between two sets of numbers. One set of numbers is referred to as a \emph{domain} or \emph{set of inputs} and the other set is referred to as a \emph{codomain}, \emph{range}, or \emph{set of outputs}. Mathematicians often say that a function "maps" a domain to or onto a range, hence the reason for using the term \emph{mapping} as a synonym for \emph{function} \cite{functionMapping}.
 
-Strictly speaking in mathematics, a function can only represent a \emph{one-to-one mapping}. This means that every element in the input (domain) set is associated by the function with one and only one element in the output (range) set. A corollary statement about a one-to-one mapping is that every element in the output set might be associated to one element, many elements, no elements, or all elements in the input set. 
+Strictly speaking in mathematics, a function can only represent a \emph{one-to-one mapping} or a \emph{many-to-one mapping}. This means that every element in the input (domain) set is associated by the function with one and only one element in the output (range) set. A corollary statement about a one-to-one and many-to-one mappings is that every element in the output set might be associated to one element or many elements (many-to-one) in the input set. This language should become more clear as the usage of \emph{one-to-one} and \emph{many-to-one} are explored in the following sections.
 
-The following are examples of equations that represent functions or equivalently one-to-one mappings:
+The following are examples of equations that represent functions:
 
 \begin{equation} \label{eq1}
 y = f(x) = x + 1
@@ -64,30 +64,40 @@ y = f(x) = x + 1
 z = g(x) = x^{2}
 \end{equation}
 
-Basic types of functions like \ref{eq1} and \ref{eq2} often use the set of all real numbers (roughly, defined as any number that can be expressed in decimal notation) as both the input set and the output set. Since the set of all real numbers is infinitely large, the association from one input element to one output element is described by a mathematical transformation that when applied to any element of the input set (the set of all real numbers) produces the element of the output set (the set of all real numbers) that the input element is associated to or mapped onto. This is convenient because that means the function can be written very concisely in one line. 
+In particular, equation \ref{eq1} is a one-to-one mapping and equation \ref{eq2} is a many-to-one mapping. Basic types of functions like equations \ref{eq1} and \ref{eq2} often use the set of all real numbers (roughly, defined as any number that can be expressed in decimal notation) as both the input set and the output set. Since the set of all real numbers is infinitely large, the association from one input element to one output element is described by a mathematical transformation that when applied to any element of the input set (the set of all real numbers) produces the element of the output set (the set of all real numbers) that the input element is mapped to. This is convenient because that means the function can be written very concisely in one line as opposed to two infinitely long columns with lines drawn between elements that are mapped to each other (not very convenient). 
 
-\ref{eq1} represents a mapping/function labeled \begin{math}f\end{math} where the input element is labeled \begin{math}x\end{math} and the output element is labeled \begin{math}y\end{math}. \ref{eq2} represents a mapping/function labeled \begin{math}g\end{math} where the input element is labeled \begin{math}x\end{math} and the output element is labeled \begin{math}z\end{math}. 
+Equation \ref{eq1} is the canonical mathematical notation for representing a mapping/function labeled \begin{math}f\end{math} where the input element is labeled \begin{math}x\end{math} and the output element is labeled \begin{math}y\end{math}. Equation \ref{eq2} represents a mapping/function labeled \begin{math}g\end{math} where the input element is labeled \begin{math}x\end{math} and the output element is labeled \begin{math}z\end{math}. 
 
-To calculate the association that is implied by these two mathematical transformations, substitute any real number (since the set of all real numbers is the input set) for the symbol \begin{math}x\end{math}. By this logic, \ref{eq1} represents the set of associations where every real number \begin{math}x\end{math} is associated with the real number \begin{math}y\end{math} that is the value of \begin{math}x + 1\end{math}. \ref{eq1} represents the set of associations where every real number \begin{math}x\end{math} is associated with the real number \begin{math}z\end{math} that is the value of \begin{math}x^{2}\end{math}.
+To calculate the mapping that is implied by these two mathematical transformations, substitute any real number (since the set of all real numbers is the input set) for the symbol \begin{math}x\end{math}. By this logic, equation \ref{eq1} represents the mapping where every real number \begin{math}x\end{math} is mapped to the real number \begin{math}y\end{math} that is the value of \begin{math}x + 1\end{math}. Equation \ref{eq2} represents the mapping where every real number \begin{math}x\end{math} is mapped to the real number \begin{math}z\end{math} that is the value of \begin{math}x^{2}\end{math}. Equation \ref{eq2} is a many-to-one mapping because it maps both the positive and negative of every input number to the square of that number; unlike equation \ref{eq1} which maps every input number to an output number that no other input number is mapped to.
 
 \subsection{Mappings in Computer Science}
 \label{sec:Mappings in Computer Science}
 
 In the computer science context, a mapping is an abstract data type or concrete data structure, commonly referred to as an \emph{associative array} or \emph{dictionary} \cite{assocarray2008}.  
 
-Abstractly and simply, the one and only way to store data of any kind (the value "0", the value "1", some text, an image, a sound, a recorded signal) in a computer of any kind, such that one can retrieve the data later, is to put the data in some "bucket" that has some "label". The words "bucket" and "label", as used here, are not well-defined or widely used in computer science. But they help to unobtrusively make the point that if the data has no label that is associated with it or if the label has no unique location associated with it, then practically, it cannot be retrieved. 
+Abstractly and simply, the one and only way to store data of any kind (the value "0", the value "1", some text, an image, a sound, a recorded signal) in a computer of any kind, such that one can reliably retrieve the data later, is to put the data in some "bucket" that has some "label". The words "bucket" and "label", as used here, are not well-defined in computer science. But they help to unobtrusively make the point that if the data has no label that is associated with it or equivalently if the label has no unique memory location associated with it, then practically, it cannot be retrieved. 
 
 As an example from the music information retrieval context, if one wants to be able to store a large amount of sheet music such that it can be found later, one needs some system to catalog or index the material such that a piece of sheet music can be referred to by some label. In the case of a library, this label is often a call number, the title of the piece, the name of the composer, etc.
 
 Just like a reference library can use many different labeling systems to catalog the sheet music stored within its walls so that it can be retrieved with minimum headaches, a computer system can internally utilize many different abstract data types or concrete data structures. In both cases, the best choice is dependent on the material or data being cataloged or indexed. A mapping as a data structure in computer science parlance then, can be understood as a particular type of system for labeling data.
 
-In particular, a mapping is a labeling system that is composed of a \emph{collection} of labels (keys) and a \emph{collection} of pieces of data (values), where every label in the first collection is associated with one or many of the pieces of data in the second collection. Then this structure encompassing the two collections and the list of associations between the two collections is given a higher order label that refers to the mapping as a whole. This allows one to construct a mapping of mappings, which lends itself nicely to hierarchical labeling systems.
+In particular, a mapping is a labeling system that is composed of a set of labels (keys) and a set of pieces of data (values), where every label in the first set is associated with one or many of the pieces of data in the second set. Then this structure encompassing the two sets and the list of associations between the two sets is given a higher level label that refers to the mapping as a whole. This allows one to construct a mapping of mappings, which lends itself nicely to hierarchical labeling systems.
 
 This reframing of the term in the computer science context, as opposed to the mathematical context, focuses on one implication of the concept of mapping. One can specify multiple, unique mappings that each operate on the same collection of labels and the same collection of pieces of data. Similarly, one can specify multiple, unique functions that each operate on the same input set and the same output set. 
 
-Note well, that although there is a subtle difference between a \emph{collection} and a \emph{set} in mathematical formalism, the colloquial understanding of the two terms, where they are interchangable, is sufficient for the purpose of this research and they will be used interchangably. 
+So in a computer system, one can create multiple mappings that each associate the same set of labels with the same set of data differently. This characteristic of mappings is one of the primary reasons why mappings are a useful frame for understanding the potential of digital musical instruments. 
 
-So in a computer system, one can create multiple mappings that each associate the same collection of labels with the same collection of data differently. This characteristic of mappings is one of the primary reasons why mappings are a useful frame for understanding the potential of digital musical instruments. 
+\subsection{Cardinality in Mathematics}
+
+There is more to be said about the concept of a one-to-one mapping and two related concepts, one-to-many mappings and many-to-one mappings. The framework for discussing different types of mappings is provided in one form by the mathematical concept of \emph{cardinality}.
+
+First, three additional concepts should be enumerated and elaborated upon. These concepts are \emph{injection}, \emph{surjection}, and \emph{bijection}.
+
+An \emph{injection} is a function that meets the condition that every element of the function's codomain (output) set is associated to no more than one element in the functions domain (input) set. Here, domain and codomain are used in the same way as in section \ref{sec:Mappings in Mathematics}.
+
+A \emph{surjection} is a function that meets the condition that every element in the codomain set is associated to at least one element in the domain set.
+
+A \emph{bijection} is a function that is both an \emph{injection} and a \emph{surjection}.
 
 \begin{figure}[ht]
 \centering
@@ -110,29 +120,19 @@ So in a computer system, one can create multiple mappings that each associate th
 \label{fig:globfig}
 \end{figure}
 
-\subsection{Cardinality in Mathematics}
+Figure \ref{fig:globfig} summarizes the possible types of functions using these distinctions.
 
-There is more to be said about the concept of a one-to-one mapping and two related concepts, one-to-many mappings and many-to-one mappings. The framework for discussing different types of mappings is provided in one form by the mathematical concept of \emph{cardinality}.
-
-First, three additional concepts should be enumerated and elaborated upon. These concepts are \emph{injection}, \emph{surjection}, and \emph{bijection}.
-
-An \emph{injection} is a function that meets the condition that every element of the function's codomain (output) set is associated to no more than one element in the functions domain (input) set. Here, domain and codomain are used in the same way as in section \ref{sec:Mappings in Mathematics}.
-
-A \emph{surjection} is a function that meets the condition that every element in the codomain set is associated to at least one element in the domain set.
-
-A \emph{bijection} is a function that is both an \emph{injection} and a \emph{surjection}.
-
-Cardinality is a concept that allows one to reason about the relative sizes of different sets. It is particularly useful when comparing infinite sets. It allows one to reason, for example, that the infinite size of the set of all real numbers is larger than the set of all positive integers (natural numbers).
+Within mathematics, cardinality is a concept that allows one to reason about the relative sizes of different sets. It is particularly useful when comparing infinite sets. It allows one to reason correctly, for example, that the infinite size of the set of all real numbers is larger than the set of all positive integers (natural numbers).
 
 Two sets are defined to have the same \emph{cardinality} if there exists a bijection between the two sets. It follows from the definition of injection that if there exists an injection from set \emph{A} to set \emph{B}, but no bijection, then the cardinality of B is greater than the cardinality of A \cite{cardmath2010}.
 
-These mathematical concepts are useful for describing one-to-one mappings and many-to-one mappings, but not one-to-many mappings. In this terminology an injection is a one-to-one mapping and a non-injective.
+As mentioned before, these mathematical concepts are useful for describing one-to-one mappings and many-to-one mappings. In this terminology, injections and bijections are one-to-one mappings, whereas surjections and functions that are neither injections or surjections are many-to-one mappings.
 
 \subsection{Cardinality in Computer Science}
 
 Within computer science, cardinality is a concept used in relational database systems \cite{carddata1987}. 
 
-A relational database can be seen as a very robust and flexible \emph{data labeling system}, in reference to the discussion in section \ref{sec:Mappings in Computer Science}. A relational database is defined as a collection of relations, where a relation is defined as a set of lists of attributes. Each list in the set has the same attributes as every other list in the set. An attribute defines a property that can take any value constrained by the values that make sense for each particular attribute. A relation is usually described by a table as in Table \ref{tab:studentrelation}.
+A relational database can be seen as a very robust and flexible \emph{data labeling system}, in reference to the discussion in section \ref{sec:Mappings in Computer Science}. A relational database is defined as a set of relations, where a relation is defined as a set of lists of attributes. Each list in the set has the same attributes as every other list in the set. An attribute defines a property that can take any value constrained by the set of values that are defined for each particular attribute. A relation is usually described by a table as in Table \ref{tab:studentrelation}.
 
 \begin{table}
     \begin{center}
@@ -180,37 +180,40 @@ A relational database can be seen as a very robust and flexible \emph{data label
     \label{tab:relation}
 \end{table}
 
-In a relational database, the cardinality of an attribute is the number of instances of that attribute that can be associated with a given set of instances for other attributes. In a database, it is largely sufficient to distinguish between a cardinality of \emph{one} and a cardinality of \emph{many}.
+In a relational database, the cardinality of an attribute is the number of instances of that attribute that can be associated with a given set of instances for other attributes. In a database as in DMI mapping, it is largely sufficient to distinguish between a cardinality of \emph{one} and a cardinality of \emph{many}.
 
 The simple database composed of the relations in Tables \ref{tab:studentrelation}, \ref{tab:facultyrelation}, and \ref{tab:relation} provides an example to reason about the cardinality of database relations. if every student (represented by their ID) has one advisor (also represented by their ID) but every advisor has many students, then the relation is one-to-many from Advisor ID to Student ID. Since the horizontal ordering of attributes has no meaning in a relation, we can also reason that the relation from Student ID to Advisor ID is the reverse, many-to-one. Finally, every student has one thesis topic and each thesis topic is the topic of one student so the relation is one-to-one from Student ID to Thesis Topic.
 
+These mathematical and computer science concepts provide a solid foundation for understanding the various nuances of mapping abstractly and concretely. This background will be necessary to create a well informed user interface for creating and modifying DMI mappings.
+
 \section{Importance of Mapping in Digital Musical Instruments}
+\label{sec:Importance of Mapping}
 
-In an acoustic musical instrument, the equivalents of the "control mechanism" and "sound generation mechanism", as they are called in a DMI, are \emph{intrinsically} coupled or bound to each other because the physical material of the instrument that forms the control mechanism also forms the sound generation mechanism. Making a decision that alters the control mechanism will significantly or subtly alter the sound generation mechanism.
+In an acoustic musical instrument, the equivalents of the "control mechanism" and "sound generation mechanism", as they are called in a DMI, are \emph{intrinsically coupled} or bound to each other because the physical material (e.g. wood, metal, horse hair) of the instrument that forms the control mechanism also forms the sound generation mechanism. Making a decision that alters the control mechanism will significantly or subtly alter the sound generation mechanism.
 
-In a DMI, the control mechanism is composed of sensors. The physical gestures of the performer are not coupled to the sound generation through purely mechanical means, but through electrical means. Each sensor, whether it senses acceleration, orientation, touch, etc. produces an electrical signal that correlates to some physical measurement. This analog electrical signal is converted to a digital signal through some kind of analog to digital signal conversion and then this signal is processed by a computer and sent to the sound generation mechanism, which is a piece of software that produces audio samples.
+In a DMI, the control mechanism is composed of sensors typically embedded in structural materials that form the shape of the instrument and connected to a microcontroller that provides the interface for accessing the sensor signals. The physical gestures of the performer are not coupled to the sound generation through purely mechanical means, but through electrical means. Each sensor, whether it senses acceleration, orientation, touch, etc. produces an electrical signal that correlates to some physical measurement. This analog electrical signal is converted to a digital signal through some kind of analog to digital signal conversion (perhaps within the control mechanism on an integrated microcontroller) and then this digital signal is processed by a computer and sent to the sound generation mechanism, which is a piece of software that produces audio samples.
 
-A simple example makes clear that the control mechanism and sound generation mechanism are not \emph{intrinsically} coupled in a DMI as they are in an acoustic musical instrument.
+The following illustrative example makes clear that the control mechanism and sound generation mechanism are not \emph{intrinsically coupled} in a DMI as they are in an acoustic musical instrument.
 
-If one takes a control mechanism composed of touch sensors and replaces each of them with light sensors, then conditions the electrical signal emitted from the light sensors to fall within the same maximum and minimum range as the touch sensors were emitting, it is clear that the control mechanism has changed. But this change results in no change within the sound generation mechanism. The sound is generated by software that produces audio samples and thus is not affected by a change to the physical structure of the instrument. It is true that changing the type of sensor might affect the dynamics of the analog signal produced and thus the dynamics of the sound produced, however whether or not this coupling occurs is dependent on the signal conditioning and digital conversion that is used and is no longer an intrinsic aspect of the physical structure.
+If one takes a control mechanism with embedded touch sensors and replaces each of them with light sensors and conditions the electrical signal emitted from the light sensors to fall within the same maximum and minimum range as the touch sensors were emitting, it is clear that the control mechanism has changed. But this change results in no change within the sound generation mechanism. The sound is generated by software that produces audio samples and thus is not affected by a change to the physical structure of the instrument. It is true that changing the type of sensor might affect the dynamics of the analog signal produced and thus the dynamics of the sound produced, however whether or not this coupling occurs is dependent on the signal conditioning and digital conversion that is used and is no longer an intrinsic aspect of the physical structure.
 
 In physical terms, when two formerly intrinsically coupled aspects of system are free to become uncoupled, a new degree of freedom is introduced.
 
-In the context of DMI research this new degree of freedom is called a choice of \emph{mapping}. Mapping as used in this context is very similar to how the term is used in the mathematics and computer science context. The set of sensors embedded in the control mechanism produces a set of signals. The sound generation mechanism produces a specific sound depending on a set of signals dictated by the specifics of the software that composes the sound generation. Therefore, for any given control mechanism and sound generation mechanism there is a choice of how to associate the two sets of signals with each other. Importantly, this is a choice that is not independently available when constructing, for example, a violin because the two sets of signals (if this distinction between control mechanism and sound generation mechanism can be imagined in a violin) in that case are physically coupled and inseparable. It is not a choice that is explicitly made when constructing an acoustic instrument.
+In the context of DMI research this new degree of freedom is the freedom to choose a mapping. Mapping as used in this context is very similar to how the term is used in both the mathematics and computer science context. The set of sensors embedded in the control mechanism outputs a set of signals, which we will refer to as \emph{output signals}. The sound generation mechanism outputs sound that is controlled through a set of \emph{input signals} defined by the software that is responsible for the sound generation. Therefore, for any given control mechanism and sound generation mechanism there is a choice of how to associate the two sets of signals (output signals from the control mechanism and input signals from the sound generation mechanism) with each other much like an associative array in the computer science context. Importantly, this is a choice that is not independently available when constructing, for example, a violin because the two sets of signals (if this distinction between control mechanism and sound generation mechanism is imagined in a violin) in a violin are physically coupled and inseparable. It is not a choice that is explicitly made when constructing an acoustic instrument.
 
-Furthermore, because it is unlikely that any given signal output by a control device is calibrated to all possible input signals in a sound generation device that one can associate with the given output signal, we require a second set of relations beyond a binary associated/not associated. Any given output signal might be capable of outputting values that are outside the set of values that a particular input handles. In this case, a mapping in the functional, mathematics sense of the word is necessary to transform the output signal so that the values reliable fall within the set of acceptable input values.
+Furthermore, there is a second lower level form of mapping when dealing with a specific pair of associated signals. Because it is unlikely that any given signal output by a control device is calibrated to a particular input signal in a sound generation device that one might associate with the given output signal, we require a second set of relations beyond a binary associated/not associated. Any given output signal might be capable of outputting values that are outside the set of values that a particular input handles or simply be outputting a different data type altogether. In this case, a mapping in the functional, mathematical sense of the word is necessary to transform the output signal so that the values reliable fall within the set of acceptable input values.
 
-A complete mapping system would specify not only the associations between two sets of signals (pairs of connected signals), but associate a function with each pair of connected signals that specifies how to transform the signal before copying the value to an input. This function might in fact be simply \begin{math}y = x\end{math}, however it is not practical to assume that this will always be an acceptable mapping function between an output and input.
+A complete mapping system would specify not only the associations between two sets of signals (pairs of connected signals), but associate a function with each pair of connected signals that specifies how to transform the signal before copying the value to an input. This function might in fact be simply \begin{math}y = x\end{math} in the case where no calibration is needed, however the point is it is not practical to assume that this will always be an acceptable mapping function between an output and input.
 
 This physical decoupling between the control mechanism, the mapping system, and the sound generation mechanism creates a modularity between the three components that can be exploited to simplify the DMI development and maintenance process.
 
 \section{A Dedicated Mapping System: Libmapper}
 
-The creation, evolution, and stabilization of the design a digital musical instrument is inherently a tightly iterative process. A violin luthier must be comfortable enough playing a violin to develop an aesthetic sense of what effect the countless decisions that are made in the process of building a violin have on the experiential quality of the instrument that they are creating. Whether a particular decision is the right one can only truly be evaluated after the decision is made and someone plays the violin. 
+The creation, evolution, and stabilization of the design of a DMI is inherently a tightly iterative process. A violin luthier must be comfortable enough playing a violin to develop an aesthetic sense of what effect the countless decisions that are made in the process of building a violin have on the experiential quality of the instrument that they are creating. Whether a particular decision is the right one can only truly be evaluated after the decision is made and someone plays the violin. 
 
 Similarly, a team of people building a DMI will often make a construction decision, evaluate the effect of that decision, make some changes, and repeat. This is often referred to as iterative development and occurs in any serious design process whether or not it is ever made explicit \cite{iterative2003}. 
 
-Because such iterative development is so beneficial to the development of DMIs, people often use various platforms and frameworks as common building blocks for such systems. Common platforms allow one to quickly test ideas for a DMI and focus on experimenting with the aspects of the control mechanism and sound generation that are unique to the particular project before investing too much time and money into custom parts without assurance that the ideas are even viable in a general sense. For the control hardware there are platforms like Arduino. Coding environments like Max/MSP and code libraries like STK simplify the development of synthesizer modules for sound generation. In an effort to provide a similar foundation for creating mapping systems, the Digital Orchestra Toolbox was created as part of the McGill Digital Orchestra project and includes components representing the common subroutines used in a mapping system. 
+Because such iterative development is so beneficial to the development of DMIs, people often use various platforms and frameworks as a common foundational building blocks for such systems. These environments often take care of implementing higher level functionality for controlling and generating audio in realtime or interfacing with hardware and thus allow one to quickly test ideas for a DMI and focus on experimenting with the aspects of the control mechanism and sound generation that are unique to the particular project before investing too much time and money into custom parts without assurance that the ideas are viable in a basic sense. For the control hardware there are platforms like Arduino. Coding environments like Max/MSP and code libraries like STK simplify the development of synthesizer modules for sound generation. In an effort to provide a similar foundation for creating mapping systems, the Digital Orchestra Toolbox was created as part of the McGill Digital Orchestra project and includes components representing the common subroutines used in a mapping system. 
 
 More recently, this functionality has been reimplemented as a C library called Libmapper at the IDMIL at McGill University. Libmapper has several characteristics which make it a desirable system for configuring mappings. 
 
@@ -222,21 +225,21 @@ Lastly, and of particular relevance to the primary topic of this paper, is that 
 
 \subsection{Open Sound Control Protocol}
 
-Seen from a high conceptual level, Libmapper is an implementation of a communication protocol that was created for specifying mappings over a distributed network \cite{Malloch2009}. 
+Seen from a bird's eye conceptual level, Libmapper is an implementation of a communication protocol that was created for specifying mappings over a distributed network \cite{Malloch2009}. 
 
-A communications protocol is a rigorous and formal description of a message format and rules for exchanging messages adhering to the protocol. The term protocol usually refers to the formal description of the protocol and is distinct from the implementation of the protocol. A protocol without an implementation is metaphorically like a constitution without a government. The mapping protocol is itself defined in terms of the Open Sound Control (OSC) protocol. This is a common practice for constructing higher level protocols. The Internet is essentially a particular stack of protocols that are layered on top of each other and specify how devices and routers are to be addressed, open connections with each other, and interpret messages.
+A communications protocol is a rigorous and formal description of a message format and rules for exchanging messages adhering to the protocol. The term protocol usually refers to the formal description of the protocol and is distinct from the implementation of the protocol. A protocol without an implementation is metaphorically like a constitution without a government. If two devices adhere to the same protocol then they are able to reliably communicate with each other because they can, in a sense, speak the same language. The mapping protocol is itself defined in terms of the Open Sound Control (OSC) protocol. This is a common practice for constructing increasingly specific protocols. The Internet is essentially a particular stack of protocols that are layered on top of each other and specify how devices and routers are to be addressed, open connections with each other, and interpret messages.
 
-In the case of Libmapper, the protocol layer that OSC itself is implemented on top of is called the User Datagram Protocol (UDP). The other common protocol that can be used at this layer in the Internet protocol stack is the Transmission Control Protocol (TCP), which is the protocol that the well-known Hypertext Transfer Protocol (HTTP) is layered on top of. A web browser implements HTTP so that it can fetch and display web pages from remote systems. As a protocol, OSC does not assume a particular Transport (the name given to the layer in the protocol that UDP and TCP occupy - HTTP occupies the layer on top of the Transport layer, known as an Application layer) protocol that it is to be implemented as. This is different from HTTP, which is specifically a TCP-based protocol.
+In the case of Libmapper, the protocol layer that OSC itself is implemented on top of is called the User Datagram Protocol (UDP). The other common protocol that can be used at this layer in the Internet protocol stack is the Transmission Control Protocol (TCP), which is the protocol that the well-known Hypertext Transfer Protocol (HTTP) is layered on top of. A web browser implements HTTP so that it can fetch and display web pages from remote systems. As a protocol, OSC does not assume a particular Transport (the name given to the layer in the protocol that UDP and TCP occupy - HTTP occupies the layer on top of the Transport layer, known as the Application layer) protocol that it is to be implemented as. This is different from HTTP, which is specifically a TCP-based protocol.
 
 Libmapper then allows one to configure a mapping relationship between any collection of devices (control devices, sound generation devices, and anything else) by embedding Libmapper into the code for each device and creating an instance of Libmapper upon startup of each device, thus allowing any system on a local network to easily implement the mapping protocol without in depth knowledge of the protocol.
 
-The specification of the OSC protocol can be found on the web \cite{osc2011}. In the opinion of the creators of the protocol \cite{osc2009}, OSC is a "weak" form of protocol because it does not define certain necessary aspects of any form of data transmission. It does not define the patterns of command and response, error handling or receipt acknowledgement - only the format of the messages that are sent. These aspects are left as decisions to be made by particular implementations of the protocol.
+The specification of the OSC protocol can be found on the web \cite{osc2011}. In the opinion of the creators of the protocol \cite{osc2009}, OSC is a "weak" form of protocol because it does not define certain necessary aspects of any form of data transmission. It does not define the patterns of command and response, error handling or receipt acknowledgement - only the format of the messages that are sent. These aspects are left as decisions to be made by particular implementations of the protocol or a protocol stacked on top of OSC.
 
 The complete definition of the OSC protocol is not important for the scope of this thesis, however the following aspects of the protocol should give a sufficient sense of what is defined:
 
 \begin{description}
 \item a unit of transmission is a \emph{OSC Packet}, which consists of a continguous block of binary data that is the contents of the packet and a number reflecting the number of bytes of data in the contents
-\item the size of an \emph{OSC Packet} is always a multiple of 4
+\item the size of an \emph{OSC Packet} is always a multiple of 4 bytes
 \item the contents of an \emph{OSC Packet} is an \emph{OSC Message}
 \item an \emph{OSC Message} consists of an \emph{OSC Address Pattern} followed by an \emph{OSC Type Tag String} followed by zero or more \emph{OSC Arguments}
 \item an \emph{OSC Address Pattern} is a URL-like string strictly beginning with the '/' character
@@ -245,23 +248,21 @@ The complete definition of the OSC protocol is not important for the scope of th
 
 \subsection{Mapper Protocol}
 
-The semantics for the common set of OSC messages that the \emph{Mapper Protocol} (the name that will be used to describe the specification implemented by Libmapper in this paper) is intended to be as useful as possible for configuring mappings between output and input signals without assuming too much about what form the control or sound generation will take. The set of messages proposed by the Mapper Protocol allows each device composing the global distributed system to \emph{announce} its presence, \emph{discover}, \emph{describe} itself, \emph{link} to another device, \emph{connect} one of its datastreams (also referred to as signals) to a datastream on a device it is linked to, and \emph{condition or transform} a signal with a basic mathematical function \cite{Malloch2009}.
+The semantics for the common set of OSC messages that the \emph{Mapper Protocol} (the name that will be used to describe the specification implemented by Libmapper in this paper) is intended to be as useful as possible for configuring mappings between output and input signals without assuming too much about what form the control or sound generation will take. In the Mapper Protocol, there is a concept of \emph{source device} and \emph{destination device}. In a DMI, the control mechanism will often be announced as a source device and the sound generation mechanism will be announced as a destination device. The set of messages proposed by the Mapper Protocol allows each device participating in the composite distributed system to \emph{announce} its presence, \emph{discover}, \emph{describe} itself, \emph{link} to another device, \emph{connect} one of its datastreams (also referred to as signals) to a datastream on a device it is linked to, and \emph{condition or transform} a signal with a basic mathematical function \cite{Malloch2009}. These last two pieces of functionality are the two levels of mapping that are required by prototypical complete mapping system referenced in section \ref{sec:Importance of Mapping}.
 
 \subsubsection{Announcement}
 
-Each device in the distributed system announces itself with a port and unique name that it can be addressed with that it would like to use. In the case that other devices in the local network have already reserved a particular port or unique name, Libmapper uses a collision detection algorithm to systematically try other ports and/or modify the requested name with a unique ordinal. This allows a set of identical control or sound generation devices to each be programmed to request the same collection of OSC names for their signals without worrying about the identical devices being addressed by the same names.
+Each device in the distributed system announces itself with a port and unique name that it can be addressed with that it would like to use. In the case that other devices in the local network have already reserved a particular port or unique name, Libmapper uses a collision detection algorithm to systematically try other ports and/or modify the requested name with an appended unique ordinal number. This allows a set of identical control or sound generation devices to each be programmed to request the same collection of OSC names for their signals without worrying about the identical devices being addressed by the same names.
 
 \subsubsection{Discovery}
 
-After a device appears on the network, announces itself and receives a unique name and port number on the local network through the port and name allocation algorithm, it sends the following message to request that all Libmapper-compatible devices describe themselves.
-
-New device sends:
+After a device appears on the network, announces itself, and receives a unique name and port number on the local network through the port and name allocation algorithm, it sends the following message to request that all Libmapper-compatible devices describe themselves:
 
 \begin{quote}
 \verb#/who#
 \end{quote}
 
-Other devices respond with (for example):
+Other devices are obliged by the protocol to respond with (for example):
 
 \begin{quote}
 \verb#/registered /tstick.1 @inputs 1 @outputs 52 @class /tstick# 
@@ -283,7 +284,7 @@ To create a direct network link between two devices, the Mapper Protocol specifi
 \verb#/link /tstick.1 /granul8.1#
 \end{quote}
 
-Libmapper creates a router, which can be thought of as a special virtual device distinct from control devices and sound generation devices, for each pair of linked devices. In Mapper Protocol terminology, a link is created between a \emph{source} device and a \emph{destination} device. Every router is tasked with the signal conditioning and message transformation for the data streams between the source/destination device link it was created by Libmapper to manage. This Libmapper design decision allows each device acting as a source in a link to handle the traffic and processing of the links that it is involved in, thus distributing the work load over all source devices as opposed to assuming a single central router handling all traffic between all linked devices in the system.
+Libmapper creates a router in software, which can be thought of as a special virtual device distinct from source devices and destination devices, for each pair of linked devices. In Mapper Protocol terminology, a link is created between a source device and a destination device. Every router is tasked with the signal conditioning and message transformation for any pair of connected signals involving the two devices in the source/destination link pair that it was created by Libmapper to manage. This Libmapper design decision allows each device acting as a source in a link to handle the traffic and processing of the links that it is involved in, thus distributing the work load over all source devices as opposed to assuming a single central router handling all traffic between all linked devices in the system.
 
 When the Libmapper instance in the source device sucessfully creates a router for the link and completes initialization of the connection after receiving a \verb#/link# message, it responds with:
 
@@ -305,7 +306,7 @@ The source device then destroys the router handling this link after receiving a 
 
 \subsubsection{Datastream Connection}
 
-Once a router has been created between a source and destination by requesting a link, specific output datastreams can be connected to specific inputs. Once a T-Stick (\verb#/tstick.1#) has been linked to the Granul8 granular synthesizer (\verb#/granul8.1#), the individual datastreams produced by the touch sensors, accelerometers, etc. in the T-Stick can be routed to specific inputs in the granular synthesizer. Without specifying connections between output datastreams/signals and inputs that accept datastreams than gestures performed with the control source device will have no affect on the audio samples produced by the sound generation destination device. 
+Once a router has been created between a source and destination by requesting a link, specific output signals on the source device can be connected to specific input signals on the destination device. For example, once a T-Stick (\verb#/tstick.1#) has been linked to the Granul8 granular synthesizer (\verb#/granul8.1#), the individual signals output by the touch sensors, accelerometers, etc. in the T-Stick can be routed to specific inputs in the granular synthesizer. Without specifying connections between output signals and input signals then gestures performed with the control source device will have no affect on the audio samples produced by the sound generation destination device. 
 
 In the Mapper Protocol, this is accomplished by sending a message similar to these:
 
@@ -317,7 +318,7 @@ In the Mapper Protocol, this is accomplished by sending a message similar to the
 \verb#  @scaling expression @expression x*10 @clipping minimum 0#
 \end{quote}
 
-The router managing the link between \verb#/tstick.1# and \verb#/granul8.1# records all the relevant information communicated by the \verb#/connect# message, sets up the address translation and transformation required to connection the output datastream to its input, and responds with:
+The router managing the link between \verb#/tstick.1# and \verb#/granul8.1# records all the relevant information communicated by the \verb#/connect# message, sets up the address translation and transformation required to connect the output signal to its associated input signal, and responds with:
 
 \begin{quote}
 \verb#/connected /tstick.1/raw/pressure/1 /granul8.1/gain#
@@ -335,7 +336,7 @@ The router managing the link between \verb#/tstick.1# and \verb#/granul8.1# reco
 \verb#  @clipping minimum 0#
 \end{quote}
 
-A datastream is disconnected by sending:
+A signal pair is disconnected by sending:
 
 \begin{quote}
 \verb#/disconnect /tstick.1/raw/pressure/1 /granul8.1/gain#
@@ -355,7 +356,7 @@ The properties of a connection can be queried with:
 
 The syntax of the message for modifying properties of a connection is similar to \verb#/connect# except \verb#/connect# is replaced with \verb#/connection/modify#.
 
-These special OSC messages as defined by their message headers and syntax comprise what is referred to in this paper as the \emph{Mapper Protocol}. By sending messages from this set of messages recognized by Libmapper it is possible to configure mappings between an arbritrarily large collection of devices on a local network.
+These special OSC messages as defined by their message headers and syntax comprise what is referred to in this paper as the \emph{Mapper Protocol}. By sending messages from this set of messages recognized by Libmapper it is possible to configure mappings between an arbritrarily large collection of devices on a local network with relatively little work.
 
 \section{Sensor Networks}
 
