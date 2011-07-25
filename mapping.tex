@@ -66,7 +66,7 @@ z = g(x) = x^{2}
 
 In particular, equation \ref{eq1} is a one-to-one mapping and equation \ref{eq2} is a many-to-one mapping. Basic types of functions like equations \ref{eq1} and \ref{eq2} often use the set of all real numbers (roughly, defined as any number that can be expressed in decimal notation) as both the input set and the output set. Since the set of all real numbers is infinitely large, the association from one input element to one output element is described by a mathematical transformation that when applied to any element of the input set (the set of all real numbers) produces the element of the output set (the set of all real numbers) that the input element is mapped to. This is convenient because that means the function can be written very concisely in one line as opposed to two infinitely long columns with lines drawn between elements that are mapped to each other (not very convenient). 
 
-Equation \ref{eq1} is the canonical mathematical notation for representing a mapping/function labeled \begin{math}f\end{math} where the input element is labeled \begin{math}x\end{math} and the output element is labeled \begin{math}y\end{math}. Equation \ref{eq2} represents a mapping/function labeled \begin{math}g\end{math} where the input element is labeled \begin{math}x\end{math} and the output element is labeled \begin{math}z\end{math}. 
+Equation \ref{eq1} is the canonical notation for representing a mapping/function labeled \begin{math}f\end{math} where the input element is labeled \begin{math}x\end{math} and the output element is labeled \begin{math}y\end{math}. Equation \ref{eq2} represents a mapping/function labeled \begin{math}g\end{math} where the input element is labeled \begin{math}x\end{math} and the output element is labeled \begin{math}z\end{math}. 
 
 To calculate the mapping that is implied by these two mathematical transformations, substitute any real number (since the set of all real numbers is the input set) for the symbol \begin{math}x\end{math}. By this logic, equation \ref{eq1} represents the mapping where every real number \begin{math}x\end{math} is mapped to the real number \begin{math}y\end{math} that is the value of \begin{math}x + 1\end{math}. Equation \ref{eq2} represents the mapping where every real number \begin{math}x\end{math} is mapped to the real number \begin{math}z\end{math} that is the value of \begin{math}x^{2}\end{math}. Equation \ref{eq2} is a many-to-one mapping because it maps both the positive and negative of every input number to the square of that number; unlike equation \ref{eq1} which maps every input number to an output number that no other input number is mapped to.
 
@@ -102,19 +102,19 @@ A \emph{bijection} is a function that is both an \emph{injection} and a \emph{su
 \begin{figure}[ht]
 \centering
 \subfloat[Subfigure 1 list of figures text][Non-injective and non-surjective]{
-\includegraphics[width=0.3\textwidth]{200px-Total_function.png}
+\includegraphics[width=0.35\textwidth]{200px-Total_function.png}
 \label{fig:figure1}}
 \qquad
 \subfloat[Subfigure 2 list of figures text][Injection]{
-\includegraphics[width=0.3\textwidth]{200px-Injection.png}
+\includegraphics[width=0.35\textwidth]{200px-Injection.png}
 \label{fig:figure2}}
 \qquad
 \subfloat[Subfigure 3 list of figures text][Surjection]{
-\includegraphics[width=0.3\textwidth]{200px-Surjection.png}
+\includegraphics[width=0.35\textwidth]{200px-Surjection.png}
 \label{fig:figure3}}
 \qquad
 \subfloat[Subfigure 4 list of figures text][Bijection]{
-\includegraphics[width=0.3\textwidth]{200px-Bijection.png}
+\includegraphics[width=0.35\textwidth]{200px-Bijection.png}
 \label{fig:figure4}}
 \caption{Four types of functions}
 \label{fig:globfig}
@@ -311,9 +311,9 @@ Once a router has been created between a source and destination by requesting a 
 In the Mapper Protocol, this is accomplished by sending a message similar to these:
 
 \begin{quote}
-\verb#/connect /tstick.1/raw/pressure/1 /granul8.1/gain#
+\verb#/connect /tstick.1/raw/pressure /granul8.1/gain#
 
-\verb#/connect /tstick.1/raw/pressure/1 /granul8.1/gain#
+\verb#/connect /tstick.1/raw/pressure /granul8.1/gain#
 
 \verb#  @scaling expression @expression x*10 @clipping minimum 0#
 \end{quote}
@@ -321,17 +321,17 @@ In the Mapper Protocol, this is accomplished by sending a message similar to the
 The router managing the link between \verb#/tstick.1# and \verb#/granul8.1# records all the relevant information communicated by the \verb#/connect# message, sets up the address translation and transformation required to connect the output signal to its associated input signal, and responds with:
 
 \begin{quote}
-\verb#/connected /tstick.1/raw/pressure/1 /granul8.1/gain#
+\verb#/connected /tstick.1/raw/pressure /granul8.1/gain#
 
-\verb#/properties /tstick.1/raw/pressure/1 /granul8.1/gain#
+\verb#/properties /tstick.1/raw/pressure /granul8.1/gain#
 
 \verb#  @scaling expression#
 
-\verb#/properties /tstick.1/raw/pressure/1 /granul8.1/gain#
+\verb#/properties /tstick.1/raw/pressure /granul8.1/gain#
 
 \verb#  @expression x*10#
 
-\verb#/properties /tstick.1/raw/pressure/1 /granul8.1/gain#
+\verb#/properties /tstick.1/raw/pressure /granul8.1/gain#
 
 \verb#  @clipping minimum 0#
 \end{quote}
@@ -339,22 +339,22 @@ The router managing the link between \verb#/tstick.1# and \verb#/granul8.1# reco
 A signal pair is disconnected by sending:
 
 \begin{quote}
-\verb#/disconnect /tstick.1/raw/pressure/1 /granul8.1/gain#
+\verb#/disconnect /tstick.1/raw/pressure /granul8.1/gain#
 \end{quote}
 
 The router responds with:
 
 \begin{quote}
-\verb#/disconnected /tstick.1/raw/pressure/1 /granul8.1/gain#
+\verb#/disconnected /tstick.1/raw/pressure /granul8.1/gain#
 \end{quote}
 
 The properties of a connection can be queried with:
 
 \begin{quote}
-\verb#/connection/properties/get /tstick.1/raw/pressure/1 /granul8.1/gain#
+\verb#/connection/properties/get /tstick.1/raw/pressure /granul8.1/gain#
 \end{quote}
 
-The syntax of the message for modifying properties of a connection is similar to \verb#/connect# except \verb#/connect# is replaced with \verb#/connection/modify#.
+The syntax of the message for modifying properties of a connection is similar to creating a connection with \verb#/connect# replaced by \verb#/connection/modify#.
 
 These special OSC messages as defined by their message headers and syntax comprise what is referred to in this paper as the \emph{Mapper Protocol}. By sending messages from this set of messages recognized by Libmapper it is possible to configure mappings between an arbritrarily large collection of devices on a local network with relatively little work.
 
