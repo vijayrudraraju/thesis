@@ -2,7 +2,11 @@
 
 \chapter{User Interface and Data Visualization Design}
 
-The scope of the discipline of \emph{human-computer interaction} (and even the legitimacy of the endevour) varies depending on who is asked, however at present it is understood to involve "the design, implementation and evaluation of interactive systems in the context of the user's task and work" \cite{hci1998}. Within the broad domain of interactive systems, various aspects of a system are treated by different disciplines within human-computer interaction (HCI). Designing a user interface for manipulating a Libmapper network is an interesting task because the design problem is a composite of two interrelated subproblems. The first is visualizing the current state of the network, as reported by communications with the network through the Mapper Protocol, in such a way as to allow a user to quickly reason about the current state of the network and what actions should be taken to move the network to a desired state. The second is allow the potential actions that the user might take to be executed in the interface as painlessly as possible. Conveniently there are two disciplines that task themselves with analyzing these two problems: \emph{user interface design} and \emph{data visualization design}. Literature in these fields have much to say on the topic of how to proceed in the design of an interface and this section will focus on the most relevant findings for Vizmapper beginning with a history of user interfaces in the context of the development of general purpose computers.
+The bounds of the discipline of \emph{human-computer interaction} (or perhaps even the legitimacy of the endevour) varies depending on who is asked. At present, among those who practice the discipline, it is understood to involve "the design, implementation and evaluation of interactive systems in the context of the user's task and work" \cite{hci1998}. 
+
+Within the broad domain of interactive systems, various aspects of a system are treated by different subdisciplines within human-computer interaction (HCI). Designing a user interface for manipulating a Libmapper network is an interesting task because the design problem is a composite of two interrelated subproblems. The first is visualizing the current state of the network, as reported by communications with the network through the Mapper Protocol, in such a way as to allow a user to quickly reason about the current state of the network and what actions should be taken to move the network to a different, desired state. The second is allow the potential actions that the user might take to be executed in the interface as painlessly as possible. 
+
+Conveniently there are two subdisciplines within HCI that task themselves with analyzing precisely these two problems: \emph{user interface design} and \emph{data visualization design}. Literature in these fields have much to say on the topic of how to proceed in the design of an interface and this section will focus on the most relevant findings for Vizmapper beginning with a history of user interfaces in the context of the development of general purpose computers.
 
 \section{Short History of User Interfaces}
 
@@ -64,13 +68,13 @@ Broadly, task analysis consists of the observational and heuristic analysis of t
 
 The roots of scientific task analysis go back to 1911 when Frederick Taylor published \emph{The Principles of Scientific Management} \cite{crystal2004}. Taylor was interested in improving manufacturing productivity and incorporating understanding of human factors into work methods. Known commonly as Taylorism, he argued that managers should rigorously systematize the organization of workers based on empirical evidence. Of course, it is more accurate to refer to Taylor's discipline as something like job design; however, the relevant point here is that effort was being made to examine the efficacy of performing a task in one way as opposed to another. The psychological component of such job design was first examined by Harvard Business School between 1927 and 1932 at the Western Electric Hawthorne Plant. The studies essentially concluded that the psychology of individuals with the workplace contribute significantly to what workers produce and expect from their jobs.
 
-It soon became commonplace for industrial engineers to incorporate analyses of production methods to improve interaction between humans and machines. As computers became a common machine that humans were interacting with in the workplace and the power and flexibility of computers as tools has expanded, human-computer interaction (HCI) morphed into a dedicated discipline. 
+It soon became commonplace for industrial engineers to incorporate analyses of production methods to improve interaction between humans and machines as the efficiency of machines became as important as the efficiency of humans in production methods. As computers became a common machine that humans were interacting with in the workplace and the power and flexibility of computers as tools has expanded, human-computer interaction (HCI) morphed into a dedicated discipline. 
 
 This increased flexibility has meant that computers are becoming entangled in new areas of human behavior like music. Multiple techniques have developed to deal with this greater scope and complexity required of task analysis and each technique focuses on different aspects and contributes different insights into the nature of a human task.
 
 An important point that should be extracted from this history, regarding the use of HCI techniques like task analysis to analyse artistic systems, is that HCI and thus user interface and data visualization design, has borne the fingerprints of a discipline that was ultimately derived from the standpoint of increasing productivity and improving job performance. Therefore, the principles advanced by HCI should always be evaluated (and potentially ignored) in the broader context of particular scenarios. 
 
-\section{Graphical Perception and Information Seeking}
+\section{Graphical Perception and Information Visualization}
 
 \begin{quote}
 Graphics is the visual means of resolving logical problems. \cite{bertin1981}
@@ -152,11 +156,19 @@ There are certain aspects of cognitive functionality that are well-studied and p
 
 It is common to understand human information retrieval in terms of two types of retrieval, recall and recognition. In the recall process, information is reproduced from memory. In the recognition process, a piece of information induces the knowledge that the information is not new; it has been seen before and the information acts as a cue \cite{hci1998}. In this respect, recognition is a less complex cognitive activity. Recall can be assisted with cues that allow an individual to speed access to the information in their memory. One proven cue is the use of categories.
 
+Modern understandings of recognition and recall attribute the relative effectiveness of the two processes to the way in which perception and memory are interconnected \cite{mindinmind2010}.
+
+\begin{quote}
+Activating a memory consists of reactivating the same pattern of neural activity that occured when the memory was formed. Somehow the brain distinguishes initial activations of neural patterns from reactivations - perhaps by measuring the relative ease with which the pattern was reactivated. New perceptions very similar to the original ones reactivate the same patterns of neurons, resulting in \emph{recognition} if the reactivated perception reaches awareness. In the absence of a similar perception, stimulation from activity in other parts of the brain can also reactivate a pattern of neural activity, which if it reaches awareness results in \emph{recall}. \cite{mindinmind2010}
+\end{quote}
+
 HCI practioners have long known about this interesting byproduct of the evolution of the brain as the creators of the Xerox Star point out in explaining their design decisions for the system.
 
 \begin{quote}
 Traditional computer systems require users to remember and type a great deal just to control the system. This impedes learning and retention, especially by casual users. Star's designers favored an approach emphasizing recognition over recall, seeing and pointing over remembering and typing. \cite{xeroxstar1989}
 \end{quote}
+
+This basic understanding of recall and recognition reaps dividends in the design process if it kept in mind.
 
 \section{Hierarchies and Taxonomies}
 
@@ -171,15 +183,23 @@ Coding Recoding Hierarchical Information
 Acquisiton and forgetting of hierarchically organized information
 \end{comment}
 
-Hierarchies and taxonomies (classification schemes arranged hierarchically and used often in science) are widely used to reduce the complexity of a data set (like all the animals in world) by dividing up the data set into smaller subsets. It is believed that this general process plays a central role in recall, recognition, and problem solving \cite{seven1956}\cite{graphicalhierarchy1972}\cite{hierarchical1971}. 
+Hierarchies and taxonomies (classification schemes arranged hierarchically and used often in science) are widely used to reduce the complexity of a data set (like the set of all the animals in world is organized by kingdom, phylum, class, etc...) by dividing up the data set into smaller subsets and relating the subsets to the larger superset. It is believed that this general process plays a central role in recall, recognition, and problem solving \cite{seven1956}\cite{graphicalhierarchy1972}\cite{hierarchical1971}. 
+
+The basis of this theory stems from a famous paper by George A. Miller called \emph{The Magical Number Seven} \cite{seven1956}. Central to Miller's two central hypotheses is the common concept of the \emph{bit}. Briefly, one bit of information is defined as the amount of information that is required to make a decision between two equally likely alternatives \cite{seven1956}. It is precisely the amount of information that is required to know whether a flipped coin is heads or tails. 
+
+The first hypothesis is that a person's ability to distinguish between elements of a set, regardless of what sense is perceiving the elements, is limited to between 2.3 and 2.8 bits, which corresponds to 7 plus or minus two elements. This is referred to as the \emph{span of absolute judgement}. Note well, that this is only true of elements that vary along one perceived dimension. Otherwise, we would never be able to distinguish between the faces of more than 10 people! Also, there well-known exceptions to this rule. For example, the ability of a person with \emph{absolute pitch} to accurately distinguish between around 60 different pitches \cite{seven1956}. The precise number of bits has changed as our understanding of the brain has improved since 1956, but what has not changed is that the number is lower than one might expect. 
+
+The second related hypothesis has to do with the \emph{span of immediate memory}. Immediate memory is abstractly a temporary memory store that one can use to reason about consciously. In this case, it turns out that the more relevant parameter is no longer a bit, but a \emph{chunk}. The number of chunks that we can hold in our immediate memory and reason about is also about 7. A chunk can represent a similarly low number of bits in immediate memory. However, a chunk can also represent a number of chunks, which allows one to reason about a large number of bits of information as long as they are hierarchically organized such that lower level chunks are represented by higher level chunks.
 
 \begin{quote}
-In the jargon of communication theory, this process would be called \emph{recoding}. The input is given in a code that contains many chunks with few bits per chunk. The input is given in a code that contains many chunks with few bits per chunk. The operator recodes the input into another code that contains fewer chunks with more bits per chunk. There are many ways to do this recoding, but probably the simplest is to group the input events, apply a new name to the group, and then remember the new name rather than the original input events. \cite{seven1956}
+In the jargon of communication theory, this process would be called \emph{recoding}. The input is given in a code that contains many chunks with few bits per chunk. The operator recodes the input into another code that contains fewer chunks with more bits per chunk. There are many ways to do this recoding, but probably the simplest is to group the input events, apply a new name to the group, and then remember the new name rather than the original input events. \cite{seven1956}
 \end{quote}
 
-\section{Modal Interfaces}
+Of particular relevance to a mapping interface, it is known that for a given set of unknown associative connections between a set of elements that presenting the connections as a graphical hierarchy aids learning the structure of connections \emph{much} more than a list of connections \cite{graphicalhierarchy1972}. 
 
-\section{Filtering}
+In summary, if an interface expects a user to make decisions involving a set of high cardinality than there must be a form of hierarchical organization of the elements of the set. Otherwise, the user will not be able to proceed very efficiently.
+
+\section{Filtering and Information Seeking}
 
 \begin{comment}
 The Structure of the Information Visualization Design Space, Section 5
@@ -187,3 +207,9 @@ dynamic queries technique
 
 Visual Information Seeking: Tight Coupling of Dynamic Query Filters with Starfield Displays
 \end{comment}
+
+When dealing with a data set with a high cardinality for one component or another, filtering becomes a very attractive feature for a user interface to have. 
+
+\begin{quote}
+The key to these principles is understanding the enormous capacity for human visual information processing. By presenting information visually and allowing dynamic user control through direct manipulation principles, it is possible to traverse large informaiton spaces and facilitate comprehension with reduced anxiety. \cite{seeking1994}
+\end{quote}
