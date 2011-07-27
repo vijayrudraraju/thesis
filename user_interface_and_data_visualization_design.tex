@@ -28,9 +28,9 @@ Although the earliest command-line systems borrowed typewriter-like teletypes (a
 
 Further reduction of the amount of time needed to execute individual operations within a program resulted in the ability for the computer to communicate with multiple input/output devices in realtime. Typical devices that a modern computer program expects to have access to through the operating system include a color monitor wherein each pixel in the monitor had a separate referenceable address, a graphics card to help with processing of 2d/3d graphics operations, a mouse, a keyboard, and a sound card connected to audio speakers.
 
-Much of the common grammar of all the popular graphical user interfaces in use today were developed by two particular projects. The first is called NLS/Augment (NLS stands for oN-Line System) and was designed by Douglas Engelbart and his team at the Stanford Research Institute. During a famous, public demonstration of the system in 1968 (affectionately, often referred to as "The Mother of All Demos"), Engelbart proceeded to demonstrate the use of a computer mouse, a graphical display with multiple windows, and hyperlinks among many other notable advancements in human-computer interaction. 
+Much of the common grammar of all the popular graphical user interfaces in use today were developed by two particular projects. The first is called NLS/Augment (NLS stands for oN-Line System) and was designed by Douglas Engelbart and his team at the Stanford Research Institute. During a famous, public demonstration of the system in 1968 (often affectionately referred to as "The Mother of All Demos"), Engelbart proceeded to demonstrate the use of a computer mouse, a graphical display with multiple windows, and hyperlinks among many other notable advancements in human-computer interaction. 
 
-The second groundbreaking project, the Xerox Alto, came from the Xerox Palo Alto Research Center (PARC) in 1973. It is perhaps the first computer designed from inception to be dedicated to the use of a single person. Although the monitor displayed only black and white pixels, the graphical user interface of the operating system contained buttons, windows, scrollbars, sliders, and many of the logical GUI components that are standard components of any program with a GUI.
+The second groundbreaking project, the Xerox Alto, came from the Xerox Palo Alto Research Center (PARC) in 1973. It is perhaps the first computer designed from inception to be dedicated to the use of a single person. Although the monitor displayed only black and white pixels, the graphical user interface of the operating system contained buttons, windows, scrollbars, sliders, and many of the logical GUI components that are standard components of any program with a GUI. It was followed at PARC by the Xerox Star in 1981, which took GUIs a step further towards their current incarnations and introduced the ability to share resources across a local area network \cite{xeroxstar1989}.
 
 It is primarily the ideas that these two projects consolidated and introduced to the wider world that eventually became the impetus for the recognition of HCI and, of more precise relevance to this paper, user interface design as important areas of study of significant relevance to the broader computer science community. 
 
@@ -82,12 +82,12 @@ The task of mapping is a logical problem, as well as an artistic one. It is a lo
 
 It could be that one output signal generates floating-point decimal values and one input signal accepts only integer values. Or if a specific output signal tends to generate an essentially static signal regardless of the gestures performed with the MSN, it would make for a very dull and non-dynamic performance to connect this signal to the pitch input signal of a audio synthesizer. Of course, as previously stated one does not typically make use of metrics like productivity or performance in an artistic context, so the logical problem is different. But even an artistic project has goals and intentions, though they are considerably harder to define in words. Visualizing the Libmapper network effectively within a user interface will likely help a team of people (as long as there is agreement about the artistic and other intentions of the scenario that the MSN is to be used in), resolve these logical problems involving network topology and signal transformation more effectively. 
 
-According to Bertin, graphics have at least two distinct uses. The first is as a means of communicating some information. The second is as a medium for graphical processing, defined as using the manipulation and perception of graphical objects to understand the information \cite{card1997}. Any graphical interface that is monitoring a Libmapper network will likely incorporate both uses of graphics. The current state of the network, including the namespaces and properties of all registered devices and signals and all signal connections and transformations, needs to be able to be gleaned from the interface. Also, the interface must allow the user to manipulate the graphics in such a way as to facilitate the connection and disconnection of signals with or without functional transformations applied to the signals.
+Graphics have at least two distinct uses. The first is as a means of communicating some information. The second is as a medium for graphical processing, defined as using the manipulation and perception of graphical objects to understand the information \cite{card1997}. Any graphical interface that is monitoring a Libmapper network will likely incorporate both uses of graphics. The current state of the network, including the namespaces and properties of all registered devices and signals and all signal connections and transformations, needs to be able to be gleaned from the interface. Also, the interface must allow the user to manipulate the graphics in such a way as to facilitate the connection and disconnection of signals with or without functional transformations applied to the signals.
 
 It is useful to distinguish between three types of data as distinguished by their function \cite{card1997}:
 \begin{description}
-\item \emph{Nominal} - data values that are understood as either = or not = to each other - an example is the type of things 
-\item \emph{Ordinal} - data values that can be understood using a greater-than or less-than relation in some way - an example is set of the days of the week
+\item \emph{Nominal} - data values that are understood as either = or not = to each other - examples are the set of religions, colors, and professions
+\item \emph{Ordinal} - data values that can be understood using a greater-than or less-than relation in some way - an example is set of the days of the week or the temporal order of events
 \item \emph{Quantitative} - data values that can be manipulated with arithmetic - an example is the population of a city 
 \end{description}
 
@@ -112,7 +112,7 @@ It is useful to distinguish between three types of data as distinguished by thei
     \hline
     \end{tabular}
     \end{center}
-    \caption{Ranking of perceptual tasks for each fundemental data type}
+    \caption{Ranking of perceptual tasks for each fundemental data type (N.B. black background indicates non-applicability of the task for that data type)}
     \label{tab:perceptual}
 \end{table}
 
@@ -132,23 +132,46 @@ connection
 Visual Information Seeking: Tight Coupling of Dynamic Query Filters with Starfield Displays
 \end{comment}
 
+Of course, this presumes a method for analyzing the attributes of a data set, understanding the different types of data in the set, and characterizing the relative importance of the different dimensions of the data.
+
+The most extensive theoretical framework for the display of graphical information was performed by Jacques Bertin in a book called the \emph{Semiology of Graphics} \cite{semiology1983}. He describes a three stage process for analyzing the data in preperation for visualization.
+
+The first stage is determining the number of \emph{components} or \emph{variables} present in the data. A component is defined as a concept in the data that varies across a number of \emph{elements} particular to the component. For example, the component of "output signals present on a Mapper network" would vary across the set of output signals where each signal is an element of the component. 
+
+The second stage is determining to \emph{length} of each component in the data set. The length is precisely the number of elements which are identifiable in the component. If the component is "the states that comprise the United States" then the length would be 50. It so happens that Bertin's concept of \emph{length} is very similar to the concept of \emph{cardinality} explained in Section 2. The cardinality of a component is important in determining a perceptual graphical property to map to the data in a visualization.
+
+The third stage is determining the data type of the component as previously defined (nominal, ordinal, or quantitative). Bertin calls this property of a component as the \emph{level of organization}.
+
+This analysis can then be used in combination with Table \ref{tab:perceptual} to make sure the data of each component is transcribed with a visual variable possessing the same cardinality and level of organization and thus contributing to an efficient visualization.
+
 This theoretical framework will be used in the next major section to weigh various visualization choices within Vizmapper.
 
 \section{Recall and Recognition}
 
-It is common to understand human information retrieval in terms of two types of retrieval, recall and recognition. In the recall process, information is reproduced from memory. In the recognition process, a piece of information induces the knowledge that the information is not new; it has been seen before and the information acts as a cue. In this respect, recognition is a less complex cognitive activity.
+There are certain aspects of cognitive functionality that are well-studied and provide useful theoretical guides for designing efficient user interfaces.
 
-Recall can be assisted with cues that allow an individual to speed access to the information in their memory. One proven cue is the use of categories.
+It is common to understand human information retrieval in terms of two types of retrieval, recall and recognition. In the recall process, information is reproduced from memory. In the recognition process, a piece of information induces the knowledge that the information is not new; it has been seen before and the information acts as a cue \cite{hci1998}. In this respect, recognition is a less complex cognitive activity. Recall can be assisted with cues that allow an individual to speed access to the information in their memory. One proven cue is the use of categories.
+
+HCI practioners have long known about this interesting byproduct of the evolution of the brain as the creators of the Xerox Star point out in explaining their design decisions for the system.
+
+\begin{quote}
+Traditional computer systems require users to remember and type a great deal just to control the system. This impedes learning and retention, especially by casual users. Star's designers favored an approach emphasizing recognition over recall, seeing and pointing over remembering and typing. \cite{xeroxstar1989}
+\end{quote}
 
 \section{Hierarchies and Taxonomies}
 
 \begin{comment}
+Papers:
 Magic number seven, George Miller
 recoding pg. 93
 increasing bits per chunk
 The Structure of the Information Visualization Design Space, Section 2
 enclosure
+Coding Recoding Hierarchical Information
+Acquisiton and forgetting of hierarchically organized information
 \end{comment}
+
+Hierarchies and taxonomies (classification schemes arranged hierarchically and used often in science) are widely used to reduce the complexity of a data set (like all the animals in world) by dividing up the data set into smaller subsets. It is believed that this general process plays a central role in recall, recognition, and problem solving \cite{seven1956}\cite{graphicalhierarchy1972}\cite{hierarchical1971}. 
 
 \begin{quote}
 In the jargon of communication theory, this process would be called \emph{recoding}. The input is given in a code that contains many chunks with few bits per chunk. The input is given in a code that contains many chunks with few bits per chunk. The operator recodes the input into another code that contains fewer chunks with more bits per chunk. There are many ways to do this recoding, but probably the simplest is to group the input events, apply a new name to the group, and then remember the new name rather than the original input events. \cite{seven1956}

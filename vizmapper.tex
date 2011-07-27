@@ -4,9 +4,9 @@
 
 With the benefit of the research and thinking that is presented in the prior two chapters, it is now possible to embark on an informed analysis of the task and context at hand and to make informed design choices about the implementation of the system.
 
-The graphical user interface to libmapper that is the result of these design choices is called Vizmapper.
+The graphical user interface to Libmapper that is the result of these design choices is called Vizmapper.
 
-The task of mapping is understood to be creating connections and mappings between a collection of signals being output by a collection of devices (usually with sensors) and a collection of inputs made available by various devices (usually with audio synthesis modules)  capable of receiving signals.
+The task of mapping is understood to be creating a set of associations and function transformations between a set of signals being output by a set of devices (usually with sensors) and a set of inputs made available by various devices (usually with audio synthesis modules)  capable of receiving signals.
 
 The context in which the task of mapping is performed is understood to be one to many programmers, engineers, composers, and/or musicians interested in experimenting with interactive musical systems for use in a creative (as opposed to business productivity or analysis) context.
 
@@ -15,7 +15,7 @@ The context in which the task of mapping is performed is understood to be one to
 Task analysis and human-computer interaction: approaches, techniques, and levels of analysis - Abe Crystal, Beth Ellington
 \end{comment}
 
-The previous section on task analysis concluded that as a technique it is best-suited to understanding how to design interfaces that maximize productivity as opposed to channeling creative expression. This may or may not present a problem, depending on whether we choose the characterize the use of computer in the context of accomplishing the task of mapping as an act of expression or an act of productivity. Atau Tanaka offers a line of thinking that is of use in attempting to resolve this problem \cite{tanaka2000}.
+The prior section on task analysis concluded that as a technique it is best-suited to understanding how to design interfaces that maximize productivity as opposed to channeling creative expression. This may or may not present a problem, depending on whether we choose the characterize the use of computer in the context of accomplishing the task of mapping as an act of expression or an act of productivity. Atau Tanaka offers a line of thinking that is of use in attempting to resolve this problem \cite{tanaka2000}.
 
 \begin{quote}
 A tool can be improved to be more efficient, can take on new features to help in realizing its task, and can even take on other, new tasks not part of the original design specification. In the ideal case, a tool expands the limits of what it can do. It should be easy to use, and be accessible to [sic] wide range of naive users. Limitations or defaults are seen as aspects that can be improved upon.
@@ -31,9 +31,9 @@ This line of thinking suggests that the extent to which Vizmapper is a tool limi
 
 It is clear from Tanaka's definitions that Vizmapper serves as a tool rather than an instrument. However, the fact that Vizmapper is specifically a tool for accomplishing the task of creating and modifying mappings \emph{within a musical instrument} suggests that the design must be treated more subtly in this particular context. As the purpose of Vizmapper is partly to make the connections between components in a musical instrument more malleable and more susceptible to experimentation for groups of non-programmers, the task bears some resemblance to a non-utilitarian task.
 
-To see this, examine the task and to decompose the complex task of designing a musical instrument using a thought process to \emph{Hierarchical Task Analysis} \cite{annett1967}. 
+To see this, examine the task and to decompose the complex task of designing a musical instrument using a thought process advanced by \emph{Hierarchical Task Analysis} \cite{annett1967}. 
 
-Mark Marshall nicely distills the last decade of thinking into understanding the abstract components of a digital musical instruments by decomposing a digital musical instrument into 3 main components:
+Mark Marshall nicely distills the last decade of thinking into understanding the abstract components of a digital musical instruments by decomposing a digital musical instrument into 3 main components \cite{marshall2008}:
 
 \begin{description}
 \item \emph{The physical interface} containing the sensors, actuators, and physical body of the instrument.
@@ -69,7 +69,7 @@ The design of these 3 components can be regarded as the 3 main subtasks of the o
 \end{description}
 \end{description}
 
-This model of musical instrument design generalizes well to anything from a self-contained handheld instrument to a massively distributed system spread over a large physical environment. It also works regardless of whether it is an individual or a team that is engaged in the instrument design. This decomposition also makes more clear why perhaps the mapping system is deserving of a dedicated system and user interface to manipulate. A good analogy is the choice of what collection of LEGO blocks to use as opposed to how to put the LEGO blocks together once the blocks are chosen. Procedurally, one chooses what types of blocks to use before deciding how to put the blocks together. Once a coll Similarly, it makes sense to design most of the physical interface and the software synthesis system before deciding how the mapping system will put the two collections of inputs/outputs together.
+This model of musical instrument design generalizes well to anything from a self-contained handheld instrument to a massively distributed system spread over a large physical environment. It also works regardless of whether it is an individual or a team that is engaged in the instrument design. This decomposition also makes more clear why perhaps the mapping system is deserving of a dedicated system and user interface to manipulate. A good analogy is the choice of what collection of LEGO blocks to use as opposed to how to put the LEGO blocks together once the blocks are chosen. Procedurally, one chooses what types of blocks to use before deciding how to put the blocks together. Similarly, it makes sense to design most of the physical interface and the software synthesis system before deciding how the mapping system will put the two collections of inputs/outputs together.
 
 \section{System Design}
 
@@ -90,8 +90,7 @@ As a piece of software, there are a limited number of options for implementing t
 \end{description}
 
 
-
-This is not intended to be a rigorous list, however the point is that it is not practical (especially in a research context) to develop and maintain several versions of a software system that will work on a wide variety of operating systems and devices. However, the fact is that people will use whatever system they have available and the variety of devices that an artist or engineer is likely to use to interact with a sensor network is increasing. To design a system that is meant to work in a collaborative context, it is crucial that this reality be adapted to.
+This is not intended to be an exhaustive list, however the point is that it is not practical (especially in a research context) to develop and maintain several versions of a software system that will work on a wide variety of operating systems and devices. However, the fact is that people will use whatever system they have available and the variety of devices that an artist or engineer is likely to use to interact with a sensor network is increasing. To design a system that is meant to work in a collaborative context, it is crucial that this reality be adapted to.
 
 Before beginning development on a piece of software one must choose a development environment and a deployment environment.
 
