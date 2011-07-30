@@ -2,11 +2,11 @@
 
 \chapter{Vizmapper}
 
-With the benefit of the research and thinking that is presented in the prior two chapters, it is now possible to embark on an informed analysis of the task and context at hand and to make informed design choices about the implementation of the system.
+With the benefit of the research and context that is presented in chapters 2 and 3, it is now possible to embark on an informed analysis of the mapping task for an MSN and to make informed design choices about the implementation of the system.
 
 The graphical user interface to Libmapper that is the result of these design choices is called Vizmapper.
 
-The task of mapping is understood to be creating a set of associations and function transformations between a set of signals being output by a set of devices (usually with sensors) and a set of inputs made available by various devices (usually with audio synthesis modules)  capable of receiving signals.
+The task of mapping is understood from chapter 2 to be creating a set of associations and functional transformations between a set of signals being output by a set of devices (usually with sensors) and a set of inputs made available by various devices (usually with audio synthesis modules)  capable of receiving signals.
 
 The context in which the task of mapping is performed is understood to be one to many programmers, engineers, composers, and/or musicians interested in experimenting with interactive musical systems for use in a creative (as opposed to business productivity or analysis) context.
 
@@ -15,23 +15,23 @@ The context in which the task of mapping is performed is understood to be one to
 Task analysis and human-computer interaction: approaches, techniques, and levels of analysis - Abe Crystal, Beth Ellington
 \end{comment}
 
-The prior section on task analysis concluded that as a technique it is best-suited to understanding how to design interfaces that maximize productivity as opposed to channeling creative expression. This may or may not present a problem, depending on whether we choose the characterize the use of computer in the context of accomplishing the task of mapping as an act of expression or an act of productivity. Atau Tanaka offers a line of thinking that is of use in attempting to resolve this problem \cite{tanaka2000}.
+The section on task analysis in chapter 3 concluded that as a technique it is best-suited to understanding how to design interfaces that maximize productivity as opposed to channeling creative expression. This may or may not present a problem, depending on whether we choose the characterize the use of computer in the context of accomplishing the task of mapping as an act of expression or an act of productivity. Atau Tanaka offers a line of thinking that applies to tools and instruments, but may be of use in attempting to resolve this problem \cite{tanaka2000}.
 
 \begin{quote}
-A tool can be improved to be more efficient, can take on new features to help in realizing its task, and can even take on other, new tasks not part of the original design specification. In the ideal case, a tool expands the limits of what it can do. It should be easy to use, and be accessible to [sic] wide range of naive users. Limitations or defaults are seen as aspects that can be improved upon.
+"A tool can be improved to be more efficient, can take on new features to help in realizing its task, and can even take on other, new tasks not part of the original design specification. In the ideal case, a tool expands the limits of what it can do. It should be easy to use, and be accessible to [sic] wide range of naive users. Limitations or defaults are seen as aspects that can be improved upon.
 
 A musical instrument's raison-d'etre, on the other hand, is not at all utilitarian. It is not meant to carry out a single defined task as a tool is. Instead, a musical instrument often changes context, withstanding changes of musical style played on it while maintaining its identity. A tool gets better as it attains perfection in realizing its tasks. The evolution of an instrument is less driven by practical concerns, and is motivated instead by the quality of sound the instrument produces. In this regard, it is not so necessary for an instrument to be perfect as much as it is important for it to display distinguishing characteristics, or "personality". What might be considered imperfections or limitations from the perspective of tool design often contribute to a "personality" of a musical instrument.
 
 Computers are generalist machines with which tools are programmed. By itself, a computer is a tabula rasa, full of potential, but without specific inherent orientation. Software applications endow the computer with specific capabilities. It is with such a machine that we seek to create instruments with which we can establish a profound musical rapport.
 
-The input device is the gateway through which the user accesses the computer software's functionality. As a generalist device, generalized input devices like the keyboard or mouse allow the manipulation of a variety of different software tools. Music software can be written to give musically specific capabilities to the computer. Input devices can be built to exploit the specific capabilities of this software. On this general platform, then, we begin to build a specialized system, each component becoming part of the total instrument description. 
+The input device is the gateway through which the user accesses the computer software's functionality. As a generalist device, generalized input devices like the keyboard or mouse allow the manipulation of a variety of different software tools. Music software can be written to give musically specific capabilities to the computer. Input devices can be built to exploit the specific capabilities of this software. On this general platform, then, we begin to build a specialized system, each component becoming part of the total instrument description." 
 \end{quote}
 
-This line of thinking suggests that the extent to which Vizmapper is a tool limits the extent to which the principles of user interface and data visualization design ought to play a role in the design process. HCI is much better suited to evaluating more objective notions like utility, tasks, and functionality than more subjective notions like personality, quality of sound, and musical rapport.
+This line of thinking suggests that the extent to which Vizmapper is not a tool limits the extent to which the principles of user interface and data visualization design ought to play a role in the design process. HCI is much better suited to evaluating more objective notions like utility, tasks, and functionality than more subjective notions like personality, quality of sound, and musical rapport.
 
-It is clear from Tanaka's definitions that Vizmapper serves as a tool rather than an instrument. However, the fact that Vizmapper is specifically a tool for accomplishing the task of creating and modifying mappings \emph{within a musical instrument} suggests that the design must be treated more subtly in this particular context. As the purpose of Vizmapper is partly to make the connections between components in a musical instrument more malleable and more susceptible to experimentation for groups of non-programmers, the task bears some resemblance to a non-utilitarian task.
+It is clear from Tanaka's definitions that Vizmapper serves as a tool rather than an instrument. However, the fact that Vizmapper is specifically a tool for accomplishing the task of creating and modifying mappings \emph{within a musical instrument} suggests that the design must be treated more subtly in this particular context. As the purpose of Vizmapper is partly to make the connections between components in a musical instrument more malleable and more susceptible to experimentation for groups of non-programmers, the task bears some resemblance to a non-utilitarian task. It is reasonable to assume that if the evolution of an instrument is motivated by the quality of the sound that the instrument produces, then similarly the evolution of a mapping interface is motivated by the quality of the mappings and DMIs that the interface produces. This reality should be evaluating in parallel with the understanding that configuration of a mapping is a somewhat utilitarian task, either the interface allows a team to configure the mapping efficiently or it does not.
 
-To see this, examine the task and to decompose the complex task of designing a musical instrument using a thought process advanced by \emph{Hierarchical Task Analysis} \cite{annett1967}. 
+To see this, examine the task and to decompose the complex task of designing a musical instrument using an analysis process called \emph{hierarchical task analysis} \cite{annett1967}. 
 
 Mark Marshall nicely distills the last decade of thinking into understanding the abstract components of a digital musical instruments by decomposing a digital musical instrument into 3 main components \cite{marshall2008}:
 
@@ -69,9 +69,9 @@ The design of these 3 components can be regarded as the 3 main subtasks of the o
 \end{description}
 \end{description}
 
-This model of musical instrument design generalizes well to anything from a self-contained handheld instrument to a massively distributed system spread over a large physical environment. It also works regardless of whether it is an individual or a team that is engaged in the instrument design. This decomposition also makes more clear why perhaps the mapping system is deserving of a dedicated system and user interface to manipulate. 
+This hierarchical model of musical instrument design generalizes well to anything from a self-contained handheld instrument to a massively distributed system spread over a large physical environment. It also works regardless of whether it is an individual or a team that is engaged in the instrument design. This decomposition also makes more clear why perhaps the mapping system is deserving of a dedicated system and user interface to manipulate. 
 
-A good analogy is the choice of what collection of LEGO blocks to use as opposed to how to put the LEGO blocks together once the blocks are chosen. Procedurally, one chooses what types of blocks to use before deciding how to put the blocks together. Similarly, it makes sense to make certain choices about what pieces will be used for the physical interface and the software synthesis system before deciding how the mapping system will put the two collections of inputs/outputs together. Of course, this model laying out the necessary choices to be made says nothing about \emph{what} choices should be made. That process is entirely dependent on the artistic intentions of the design team.
+A good analogy is the choice of what collection of LEGO blocks to use as opposed to how to put the LEGO blocks together once the blocks are chosen. Procedurally, one chooses what types of blocks to use before deciding how to put the blocks together. Similarly, it makes sense to make certain choices about what pieces will be used for the physical interface and the software synthesis system before deciding how the mapping system will put the two collections of inputs/outputs together. It is difficult to map between two sets of signals when the sets of signals are not already defined. Of course, this model laying out the necessary choices to be made says nothing about \emph{what} choices should be made. That process is entirely dependent on the artistic intentions of the design team and the goal of a mapping tool is only to allow the choices that are made in the mapping subtask to be implemented as efficiently as possible.
 
 \section{System Design}
 
@@ -82,7 +82,7 @@ As a piece of software, there are a limited number of options for implementing t
 \begin{description}
 \item Windows (XP, Vista, 7)
 \item Mac OSX
-\item Linux (Ubuntu, Debian, Gentoo)
+\item Linux (Ubuntu, Debian, etc.)
 \end{description}
 \item \emph{Tablets/Smartphones}
 \begin{description}
@@ -96,17 +96,19 @@ This is not intended to be an exhaustive list, however the point is that it is n
 
 Before beginning development on a piece of software one must choose a development environment and a deployment environment.
 
-There are any number of very stable development environments that enable a software developer to write a single corpus of computer code and create applications that can run on Windows, OSX, and Linux.
+There are any number of very stable development environments that enable a software developer to write a single corpus of computer code and create applications that can run on Windows, OSX, and Linux. This choices effects primarily the developer of the software and not the user of the software. The choice of deployment environment is much more consequential to the user because it effects how they will actually run the software.
 
-There are three common ways for a user to run a piece of software on their chosen machine.
+There are three common methods for a user to run a piece of software on their chosen machine.
 
-The user can install a pre-compiled binary image of the piece of software, which means that the developer has written code and produced a file that can be executed without any translation on the user's specific device/operating system combination.
+The user can install a pre-compiled binary image of the piece of software, which means that the developer has written code and produced a file that can be executed without any translation on the user's specific machine/operating system combination because the file is machine code that is run directly on the machine. If there is no available pre-compiled binary for a specific machine architecture, the user can obtain the source code of the software and compile a binary file that works on their specific machine as long as a compiler exists for their machine.
 
-The user can obtain the source code of the software and produce a file that works on their specific machine.
+The first method is an option when the software is developed in a \emph{compiled language} environment. There are also environments that use \emph{interpreted languages} or \emph{script languages}. An interpreted language differs from a compiled language because unlike a compiled language that uses the process of feeding the program code into a compiler and producing a binary that can be executed to run the program, an interpreted language uses the process of interpreting the program code to directly run the program. The interpretor is responsible for interfacing with the lower level machine for the higher level interpreted language when the program code is run. A compiled program interfaces directly with the lower level machine because it has already been converted into lower level machine code. A web application with internal logic is essentially an interpreted program because a web browser that runs HTML, CSS, and Javascript downloads the program code and uses an internal interpretor to execute the program. It does not download a compiled program. Distributing software as a script to be run in an interpretor is attractive because the burden for implementing the interpretor for various different machine architecture is moved to the developer of the actual language and the developer can count on a user being able to run their program as long as the interpretor for the language is available for the user's machine.
 
-Virtual machines.
+Environments like Java use a third strategy and run software on \emph{virtual machines}. A virtual machine language is somewhat like a hybrid of a compiled language and interpreted language because a virtual machine language is compiled, but it is compiled to an intermediate machine code that is not the machine code of the actual physical machine that is running the program. It is compiled to the "machine code" of a virtual machine that must be implemented for all machines that one would like to run the program on. This is useful because the user can be given a single file that is not program code like a compiled language, but the developer still can count on the file being able to be run on any machine that has the virtual machine available on the system.
 
-Scripts and interpreted environments. Included in this is a browser.
+Given that the hope is for multiple team members to be running Vizmapper and working simultaneously on the mapping and that there is presumably a local network available to allow the various devices on the sensor network to communicate with each other, it makes sense for Vizmapper to be implemented as a web application. A web application is typically distributed as a two part software system where one part is called the \emph{client} and the other part is called the \emph{server}. One server can serve the web application to a relatively large number of clients. This is the source of another advantage of web applications. Client are typically run in a web browser and therefore can be reliably run on any machine that includes a modern web browser. Since Libmapper is compiled code, the server software can take care of interfacing with the library and communicating through the Mapper Protocol with the rest of the network. Because the server need only be run on one machine, this type of application is much easier to deploy on a collection of heterogenous machines.
+
+Stephen Sinclair, the developer of Libmapper and a member of IDMIL, also developed a basic server written in Python (a popular interpreted language) that interfaces with Libmapper and also provides a convenient interface for a web browser client to execute Mapper commands by communicating with the server. This web server is called Webmapper.
 
 \section{Application of User Interface Design Principles}
 
