@@ -78,31 +78,36 @@ A good analogy is the choice of what collection of LEGO blocks to use as opposed
 As a piece of software, there are a limited number of options for implementing the system while ensuring that the system can be reliably used on the variety of systems that a team designing a musical system is likely to be using in the present and future. As of the time that this system has been implemented, the most common form factors for computers are desktops, laptops, tablets, and smartphones. Each form factor is typically loaded with one of a small collection of operating systems that are widely available and are easy to find expert knowledge about.
 
 \begin{description}
-\item \emph{Desktops/Laptops}
+\item[Desktops/Laptops] Windows (XP, Vista, 7), Mac OSX, Linux (Ubuntu, Debian, etc.)
+\item[Tablets/Smartphones] Android, iOS
+\end{description}
+
+This is not an exhaustive list, however the point is that it is not practical (especially in a research context) to develop and maintain several versions of a software system that will work on a wide variety of operating systems and devices. However, the fact is that people will use whatever system they have available and the variety of devices that an artist or engineer is likely to use to interact with a sensor network is increasing. To design a practical system that is meant to work in a collaborative context, it is crucial to adapt to this reality.
+
+Before beginning development on a software system, it is necessary to choose a development environment and a deployment environment.
+
+There are a number of terms that are used in the remainder of the chapter that are helpful to define.
+
 \begin{description}
-\item Windows (XP, Vista, 7)
-\item Mac OSX
-\item Linux (Ubuntu, Debian, etc.)
+\item[Development environment] the sofware environment that the developer uses to create code and executables
+\item[Deployment environment] the software environment that the user uses to run executables
+\item[Progammer Code] the human readable text that is written by the developer in a specific computer language and translated to produce an executable
+\item[Machine code] the machine readable code that is often produced by a compiler and requires no further translation to be understood by a physical CPU
+\item[Executable] an executable is the file that is produced by the developer and given to a user to run in their deployment environment - it is a file or collection of files that encompass the program that the user can \emph{run} without any further translation within their deployment environment - can be programmer code, machine code, or other forms of executable code  
+\item[Machine] the physical CPU that understands and can directly execute machine code
+\item[Compiler] takes programmer code as input and produces machine code as output
+\item[Interpretor] takes programmer code as an executable to run a program
 \end{description}
-\item \emph{Tablets/Smartphones}
-\begin{description}
-\item Android
-\item iOS
-\end{description}
-\end{description}
 
+There are any number of very stable development environments that enable a software developer to write a single corpus of programmer code and translate into executables that can run on Windows, OSX, and Linux. This choices effects primarily the developer of the software and not the user of the software. The choice of deployment environment is much more consequential to the user because it effects how they will actually run the executable.
 
-This is not intended to be an exhaustive list, however the point is that it is not practical (especially in a research context) to develop and maintain several versions of a software system that will work on a wide variety of operating systems and devices. However, the fact is that people will use whatever system they have available and the variety of devices that an artist or engineer is likely to use to interact with a sensor network is increasing. To design a system that is meant to work in a collaborative context, it is crucial that this reality be adapted to.
+There are three common methods for a user to run software on their chosen machine.
 
-Before beginning development on a piece of software one must choose a development environment and a deployment environment.
+The first method is for the user to run a pre-compiled machine code executable, which means that the developer has written code, translated the code with a compiler into machine-specific code, and produced a file that can be executed without any further translation on the user's specific machine/operating system combination. If there is no available pre-compiled binary for a specific machine architecture, the user can obtain the source code of the software and compile a binary file that works on their specific machine as long as a compiler exists for their machine.
 
-There are any number of very stable development environments that enable a software developer to write a single corpus of computer code and create applications that can run on Windows, OSX, and Linux. This choices effects primarily the developer of the software and not the user of the software. The choice of deployment environment is much more consequential to the user because it effects how they will actually run the software.
+The first method is an option when the software is developed in a \emph{compiled language} environment. There are also environments that use \emph{interpreted languages} or \emph{script languages}. An interpreted language differs from a compiled language because unlike a compiled language that uses the process of translating the program code into machine code with a compiler and producing a machine code executable to run the program, an interpreted language uses the process of interpreting the program code line by line directly when the program is run. The interpretor is responsible for interfacing with the machine for the interpreted code when the executable is run. In a interpreted language the programmer code and the executable are often the same file. A compiled generated executable interfaces directly with the machine because it has already been converted into machine code. 
 
-There are three common methods for a user to run a piece of software on their chosen machine.
-
-The user can install a pre-compiled binary image of the piece of software, which means that the developer has written code and produced a file that can be executed without any translation on the user's specific machine/operating system combination because the file is machine code that is run directly on the machine. If there is no available pre-compiled binary for a specific machine architecture, the user can obtain the source code of the software and compile a binary file that works on their specific machine as long as a compiler exists for their machine.
-
-The first method is an option when the software is developed in a \emph{compiled language} environment. There are also environments that use \emph{interpreted languages} or \emph{script languages}. An interpreted language differs from a compiled language because unlike a compiled language that uses the process of feeding the program code into a compiler and producing a binary that can be executed to run the program, an interpreted language uses the process of interpreting the program code to directly run the program. The interpretor is responsible for interfacing with the lower level machine for the higher level interpreted language when the program code is run. A compiled program interfaces directly with the lower level machine because it has already been converted into lower level machine code. A web application with internal logic is essentially an interpreted program because a web browser that runs HTML, CSS, and Javascript downloads the program code and uses an internal interpretor to execute the program. It does not download a compiled program. Distributing software as a script to be run in an interpretor is attractive because the burden for implementing the interpretor for various different machine architecture is moved to the developer of the actual language and the developer can count on a user being able to run their program as long as the interpretor for the language is available for the user's machine.
+A web application with internal logic is essentially an interpreted executable because a web browser that runs HTML, CSS, and Javascript downloads the programmer code and uses an internal interpretor to execute the program. It does not download a compiled executable. Distributing software as a script executable to be run in an interpretor is attractive because the burden for implementing the interpretor for various different machine architectures is moved to the developer of the programming language and the developer can count on a user being able to run their program as long as the interpretor for the language is available for the user's machine. The developer can write \emph{machine-independent} code.
 
 Environments like Java use a third strategy and run software on \emph{virtual machines}. A virtual machine language is somewhat like a hybrid of a compiled language and interpreted language because a virtual machine language is compiled, but it is compiled to an intermediate machine code that is not the machine code of the actual physical machine that is running the program. It is compiled to the "machine code" of a virtual machine that must be implemented for all machines that one would like to run the program on. This is useful because the user can be given a single file that is not program code like a compiled language, but the developer still can count on the file being able to be run on any machine that has the virtual machine available on the system.
 
