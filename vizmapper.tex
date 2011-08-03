@@ -63,9 +63,9 @@ The design of these 3 components can be regarded as the 3 main subtasks of the o
 \end{description}
 \item \emph{Designing the mapping}
 \begin{description}
-	\item choose a collection of available outputs to start connections from
-	\item choose a collection of available inputs to connect to specific outputs
-	\item create mappings that specify how (if at all) to modify source signals from outputs to generate the desired destination signals for the inputs
+	\item choose a subset from the complete set of available outputs to start connections from
+	\item choose a subset from the complete set of available inputs to connect to specific outputs
+	\item create functional transformation mappings that specify how (if at all) to modify source signals from outputs to generate the desired destination signals for the inputs
 \end{description}
 \end{description}
 
@@ -138,8 +138,63 @@ Instead, the complexity of the task lies in the complexity of the Mapper network
 
 \begin{description}
 	\item choose a collection of available outputs to start connections from
+    \begin{description}
+        \item view the complete set of output signals
+        \item find an output signal to connect to an input signal
+        \item select the output signal
+    \end{description}
 	\item choose a collection of available inputs to connect to specific outputs
+    \begin{description}
+        \item view the complete set of input signals
+        \item find an input signal to connect to an output signal
+        \item select the input signal
+    \end{description}
 	\item create mappings that specify how (if at all) to modify source signals from outputs to generate the desired destination signals for the inputs
+    \begin{description}
+        \item define a functional transformation/signal conditioning mapping between the output signal and input signal 
+        \item connect the signals
+    \end{description}
 \end{description}
 
+This clarifies the individual steps implicit in the overall task and suggests how to distribute the steps needed in the interface. Since the screen space on a monitor is limited and the most important data about the Mapper network are the names of the signals and the mappings between them, devoting as much space to the visualization of the signals and their connections is a priority.
+
+The first decision made is to separate the viewing and browsing of the MSN from the editing of mappings. Vizmapper treats these two set of subtasks as two different modes. Entering viewing and browsing mode means that it is not possible to modify the mappings of the signals being browsed. Entering editing mode focusing the view on a subset of signals from the complete set and means that it is not possible to browse the larger set of signals. This decision is made because viewing and browsing does not actually effect the Mapper network, only editing a mapping effects the network. Preventing both modes from being accessed on the same screen makes the conceptual separation between the modes clear and reduces the amount of accidental modifications.
+
+When it comes to viewing and browsing, since the interface is being designed with larger MSNs in mind, there should be a way to filter the complete set of signals to a subset of signals. As discussed in chapter 3, this can be accomplished with pointing and clicking to utilize recognition processes or it can be accomplished by typing to encourage the use of recall processes. Although finding a specific signal through name recognition is less straining then remembering the name of a specific signal and typing it, it is not necessarily a simple decision. In the case where a user has been working with the same Mapper network for an extended period of time, it may become tedious to point, click, and browse their way to a specific signal even though they know the exact name of the signal they are looking for. In this case, the physical process involved to select the signal becomes more consciously cumbersome than the cognitive process involved in recognition or recall.
+
+A single text input box for entering a text matching filter query, occupies very little vertical space and adds functionality that is helpful for this type of user. The user can type in a portion of the complete OSC name of a signal and limit the view to only the signals that match the text in the input box. In order to display the union of more than one text query (show the signals that match the first text query OR second query OR third query, etc.), the user uses a space character to delimit the separate filter queries. 
+
+Typically, interfaces that allow the user to browse data using text queries allow the user to compose more complex queries (like ANDs or NOTs in addition to ORs). However, this functionality seems to deviate from the scope of the interface and add syntax complexity without a substantial benefit to the central task. Since the user is only searching within a set names of signals and not a set of large text documents (like one might do with a database or the internet) it is likely a type of power that is not required for most users. Additional features and complexity are avoided in Vizmapper, unless the functionality that is added is significant to the mapping task as it has been analyzed.
+
 \section{Application of Data Visualization Design Principles}
+
+Following the graphical perception research in section \ref{sec:Graphical Perception} of chapter 3, before making decisions about the visualization of the network the data set of a Mapper network needs to be analyzed using the three stage process of Bertin.
+
+This involves determining the \emph{components} in the data, the \emph{length} of each component, and the \emph{level of organization} (nominal, ordinal, or quantitative).
+
+There are three easily distinguishable sets of data that a user concerns themselves with when mapping signals.
+
+\begin{enumerate}
+\item The set of signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
+\item The set of associative connections between pairs of signals, each connection is defined by a source and a destination (the source of the data is typically an output signal and the destination is typically an input signal)
+\item The set of function transformations that are paired with each associative connection, which are defined using a function type, a mathematical function, and an allowable range of values for the input of the function (actually an output signal in Mapper terminology) and output of the function (actually an input signal in Mapper terminology).
+\end{enumerate}
+
+It is useful to note that the most complex elements are the elements of the set of functional transformations. The least complex elements are the OSC names of the signals. This is taken simply from the number of variables that must be defined to fully define each element.
+
+So the data set can be decomposed into \emph{three} components, but it might also be decomposed into \emph{four}. The first component, the set of signals, can be split into one component for output signals and one component for input signals. The question is whether one decomposition is more effective than the other. If it is assumed that the source of a connection will always be an output signal of a device and the destination of a connection will always be an input signal of a device then it makes sense to use \emph{four} because it will always be necessary to select a source and a destination to form any connection and it will be efficient to graphically distinguish between the two types of signal. Therefore, there are \emph{four} components in the data set.
+
+\begin{enumerate}
+\item The set of output signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
+\item The set of input signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
+\item The set of associative connections between pairs of signals, each connection is defined by a source and a destination (the source of the data is typically an output signal and the destination is typically an input signal)
+\item The set of function transformations that are paired with each associative connection, which are defined using a function type, a mathematical function, and an allowable range of values for the input of the function (actually an output signal in Mapper terminology) and output of the function (actually an input signal in Mapper terminology).
+\end{enumerate}
+
+The length of the output signals component and the input signals component are assumed to be \emph{large} and within an order of magnitude of each other. There might be many more output signals than input signals or vice versa, however since there will be roughly one control mechanism device with output signals for each sound generation mechanism device with input signals in a scenario with DMIs, this is a reasonable assumption.
+
+The length of the set of associative connections is bounded by the length of the set of output signals. This is because the Mapper protocol only handles \emph{one-to-many} and \emph{one-to-one} mappings as explained in chapter 2. Therefore, there can be at most one connection for every output signal.
+
+The length of the set of function transformations is equal to the length of the set of associative connections because there every connection is paired with a functional transformation governing data transmission over the connection.
+
+\cite{edgebundles2006}

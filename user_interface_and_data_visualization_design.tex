@@ -77,44 +77,46 @@ This increased flexibility means that computers become entangled in new areas of
 An important point that should be extracted from this history, regarding the use of HCI techniques like task analysis to analyse artistic systems, is that HCI and thus user interface and data visualization design, bear the fingerprints of a discipline that ultimately derives from the standpoint of increasing productivity and improving job performance. Therefore, the principles advanced by HCI should always be evaluated (and potentially ignored) in the broader context of particular scenarios \cite{orio2002}. Despite this reality, task analysis is the primary means of analyzing the mapping task in Chapter 4 and the mindset of this analytical technique is the basis of the process used to arrive at the final design of Vizmapper for this thesis.
 
 \section{Graphical Perception and Information Visualization}
+\label{sec:Graphical Perception}
 
 \begin{quote}
 "Graphics is the visual means of resolving logical problems."
 \end{quote}
 
 This idea from Bertin \cite{semiology1983}, who is one of the first to provide a theoretical foundation to data visualization, summarizes the hope for a dedicated interface for configuring a Mapper network. It is in this context that \emph{data visualization} or \emph{information visualization} is understood to be "the computer-assisted use of visual processing to gain understanding" by Card \cite{card1997}. 
-
 The task of mapping is a logical problem, as well as an artistic one. It is a logical problem in the sense that one cannot make connections haphazardly between any pair of input and output signals and expect the network mapping that is produced to be interesting as a DMI or meet the goals of the design team. One must still infer, through some form of reasoning, the suitability of a particular signal connection in the context of the particular devices on the network, the nature of the signals that the devices produce, and the broader artistic intentions of the design team. 
 
 It could be that one output signal generates floating-point decimal values and one input signal accepts only integer values. Or if a specific output signal tends to generate a static signal regardless of the gestures or environmental dynamics sensed by the control mechanism of the MSN, it would make for a very dull and non-dynamic performance to connect this output signal to the input signal controlling the pitch of an audio synthesizer. Of course, as previously stated, one does not typically make use of metrics like productivity or performance in an artistic context, so the logical problem is different. But even an artistic project has goals and intentions, though they are considerably harder to define in words. Visualizing a Mapper network effectively within a user interface will likely help a team of people (as long as there is agreement about the artistic and other intentions of the scenario that the MSN is to be used in), resolve these logical problems involving network topology and signal transformation more effectively. 
 
 Graphics are thought to have at least two distinct uses. The first is communicating a set of information. The second is acting as a medium for graphical processing, defined as using the perception and manipulation of graphical objects to understand the information \cite{card1997}. Any graphical interface that is monitoring a Mapper network will likely incorporate both uses of graphics. The interface needs to effectively communicate the current state of the network, including the namespaces and properties of all registered devices and signals and the set of signal connections and transformations between outputs and inputs. Also, the interface must allow the user to manipulate the graphics to connect and disconnect signals and apply functional transformations to the signal data.
 
-It is useful to categorize all possible data into three types, as distinguished by their function \cite{card1997}:
+It is useful to categorize all possible data into three types, as distinguished by their function \cite{semiology1983}\cite{card1997}:
 \begin{description}
-\item \emph{Quantitative} - data values that can be manipulated with arithmetic - an example is the population of a city 
-\item \emph{Ordinal} - data values that can be understood using a greater-than or less-than relation in some way - an example is the set of the days of the week
 \item \emph{Nominal} - data values that are understood as either = or not = to each other - examples are the set of religions, colors, and professions
+\item \emph{Ordinal} - data values that can be understood using a greater-than or less-than relation in some way - an example is the set of the days of the week
+\item \emph{Quantitative} - data values that can be manipulated with arithmetic - an example is the population of a city 
 \end{description}
+
+Note that each successive functional type is a special case of the previous types. All quantitative data is necessarily ordinal data and nominal data. All ordinal data is necessarily nominal data. Conversely, only some nominal data is ordinal and only some ordinal data is quantitative.
 
 \begin{table}
     \begin{center}
     \begin{tabular}{ | l | l | l | }
     \hline
-    Quantitative & Ordinal & Nominal \\ \hline
+    Nominal & Ordinal & Quantitative \\ \hline
     Position & Position & Position \\
-    Length & Density & Color Hue \\
-    Angle & Color Saturation & Texture \\
-    Slope & Color Hue & Connection \\
-    Area & Texture & Containment \\
-    Volume & Connection & Density \\
-    Density & Containment & Color Saturation \\
-    Color Saturation & Length & Shape \\
-    Color Hue & Angle & Length \\
-    \cellcolor{black}\textcolor{white}{Texture} & Slope & Angle \\
-    \cellcolor{black}\textcolor{white}{Connection} & Area & Slope \\
-    \cellcolor{black}\textcolor{white}{Containment} & Volume & Area \\
-    \cellcolor{black}\textcolor{white}{Shape} & \cellcolor{black}\textcolor{white}{Shape} & Volume \\
+    Color Hue & Density & Length \\
+    Texture & Color Saturation & Angle \\
+    Connection & Color Hue & Slope \\
+    Containment & Texture & Area \\
+    Density & Connection & Volume \\
+    Color Saturation & Containment & Density \\
+    Shape & Length & Color Saturation \\
+    Length & Angle & Color Hue \\
+    Angle & Slope & \cellcolor{black}\textcolor{white}{Texture} \\
+    Slope & Area & \cellcolor{black}\textcolor{white}{Connection} \\
+    Area & Volume & \cellcolor{black}\textcolor{white}{Containment} \\
+    Volume & \cellcolor{black}\textcolor{white}{Shape} & \cellcolor{black}\textcolor{white}{Shape}\\
     \hline
     \end{tabular}
     \end{center}
@@ -142,7 +144,7 @@ Visual Information Seeking: Tight Coupling of Dynamic Query Filters with Starfie
 
 Of course, this presumes a method for analyzing the different components in a data set and characterizing the relative importance of the different variables present in a data set.
 
-The most extensive theoretical framework for the display of graphical information is presented in a book called the \emph{Semiology of Graphics} by Jacques Bertin \cite{semiology1983}. He describes a three stage process for analyzing the data in preperation for designing a visualization.
+The most extensive theoretical framework for the display of graphical information is presented in a book called the \emph{Semiology of Graphics} by Bertin \cite{semiology1983}. He describes a three stage process for analyzing the data in preperation for designing a visualization.
 
 \begin{enumerate}
 \item The first stage is determining the number of \emph{components} or \emph{variables} present in the data. A component is defined as a concept in the data that varies across a number of \emph{elements} particular to the component. For example, the component of "output signals present on a Mapper network" varies across the set of output signals labeled by their declared network name. Similarly one could define another component encapsulating the variation in the available input signals. 
