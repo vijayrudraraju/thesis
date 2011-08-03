@@ -2,7 +2,7 @@
 
 \chapter{Vizmapper}
 
-With the benefit of the research and context that is presented in chapters 2 and 3, it is now possible to embark on an informed analysis of the mapping task for an MSN and to make informed design choices about the implementation of the system.
+With the benefit of the research and context that is presented in chapters 2 and 3, it is now possible to embark on an informed analysis of the mapping task for an MSN and to make informed decisions about the implementation of the system.
 
 The graphical user interface to Libmapper that is the result of these design choices is called Vizmapper.
 
@@ -44,7 +44,7 @@ Mark Marshall nicely distills the last decade of thinking into understanding the
 The design of these 3 components can be regarded as the 3 main subtasks of the overall task of designing a musical instrument. Each of these subtasks are themselves composed of more granular tasks, thus forming the beginnings of a hierarchical structure representing an analysis of the overall task.
 
 \begin{description}
-\item \emph{The physical interface}
+\item \emph{Designing the physical interface}
 \begin{description}
 \item choose sensors that are capable of detecting the desired physical phenomena or gestures
 \item choose actuators that are capable of inducing the desired physical phenomena or feedback
@@ -53,7 +53,7 @@ The design of these 3 components can be regarded as the 3 main subtasks of the o
 \item choose structural/aesthetic materials that combined with the sensors and actuators will form the composite form of the physical interface
 \item design the shape of the composite physical interface
 \end{description}
-\item \emph{The software synthesis system}
+\item \emph{Designing the software audio synthesis system}
 \begin{description}
 \item choose mechanism/algorithm for performing sound synthesis in software
 \item choose mechanism/algorithm for generating visual, haptic, and/or vibrotactile feedback
@@ -61,7 +61,7 @@ The design of these 3 components can be regarded as the 3 main subtasks of the o
 \item choose parameters of visual, haptic, and/or vibrotactile feedback synthesis that are made available as inputs for connections from the outputs of the physical interface and/or other components of the composite synthesis system
 \item choose parameters of sound, visual, haptic, and/or vibrotactile synthesis that are made available as outputs for connections to the physical interface and/or other components of the synthesis system
 \end{description}
-\item \emph{The mapping system}
+\item \emph{Designing the mapping}
 \begin{description}
 	\item choose a collection of available outputs to start connections from
 	\item choose a collection of available inputs to connect to specific outputs
@@ -86,12 +86,12 @@ This is not an exhaustive list, however the point is that it is not practical (e
 
 Before beginning development on a software system, it is necessary to choose a development environment and a deployment environment.
 
-There are a number of terms that are used in the remainder of the chapter that are helpful to define.
+There are a number of terms that are used in the remainder of the chapter that are helpful to define. The specifics of the definitions are debatable, however they remain helpful for understanding the rest of this chapter.
 
 \begin{description}
 \item[Development environment] the sofware/hardware environment that the developer uses to write programmer code and executables
 \item[Deployment environment] the software/hardware environment that the user uses to run executables
-\item[Operating system] a program that manages hardware resources and the computer processor - reduces the complexity and risk of writting programmer code that interfaces with the physical hardware and computer processor by providing an easier to use set of operations that provide a higher level interface (called system calls) to the processor and other hardware - system calls prevent programmer code from generating machine code that executes low-level processor and hardware operations in such a way that would destablize the system
+\item[Operating system] a program that manages hardware resources and the computer processor - from the developer's point of view, reduces the complexity and risk of writting programmer code that interfaces with the physical hardware and computer processor by providing an easier to use set of operations that provide a higher level interface (called system calls) to the processor and other hardware - system calls prevent programmer code from generating machine code that executes low-level processor and hardware operations in such a way that would destablize the system
 \item[Progammer code] the human readable text that is written by the developer in a specific computer language and translated to produce an executable
 \item[Machine code] the machine readable code that is often produced by a compiler and requires no further translation to be understood by a physical computer processor
 \item[Executable] the file or collection of files that the user can \emph{run} without any further manual translation within their deployment environment - can be programmer code, machine code, or other forms of executable code  
@@ -114,12 +114,32 @@ A web application is essentially an interpreted executable because a web browser
 \item Environments like Java use a third strategy and run software on \emph{virtual machines}. A virtual machine language is somewhat like a hybrid of a compiled language and interpreted language because a virtual machine language is compiled, but it is compiled to an intermediate machine code that is not the machine code of the actual physical machine that is running the program. It is compiled to the "machine code" of a software virtual machine that must be implemented for all machines that one would like to run the program on. This is useful because the user can be given a single file that is not program code like a compiled language, but the developer still can count on the file being able to be run on any machine that has the virtual machine available on the system.
 \end{enumerate}
 
-Given that the hope is for multiple team members to be running Vizmapper and working simultaneously on the mapping and that there is presumably a local network available to allow the various devices on the sensor network to communicate with each other, it makes sense for Vizmapper to be implemented as a web application. 
+Assuming the intent is for multiple team members to be running the Vizmapper interface to enable simultaneous work on the mapping of a network and that there is presumably a local network available to allow the various devices on the sensor network to communicate with each other, suggests Vizmapper ought to be implemented as a web application. 
 
-A web application is typically distributed as a two part software system where one part is called the \emph{client} and the other part is called the \emph{server}. One server can serve the web application to a large number of clients. This is the source of another advantage of web applications. A web client runs in a web browser and therefore can be run on any machine that includes a modern web browser. All modern web browsers provide a basically identical deployment environment. Since Libmapper is compiled code, the server software can take care of interfacing with the library and communicating through the Mapper Protocol with the rest of the network. Despite the fact that the server is more restricted as to what deployment environment it can be run on, the server needs to run on only one machine, a web application is much easier to deploy on a collection of heterogenous machines.
+A web application is typically distributed as a two part software system where one part is called the \emph{client} and the other part is called the \emph{server}. One server can serve the web application to a large number of clients. This is the source of another advantage of web applications. A web client runs in a web browser and therefore can be run on any machine that includes a modern web browser. All modern web browsers provide an increasingly identical deployment environment. Since Libmapper is compiled code, the server software can take care of interfacing with the library and communicating through the Mapper Protocol with the rest of the network. Despite the fact that the server is more restricted as to what deployment environment it can be run on because of the Libmapper dependency, the server needs to run on only one machine. Also, a web application is much easier to deploy on a collection of heterogenous machines.
 
-Stephen Sinclair, the developer of Libmapper and a member of IDMIL, also developed a basic server written in Python (a popular interpreted language) that interfaces with Libmapper and also provides a convenient interface for a web browser client to execute Mapper commands by communicating with the server. This web server is called Webmapper.
+Stephen Sinclair, the developer of Libmapper and a member of IDMIL, also developed a basic server written in Python (a popular interpreted language) that interfaces with Libmapper and provides a convenient interface for a web browser client to indirectly speak the Mapper Protocol to the local network of devices by communicating with the server. This web server is called Webmapper. Together, Webmapper/Vizmapper provides a server/client web application that can be used to configure a Mapper network.
 
 \section{Application of User Interface Design Principles}
+
+If the user of Vizmapper is a human user configuring an MSN, then Vizmapper is the "user" of Webmapper. Webmapper is then the "user" of Libmapper. Libmapper provides an interface for Webmapper to speak the Mapper Protocol and Webmapper provides an interface for Vizmapper to indirectly speak the Mapper Protocol. Now the task remains to decide how the Vizmapper interface will present the signals and devices present on the network to the human user and allow the user to configure mappings between these signals and devices through Webmapper.
+
+As a reminder, the subtask of \emph{Designing the Mapping} was further broken down as follows:
+
+\begin{description}
+	\item choose a collection of available outputs to start connections from
+	\item choose a collection of available inputs to connect to specific outputs
+	\item create mappings that specify how (if at all) to modify source signals from outputs to generate the desired destination signals for the inputs
+\end{description}
+
+The task of designing a mapping is a less complex task (but not less important) than the task of designing a physical interface or designing an audio synthesis system. This lack of complexity in the task is one of the reasons why it is possible to even contemplate performing the other task through a single interface. Building an interface for the task of designing a physical interface or designing an audio synthesis system is less manageable in this way.
+
+Instead, the complexity of the task lies in the complexity of the Mapper network and what the task of \emph{choosing} actually entails. Since the focus is now on the mapping task, it is helpful to see if it is possible to be even more granular in the hierarchical decomposition of the task. 
+
+\begin{description}
+	\item choose a collection of available outputs to start connections from
+	\item choose a collection of available inputs to connect to specific outputs
+	\item create mappings that specify how (if at all) to modify source signals from outputs to generate the desired destination signals for the inputs
+\end{description}
 
 \section{Application of Data Visualization Design Principles}
