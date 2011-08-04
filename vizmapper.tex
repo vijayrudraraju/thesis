@@ -86,7 +86,7 @@ This is not an exhaustive list, however the point is that it is not practical (e
 
 Before beginning development on a software system, it is necessary to choose a development environment and a deployment environment.
 
-There are a number of terms that are used in the remainder of the chapter that are helpful to define. The specifics of the definitions are debatable, however they remain helpful for understanding the rest of this chapter.
+There are a number of terms that are used in the remainder of the chapter that are helpful to define. The specifics of the definitions are debatable and are not cited, however they remain helpful for understanding the rest of this chapter.
 
 \begin{description}
 \item[Development environment] the sofware/hardware environment that the developer uses to write programmer code and executables
@@ -97,7 +97,7 @@ There are a number of terms that are used in the remainder of the chapter that a
 \item[Executable] the file or collection of files that the user can \emph{run} without any further manual translation within their deployment environment - can be programmer code, machine code, or other forms of executable code  
 \item[Machine] the physical computer processor that provides a stable interface of machine operations that can be executed by machine code
 \item[Compiler] the software program that takes programmer code as input and produces machine code or machine code executables as output
-\item[Interpretor] the software program takes programmer code as an executable to run a program
+\item[Interpreter] the software program takes programmer code as an executable to run a program
 \end{description}
 
 There are any number of very stable development environments that enable a software developer to write a single collection of programmer code and translate the code into executables that can run on Windows, OSX, and Linux machines. This choices effects the developer of the software and not the user of the software. The choice of deployment environment is much more consequential to the user because it effects how they will actually run the executable.
@@ -121,6 +121,7 @@ A web application is typically distributed as a two part software system where o
 Stephen Sinclair, the developer of Libmapper and a member of IDMIL, also developed a basic server written in Python (a popular interpreted language) that interfaces with Libmapper and provides a convenient interface for a web browser client to indirectly speak the Mapper Protocol to the local network of devices by communicating with the server. This web server is called Webmapper. Together, Webmapper/Vizmapper provides a server/client web application that can be used to configure a Mapper network.
 
 \section{Application of User Interface Design Principles}
+\label{sec:userInterface}
 
 If the user of Vizmapper is a human user configuring an MSN, then Vizmapper is the "user" of Webmapper. Webmapper is then the "user" of Libmapper. Libmapper provides an interface for Webmapper to speak the Mapper Protocol and Webmapper provides an interface for Vizmapper to indirectly speak the Mapper Protocol. Now the task remains to decide how the Vizmapper interface will present the signals and devices present on the network to the human user and allow the user to configure mappings between these signals and devices through Webmapper.
 
@@ -240,41 +241,89 @@ Inspired by Holten's own exploration of visualizing similarly structured data, t
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.6\textwidth]{holten_bubble.png}
-\caption{Example of a bubble tree visualization with dark lines for inclusion relations and light lines for the adjacency relations}
+\includegraphics[width=0.6\textwidth]{holten_balloon.png}
+\caption{Example of a balloon tree visualization with dark lines for inclusion relations and light lines for the adjacency relations}
 \label{fig:balloonTree}
 \end{figure}
 
-The decision is made to use containment to represent the inclusion relations between hierarchically organized elements. This is taken from the use of a \emph{bubble tree} visualization by Holten in his own research. An example of a bubble tree is shown in Figure \ref{fig:balloonTree}. Examining the figure, notice that \emph{connection}, \emph{containment}, and \emph{density} are used to communicate specific relationships between elements. Again, there are two components being displayed: a set of inclusion relations and a set of adjacency relations. In this example there are only two adjacency relations shown in the figure. 
+The decision is made to use containment to represent the inclusion relations between hierarchically organized elements. This is taken from the use of a \emph{balloon tree} visualization by Holten in his own research. An example of a balloon tree is shown in Figure \ref{fig:balloonTree}. Examining the figure, notice that \emph{connection}, \emph{containment}, and \emph{density} are used to communicate specific relationships between elements. Again, there are two components being displayed: a set of inclusion relations and a set of adjacency relations. In this example there are only two adjacency relations shown in the figure. 
 
-Connection is used to communicate both adjacency and inclusion. The curved, lighter lines represent adjacency relations between terminal elements (might represent citations between publications). The straight, dark lines represent inclusion relations between different levels in the hierarchy. Density and shape is used to distinguish between the two. Density is also used to distinguish between terminal elements in the hierarchy (dark dots) and intermediate elements in the hierarchy (light dots, perhaps representing departments and universities). Containment and position is also used to communicate relations between the elements. Enclosing circles differentiate between levels in the hierarchy and different branches of the hierarchy on the same level. The center of every circle is the position of the intermediate elements defining what the circle represents (department on one level of hierarchy, university on another level) and the elements positioned radially around the centers are the child elements (either terminal or lower level, but still intermediate, elements). Notice that terminal elements can either be placed directly on the first level of the hierarchy or on deeper levels depending on the specific inclusion relations of the data set (perhaps there are independent publications that are not associated with any particular organization in the data set).
+Connection is used to communicate both adjacency and inclusion. The curved, lighter lines represent adjacency relations between terminal elements (for example, citations between publications). The straight, dark lines represent inclusion relations between different levels in the hierarchy. Density and shape are used to distinguish between the two. Density is also used to distinguish between terminal elements in the hierarchy (dark dots) and intermediate elements in the hierarchy (light dots, for example, representing departments and universities). 
+
+Containment and position are also used to communicate relations between the elements. Enclosing circles differentiate between levels in the hierarchy and different branches of the hierarchy on the same level. The center of every circle is the position of the intermediate elements defining what the circle represents (for example, department on one level of hierarchy, university on another level) and the elements positioned radially around the centers are the child elements (either terminal or lower level, but still intermediate, elements). Notice that terminal elements can either be placed directly on the first level of the hierarchy or on deeper levels depending on the specific inclusion relations of the data set (perhaps there are independent publications that are not associated with any particular organization in the data set).
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.6\textwidth]{vijay_bubble.png}
-\caption{Modified bubble tree visualization}
+\includegraphics[width=0.55\textwidth]{vijay_balloon.png}
+\caption{Modified balloon tree visualization}
 \label{fig:balloon}
 \end{figure}
 
-The bubble tree used in Figure \ref{fig:balloonTree} is not as uncluttered as it might be. The lines used to communicate inclusion relations and the lighter dots placed at the center of every circle actually display the same data as the containing circles. This seems to be unnecessary visual redundancy. Figure \ref{fig:balloon} effectively communicates the same data set as \ref{fig:balloon} with no loss of information and less clutter.
+The balloon tree used in Figure \ref{fig:balloonTree} is not as uncluttered as it might be. The lines used to communicate inclusion relations and the lighter dots placed at the center of every circle actually display the same data as the containing circles. This seems to be unnecessary visual redundancy. Figure \ref{fig:balloon} effectively communicates the same data set as \ref{fig:balloonTree} with no loss of information and less clutter. The missing visual elements are implied.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.85\textwidth]{root_level.png}
-\caption{First level of hierarchy in Vizmapper}
+\includegraphics[width=0.55\textwidth]{clutter_balloon.png}
+\caption{Cluttered balloon tree visualization}
+\label{fig:clutterBalloon}
+\end{figure}
+
+When the number of elements in the data set grows large and there are many adjacency relations between the elements, there is a different type of clutter that arises involving the lines representing the adjacency relations like in Figure \ref{fig:clutterBalloon}. This is a type of clutter that is more difficult to reduce. One can be more specific about how the connnections are drawn, using bezier curves and bundling to organize the connections like one might bundle wires between mixers. This is the method that Holten uses \cite{edgebundles2006}. 
+
+It may be possible to use a different graphical property entirely. However, it is difficult to conceive of a graphical property that communicates connections between signals better than the graphical property of connection. One potential way out is realizing that there is no need to treat the visualization as static. It is already possible to use a text-matching filter to modify the visualization by typing within the interface as described in Section \ref{sec:userInterface}. Perhaps it would make sense to allow the user to filter the visualization by pointing and clicking as well.
+
+\begin{figure}[htb]
+\centering
+\subfloat[First level of hierarchy][First level of hierarchy]{
+\includegraphics[width=0.45\textwidth]{uncluttered_balloon.png}
+\label{fig:unclutteredBalloon}}
+\subfloat[One branch of the second level][One branch of the second level]{
+\includegraphics[width=0.45\textwidth]{interactive_balloon.png}
+\label{fig:secondUnclutteredBalloon}}
+\caption{Interactive balloon tree visualization of hierarchy}
+\label{fig:interactiveBalloon}
+\end{figure}
+
+Look at Figure \ref{fig:unclutteredBalloon}. Clearly, this figure leaves out information present in the other visualizations even though it is supposed to visualize the same data set as the other three figures. However, it displays all the adjacency relations between groups on single level of the hierarchy and displays the inclusion relation between the root of the hierarchy and the first level of the hierarchy. If the user clicks on gray circle representing the branch of that drops to the deepest in the hierarchy than the interface can modify the visualization to Figure \ref{fig:secondUnclutteredBalloon}.
+
+The user can then click on the gray circle in Figure \ref{fig:secondUnclutteredBalloon} to proceed into the deepest level in the whole hierarchy. However, this interactive visualization has lost information about the adjacency relations between the current level of the hierarchy and a higher level of the hierarchy. It only displays adjacency relations between the groups on the same level. Therefore, even though Figure \ref{fig:unclutteredBalloon} shows the gray circle having adjacency relations between all the other groups and elements on the top level of the hierarchy, Figure \ref{fig:secondUnclutteredBalloon} loses this information completely and there is no way to recover exactly what terminal elements are connected to each other.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.88\textwidth]{root_level.png}
+\caption{First level of output signals and first level of input signals in Vizmapper}
 \label{fig:firstLevel}
 \end{figure}
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.85\textwidth]{left_first_level.png}
-\caption{Second level of hierarchy of output signals and first level of hierarchy of input signals in Vizmapper}
+\includegraphics[width=0.88\textwidth]{left_first_level.png}
+\caption{/source.3 branch of second level of output signals and first level of input signals in Vizmapper}
 \label{fig:secondLevel}
 \end{figure}
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.85\textwidth]{right_second_level.png}
-\caption{Second level of hierarchy of output signals and third level of hierarchy of input signals in Vizmapper}
+\includegraphics[width=0.88\textwidth]{right_second_level.png}
+\caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
 \label{fig:thirdLevel}
 \end{figure}
+
+Fortunately, a decision made in Section \ref{sec:userInterface} allows this problem to be circumvented. The problem of lost information in this scenario is a result of all of the elements belonging to the same component. Since the decision is made in Vizmapper to separate the potential sources of a connection from the potention destinations of a connection and any given signal can only be an output (source) or input (destination) then this problem is nonexistent.
+
+The best way to see how this is to see the visualization used in Vizmapper. Figures \ref{fig:firstLevel}, \ref{fig:secondLevel}, and \ref{fig:thirdLevel} show screenshots of an example traversal down the output signal hierarchy and the input signal hierarchy. The inclusion relations between signals on the Mapper network are inferred from the OSC namespace of the Mapper network. This places a premium on a wisely constructed OSC namespace for the signals that reduces the number of signals at any given level of a branch of the hierarchy. As explained in Chapter 3, this type of visual hierarchical organization reduces the number of elements that a user has to decide between on any given level of a branch of the hierarchy and should mean a more effective interface. Notice the use of whether the circle is filled or not to represent whether the circle represents a terminal signal or a group of signals in an intermediate level of the complete hierarchy. Also, the Vizmapper visualization of the network displays two levels of the hierarchy at any given point, giving the user more context then a single level view like in Figure \ref{fig:interactiveBalloon}.
+
+The center of the screen displays two columns of buttons that display a trace of the path taken in the OSC namespace hierarchy for the output signals and for the input signals. Clicking on one of the buttons returns the visualization to a previous position in the current traversal. Clicking on the always present \emph{output signals} or \emph{input signals} buttons returns the visualization of that set of signals to the first level of the hierarchy. The left and right columns of text display the names of the currently accessible groups and/or signals at the current level of the hierarchy. The hierarchical visualization and text-matching filter at the top of the screen work together by removing any groups or signals from the visualization whose paths to not match the text filter.
+
+In order to make a connection, a user uses the \emph{view interface} to navigate down to a level of both the output signal hierarchy and input signal hierarchy that have at least one terminal signal in each. This is because the current view of the network is frozen when the user switches to the edit interface by clicking the edit tab at the top left of the screen. Once the two signals that are to be connected are in view then the user switches to the \emph{edit interface}, clicks on one output signal and one input signal, enters in the pertinent information to define a functional transformation (if necessary), and then clicks the \emph{update} button to tell the Webmapper server to request a connection between the two selected signals. Any device linking that is necessary to create the needed Libmapper routers to manage the connection is done automatically without user intervention.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.88\textwidth]{editInterface.png}
+\caption{Edit interface of Vizmapper}
+\label{fig:editInterface}
+\end{figure}
+
+To break a connection between two signals or view the active functional transformation over the a connection, the user clicks on a connection between two signals to select the connection. To finish breaking the connection, the user clicks the \emph{remove} button.
+
+The Vizmapper interface provides all the functionality necessary to create a mapping on a Mapper network. The hope is that by applying an understanding of the mapping task, user interface design principles, data visualization principles, and a basic understanding of human cognitive processes that Vizmapper is as effective of an interface for configuring mappings over a MSN with many signals as the original Dotmapper is for configuring mappings on a DMI with relatively fewer signals.
