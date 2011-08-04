@@ -175,20 +175,20 @@ This involves determining the \emph{components} in the data, the \emph{length} o
 There are three easily distinguishable sets of data that a user concerns themselves with when mapping signals.
 
 \begin{enumerate}
-\item The set of signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
-\item The set of associative connections between pairs of signals, each connection is defined by a source and a destination (the source of the data is typically an output signal and the destination is typically an input signal)
-\item The set of function transformations that are paired with each associative connection, which are defined using a function type, a mathematical function, and an allowable range of values for the input of the function (actually an output signal in Mapper terminology) and output of the function (actually an input signal in Mapper terminology).
+\item set of signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
+\item set of associative connections between pairs of signals, each connection is defined by a source and a destination (the source of the data is typically an output signal and the destination is typically an input signal)
+\item set of function transformations that are paired with each associative connection, which are defined using a function type, a mathematical function, and an allowable range of values for the input of the function (actually an output signal in Mapper terminology) and output of the function (actually an input signal in Mapper terminology)
 \end{enumerate}
 
 It is useful to note that the most complex elements are the elements of the set of functional transformations. The least complex elements are the OSC names of the signals. This is taken simply from the number of variables that must be defined to fully define each element.
 
-So the data set can be decomposed into \emph{three} components, but it might also be decomposed into \emph{four}. The first component, the set of signals, can be split into one component for output signals and one component for input signals. The question is whether one decomposition is more effective than the other. If it is assumed that the source of a connection will always be an output signal of a device and the destination of a connection will always be an input signal of a device then it makes sense to use \emph{four} because it will always be necessary to select a source and a destination to form any connection and it will be efficient to graphically distinguish between the two types of signal. Therefore, there are \emph{four} components in the data set.
+So the data set can be decomposed into \emph{three}, but it might also be decomposed into \emph{four}. The first component, the set of signals, can be split into one component for output signals and one component for input signals. The question is whether one decomposition is more effective than the other. If it is assumed that the source of a connection will always be an output signal of a device and the destination of a connection will always be an input signal of a device then it makes sense to use \emph{four} because it will always be necessary to select a source and a destination to form any connection and it will be efficient to graphically distinguish between the two types of signal. Therefore, there are \emph{four} components in the data set.
 
 \begin{enumerate}
-\item The set of output signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
-\item The set of input signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
-\item The set of associative connections between pairs of signals, each connection is defined by a source and a destination (the source of the data is typically an output signal and the destination is typically an input signal)
-\item The set of function transformations that are paired with each associative connection, which are defined using a function type, a mathematical function, and an allowable range of values for the input of the function (actually an output signal in Mapper terminology) and output of the function (actually an input signal in Mapper terminology).
+\item set of output signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
+\item set of input signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
+\item set of associative connections between pairs of signals, each connection is defined by a source and a destination (the source of the data is typically an output signal and the destination is typically an input signal)
+\item set of function transformations that are paired with each associative connection, which are defined using a function type, a mathematical function, and an allowable range of values for the input of the function (actually an output signal in Mapper terminology) and output of the function (actually an input signal in Mapper terminology)
 \end{enumerate}
 
 The length of the output signals component and the input signals component are assumed to be \emph{large} and within an order of magnitude of each other. There might be many more output signals than input signals or vice versa, however since there will be roughly one control mechanism device with output signals for each sound generation mechanism device with input signals in a scenario with DMIs, this is a reasonable assumption.
@@ -197,4 +197,63 @@ The length of the set of associative connections is bounded by the length of the
 
 The length of the set of function transformations is equal to the length of the set of associative connections because there every connection is paired with a functional transformation governing data transmission over the connection.
 
-\cite{edgebundles2006}
+The level of organization of all four components is \emph{nominal}. None of the components have elements that can be ordered or manipulated with arithmetic.
+
+So the conclusion of a Bertin-like analysis of a typical Mapper network data set is the following:
+\begin{description}
+\item \emph{Components} - four components
+    \begin{enumerate}
+        \item output signals
+        \item input signals
+        \item connections
+        \item functional transformations
+    \end{enumerate}
+\item \emph{Length} - all four components are of approximately equivalent length
+\item \emph{Level of organization} - all four components are nominal
+\end{description}
+
+This analysis comes with one caveat in light of chapters 2 and 3. There is one level of organization that Bertin does not address - hierarchical organization. This is a type of organization that seems relevant, especially given the importance of hierarchical organization in human cognition, yet seems to not be directly addressed by the nominal/ordinal/quantitative categorization scheme. Due to the nature of OSC namespaces, the set of output signals and the set of input signals can be grouped hierarchically. This suggests a type of relation between signals that is not simply = or NOT =.
+
+The problem of visualizing an abstract data set that has both hierarchical relationships between elements and connections between elements as components is problem that has been tackled in data visualization literature \cite{edgebundles2006}. Holten refers the hierarchically organized component as a set of \emph{inclusion relations} and the set of connections as a set of \emph{adjacency relations}. One example of a data set exhibiting a structure similar to a Mapper network data set is an academic citation network where publications are the lowest level elements of the hierarchy and departments and universities are represented by higher level groupings in the hierarchy. Connections between publications would represent one publication citing another \cite{edgebundles2006}.
+
+Since we are dealing with nominal data with some hierarchical organization, let us focus on the most discerning perceptual tasks for nominal data using the ranking presented in section \ref{sec:Graphical Perception}.
+
+\begin{table}
+    \begin{center}
+    \begin{tabular}{ | l | }
+    \hline
+    Nominal \\ \hline
+    Position \\
+    Color Hue \\
+    Texture \\
+    Connection \\
+    Containment \\
+    \hline
+    \end{tabular}
+    \end{center}
+    \caption{Ranking of perceptual tasks for discerning between nominal data \cite{jock1986}}
+    \label{tab:perceptualNominal}
+\end{table}
+
+Inspired by Holten's own exploration of visualizing similar data, the somewhat arbitrary choice was made to represent signals with circles occupying different points in space. The heuristic reasons for this choice is that the shape of a circle lends itself to a symmetrical and aesthetically pleasing presentation of the data and makes for an easy target for the user to click (more on this shortly). There are four components and it is important to distinguish between these four components, first and foremost. Since position is already being used to distinguish between signals and at least one output signal and one input signal will need to be displayed for the connection and functional transformation components to be relevant, it makes sense to place a constraint on the position of signals such that the output signals are confined to the left side of the display and input signals are confined to the right side of the display.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{root_level.png}
+\caption{Top level of hierarchy in Vizmapper}
+\label{fig:rootLevel}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{left_first_level.png}
+\caption{First level of hierarchy of output signals and top level of hierarchy of input signals in Vizmapper}
+\label{fig:firstLevel}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{right_second_level.png}
+\caption{First level of hierarchy of output signals and second level of hierarchy of input signals in Vizmapper}
+\label{fig:firstLevel}
+\end{figure}
