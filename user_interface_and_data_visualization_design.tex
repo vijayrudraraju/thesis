@@ -76,7 +76,7 @@ This increased flexibility means that computers become entangled in new areas of
 
 An important point that should be extracted from this history, regarding the use of HCI techniques like task analysis to analyse artistic systems, is that HCI and thus user interface and data visualization design, bear the fingerprints of a discipline that ultimately derives from the standpoint of increasing productivity and improving job performance. Therefore, the principles advanced by HCI should always be evaluated (and potentially ignored) in the broader context of particular scenarios \cite{orio2002}. Despite this reality, task analysis is the primary means of analyzing the mapping task in Chapter 4 and the mindset of this analytical technique is the basis of the process used to arrive at the final design of Vizmapper for this thesis.
 
-\section{Graphical Perception and Information Visualization}
+\section{Graphical Perception and Data Visualization}
 \label{sec:Graphical Perception}
 
 \begin{quote}
@@ -128,7 +128,7 @@ Depending on the functional type of the data being visualized, certain forms of 
 
 It is common in the literature to decompose any information graphic into \emph{marks} (points, lines, areas, surfaces, or volumes), the \emph{automatically processed graphical properties} of those marks (position, color, size, shape, etc...), and the \emph{controlled processing graphical properties} of those marks (if the mark has external semantic meaning as language or numbers). 
 
-A well-cited study by Cleveland and McGill \cite{cleveland1984} forms the basis of a theory about the relative accuracy with which people infer quantitative information among the base automatically processed perceptual tasks that can be employed in a graphical presentation of data. This theory is expanded upon by Mackinlay \cite{jock1986} to form the ranking displayed in Table \ref{tab:perceptual}. This theory is useful for deciding how to map the available perceived graphical properties to the variable components of a data set because it allows one to rank the effectiveness of possible graphical languages. Mackinlay communicates the importance of such a ranking through the common sense \emph{Principle of Importance Ordering}:
+A well-cited study by Cleveland and McGill \cite{cleveland1984} forms the basis of a theory about the relative accuracy with which people infer quantitative information among the base automatically processed perceptual tasks that can be employed in a graphical presentation of data. This theory is expanded upon by Mackinlay \cite{jock1986} to form the ranking displayed in Table \ref{tab:perceptual}. To clarify one point of possible ambiguity - color hue, color saturation and density are equivalent to the common hue, saturation, value (HSV) representation of color. This theory is useful for deciding how to map the available perceived graphical properties to the variable components of a data set because it allows one to rank the effectiveness of possible graphical languages. Mackinlay communicates the importance of such a ranking through the common sense \emph{Principle of Importance Ordering}:
 
 \begin{quote}
 "Encode more important information more effectively." \cite{jock1986}
@@ -156,7 +156,13 @@ The most extensive theoretical framework for the display of graphical informatio
 
 This analysis can then be used in combination with Table \ref{tab:perceptual} to make sure the data of each component is transcribed with a visual variable possessing the same cardinality and level of organization and thus contributing to an efficient visualization.
 
-This theoretical framework will be used in Chapter 4 to weigh possible visualization choices for Vizmapper.
+This theoretical framework will be used in Chapter 4 to weigh possible visualization choices for Vizmapper. The final aspect of data visualization researched is the idea of \emph{clutter} and how it modifies the effectiveness of a visualization. First a definition:
+
+\begin{quote}
+"A good visualization clearly reveals structure within the data and thus can help the viewer to better identify patterns and detect outliers. Clutter, on the other hand, is characterized by crowded and disordered visual entities that obscure the structure in visual displays. In other words, clutter is the opposite of structure; it corresponds to all the factors that interfere with the process of finding structures. Clutter is certainly undesirable since it hinders viewers’ understanding of the content of the displays." \cite{clutter2004}
+\end{quote}
+
+The idea of clutter is not very precise, however it neatly summarizes what ought to be kept in mind at all times when designing a visualization. The purpose of a visualization is allow a user to see patterns that would require much more time to see using tables of numbers or text. If a visualization can be changed to reduce the number of visual entities or the sensation of crowding without changing what is being communicated then this change is a win. It is important not to forget the central purpose of a visualization and not get lost in pretty colors and shapes.
 
 \section{Recall and Recognition}
 

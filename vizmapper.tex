@@ -228,32 +228,53 @@ Since we are dealing with nominal data with some hierarchical organization, let 
     Texture \\
     Connection \\
     Containment \\
+    Density \\
     \hline
     \end{tabular}
     \end{center}
-    \caption{Ranking of perceptual tasks for discerning between nominal data \cite{jock1986}}
+    \caption{Ranking of top perceptual tasks for discerning between nominal data \cite{jock1986}}
     \label{tab:perceptualNominal}
 \end{table}
 
-Inspired by Holten's own exploration of visualizing similar data, the somewhat arbitrary choice was made to represent signals with circles occupying different points in space. The heuristic reasons for this choice is that the shape of a circle lends itself to a symmetrical and aesthetically pleasing presentation of the data and makes for an easy target for the user to click (more on this shortly). There are four components and it is important to distinguish between these four components, first and foremost. Since position is already being used to distinguish between signals and at least one output signal and one input signal will need to be displayed for the connection and functional transformation components to be relevant, it makes sense to place a constraint on the position of signals such that the output signals are confined to the left side of the display and input signals are confined to the right side of the display.
+Inspired by Holten's own exploration of visualizing similarly structured data, the decision is made to represent signals with circles occupying different points in space. The heuristic reasons for this decision is that the shape of a circle lends itself to a symmetrical and aesthetically pleasing presentation of the data and makes for an easy target for the user to click (more on this shortly). There are four components and it is important to distinguish between these four components, first and foremost. Since position is already being used to distinguish between signals and at least one output signal and one input signal will need to be displayed for the connection and functional transformation components to be relevant, it makes sense to place a constraint on the \emph{position} of signals that forces the output signals to be confined to the left side of the display and input signals to be confined to the right.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 \centering
-\includegraphics[width=0.8\textwidth]{root_level.png}
-\caption{Top level of hierarchy in Vizmapper}
-\label{fig:rootLevel}
+\includegraphics[width=0.6\textwidth]{holten_bubble.png}
+\caption{Example of a bubble tree visualization with dark lines for inclusion relations and light lines for the adjacency relations}
+\label{fig:balloonTree}
 \end{figure}
 
-\begin{figure}[ht]
+The decision is made to use containment to represent the inclusion relations between hierarchically organized elements. This is taken from the use of a \emph{bubble tree} visualization by Holten in his own research. An example of a bubble tree is shown in Figure \ref{fig:balloonTree}. Examining the figure, notice that \emph{connection}, \emph{containment}, and \emph{density} are used to communicate specific relationships between elements. Again, there are two components being displayed: a set of inclusion relations and a set of adjacency relations. In this example there are only two adjacency relations shown in the figure. 
+
+Connection is used to communicate both adjacency and inclusion. The curved, lighter lines represent adjacency relations between terminal elements (might represent citations between publications). The straight, dark lines represent inclusion relations between different levels in the hierarchy. Density and shape is used to distinguish between the two. Density is also used to distinguish between terminal elements in the hierarchy (dark dots) and intermediate elements in the hierarchy (light dots, perhaps representing departments and universities). Containment and position is also used to communicate relations between the elements. Enclosing circles differentiate between levels in the hierarchy and different branches of the hierarchy on the same level. The center of every circle is the position of the intermediate elements defining what the circle represents (department on one level of hierarchy, university on another level) and the elements positioned radially around the centers are the child elements (either terminal or lower level, but still intermediate, elements). Notice that terminal elements can either be placed directly on the first level of the hierarchy or on deeper levels depending on the specific inclusion relations of the data set (perhaps there are independent publications that are not associated with any particular organization in the data set).
+
+\begin{figure}[htb]
 \centering
-\includegraphics[width=0.8\textwidth]{left_first_level.png}
-\caption{First level of hierarchy of output signals and top level of hierarchy of input signals in Vizmapper}
+\includegraphics[width=0.6\textwidth]{vijay_bubble.png}
+\caption{Modified bubble tree visualization}
+\label{fig:balloon}
+\end{figure}
+
+The bubble tree used in Figure \ref{fig:balloonTree} is not as uncluttered as it might be. The lines used to communicate inclusion relations and the lighter dots placed at the center of every circle actually display the same data as the containing circles. This seems to be unnecessary visual redundancy. Figure \ref{fig:balloon} effectively communicates the same data set as \ref{fig:balloon} with no loss of information and less clutter.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.85\textwidth]{root_level.png}
+\caption{First level of hierarchy in Vizmapper}
 \label{fig:firstLevel}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 \centering
-\includegraphics[width=0.8\textwidth]{right_second_level.png}
-\caption{First level of hierarchy of output signals and second level of hierarchy of input signals in Vizmapper}
-\label{fig:firstLevel}
+\includegraphics[width=0.85\textwidth]{left_first_level.png}
+\caption{Second level of hierarchy of output signals and first level of hierarchy of input signals in Vizmapper}
+\label{fig:secondLevel}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.85\textwidth]{right_second_level.png}
+\caption{Second level of hierarchy of output signals and third level of hierarchy of input signals in Vizmapper}
+\label{fig:thirdLevel}
 \end{figure}
