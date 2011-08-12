@@ -273,59 +273,66 @@ In Figure \ref{fig:unclutteredBalloon}, it is clear that it leaves out informati
 
 However, this interactive visualization has lost information about the adjacency relations between the current level of the hierarchy and a higher level of the hierarchy. It only displays adjacency relations between the groups on the same level. Therefore, even though Figure \ref{fig:unclutteredBalloon} shows the gray circle having adjacency relations between all the other groups and elements on the top level of the hierarchy, Figure \ref{fig:secondUnclutteredBalloon} loses this information completely and there is no way to recover exactly what terminal elements are connected to each other.
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{maxmapperFirst.png}
-\caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
+\caption{Example Mapper network displayed in Maxmapper - Meta-Instrument and Granul8}
 \label{fig:maxOne}
 \end{figure}
 
 \begin{figure}[p]
 \centering
+\includegraphics[width=0.88\textwidth]{maxmapperThree.png}
+\caption{Example Mapper network displayed in Maxmapper - Minibees and Modal}
+\label{fig:maxThree}
+\end{figure}
+
+\begin{figure}[p]
+\centering
 \includegraphics[width=0.88\textwidth]{vizmapperFirst.png}
-\caption{First level of output signals and first level of input signals in Vizmapper}
+\caption{Top level of the Mapper network signal hierarchy with the Meta-Instrument highlighted}
 \label{fig:vizOne}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperSecond.png}
-\caption{/source.3 branch of second level of output signals and first level of input signals in Vizmapper}
+\caption{First level of the Meta-Instrument with the \textbf{raw} signal cluster highlighted}
 \label{fig:vizTwo}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperThird.png}
-\caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
+\caption{\textbf{/meta.1/raw} branch with \textbf{left} signal cluster highlighted}
 \label{fig:vizThree}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperFour.png}
-\caption{First level of output signals and first level of input signals in Vizmapper}
+\caption{\textbf{/meta.1/raw/left} branch with \textbf{ring} finger cluster highlighted}
 \label{fig:vizFour}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperFive.png}
-\caption{/source.3 branch of second level of output signals and first level of input signals in Vizmapper}
+\caption{\textbf{/meta.1/raw/left/ring} branch with 5 signals in this cluster displayed}
 \label{fig:vizFive}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperSix.png}
-\caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
+\caption{\textbf{/minibee.1/node.3/accel} branch of output signals and \textbf{/granul8.1/grain.1} branch of input signals}
 \label{fig:vizSix}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperSeven.png}
-\caption{First level of output signals and first level of input signals in Vizmapper}
+\caption{Creation of new connection between \textbf{/minibee.1/node.3/accel/x} signal and \textbf{/granul8.1/grain.1/beginratio} signal in edit mode}
 \label{fig:vizSeven}
 \end{figure}
 
@@ -333,49 +340,74 @@ Fortunately, a decision made in Section \ref{sec:userInterface} allows this prob
 
 \section{Vizmapper}
 
-The best way to see how this is to see the visualization used in Vizmapper. Figures \ref{fig:firstLevel}, \ref{fig:secondLevel}, and \ref{fig:thirdLevel} show screenshots of an example traversal down the output signal hierarchy and the input signal hierarchy. The inclusion relations between signals on the Mapper network are inferred from the OSC namespace of the Mapper network. This places a premium on a wisely constructed OSC namespace for the signals that reduces the number of signals at any given level of a branch of the hierarchy. As explained in Chapter 3, this type of visual hierarchical organization reduces the number of elements that a user has to decide between on any given level of a branch of the hierarchy and should mean a more effective interface. Notice the use of whether the circle is filled or not to represent whether the circle represents a terminal signal or a group of signals in an intermediate level of the complete hierarchy. Also, the Vizmapper visualization of the network displays two levels of the hierarchy at any given point, giving the user more context then a single level view like in Figure \ref{fig:interactiveBalloon}.
+The best way to see this is to see the visualization used in Vizmapper. The example Mapper network that will be used in the remainder of this chapter features Serge de Laubier's Meta-Instrument \cite{metainstrument1998} and a collection of four wireless Minibee transmitters each with a 3-axis acceleromter as the control devices. The synthesizer devices are the Granul8 granular synthesizer and a modal synthesizer. 
 
-The center of the screen displays two columns of buttons that display a trace of the path taken in the OSC namespace hierarchy for the output signals and for the input signals. Clicking on one of the buttons returns the visualization to a previous position in the current traversal. Clicking on the always present \emph{output signals} or \emph{input signals} buttons returns the visualization of that set of signals to the first level of the hierarchy. The left and right columns of text display the names of the currently accessible groups and/or signals at the current level of the hierarchy. The hierarchical visualization and text-matching filter at the top of the screen work together by removing any groups or signals from the visualization whose paths to not match the text filter.
+Figure \ref{fig:maxOne} shows Maxmapper displaying the Meta-Instrument output signals in the \emph{Source} column and the Granul8 input signals in the \emph{Destination} column. As shown at the bottom of the interface, the Meta-Instrument declares 101 output signals and the Granul8 synthesizer declares 191 input signals. Figure \ref{fig:maxThree} shows the 4 minibees with a total of 12 output signals (3 signals each) and the modal synthesizer with 39 signals. The idea is that Vizmapper presents a different view of this large system which makes more clear the relationships between signals.
 
-In order to make a connection, a user uses the \emph{view interface} to navigate down to a level of both the output signal hierarchy and input signal hierarchy that have at least one terminal signal in each. This is because the current view of the network is frozen when the user switches to the edit interface by clicking the edit tab at the top left of the screen. 
+Figures \ref{fig:vizOne} through \ref{fig:vizFive} show screenshots of an example branch traversal down the Meta-Instrument. Every highlighted cluster in these figures indicate a user click on the cluster to transition to the next screen in the interface. This series of screenshots shows the implementation of the new interactive balloon visualization arrived at in Figure \ref{fig:interactiveBalloon}. 
 
-Once the two signals that are to be connected are in view then the user switches to the \emph{edit interface}, clicks on one output signal and one input signal, enters in the pertinent information to define a functional transformation (if necessary), and then clicks the \emph{update} button to tell the Webmapper server to request a connection between the two selected signals. Any device linking that is necessary to create the needed Libmapper routers to manage the connection is done automatically without user intervention.
+The inclusion relations between all signals on the Mapper network are inferred by Vizmapper from the OSC namespace of the Mapper network. This places a premium on a wisely constructed OSC namespace for the signals that reduces the number of signals at any given level of a branch of the hierarchy. The OSC namespace of the Mapper-enabled Meta-Instrument is an example of a well-constructed namespace. As explained in Chapter 3, this type of visual hierarchical organization reduces the number of elements that a user has to decide between on any given level of a branch of the hierarchy and should mean a more effective interface. Notice the use of whether the circle is filled or not to represent whether the circle represents a terminal signal or a group of signals in an intermediate level of the complete hierarchy. Also, the Vizmapper visualization of the network displays two levels of the hierarchy at any given point, giving the user more context then a single level view like in Figure \ref{fig:interactiveBalloon}.
 
+The center of the screen displays two columns of buttons that display a trace of the path taken in the OSC namespace hierarchy for the output signals and for the input signals. Clicking on one of the buttons in a column returns the visualization of either the outputs signals or input signals to a previous position in the current traversal. Clicking on the always present \emph{output signals} or \emph{input signals} buttons returns the visualization of that set of signals to the first level of the hierarchy. The left and right columns of text display the names of the currently accessible groups and/or signals at the current level of the hierarchy. The hierarchical visualization and text-matching filter at the top of the screen work together by removing any groups or signals from the visualization whose paths to not match the text filter.
+
+In order to make a connection, a user uses the \emph{view mode} to navigate down to a level of both the output signal hierarchy and input signal hierarchy that have at least one terminal signal in each. This is because the current view of the network is frozen when the user switches to the edit interface by clicking the edit tab at the top left of the screen. Hierarchy traversal is limited to the view mode. Figure \ref{fig:vizSix} shows an example traversal in view mode to prepare for connections between output signals in the \verb#/minibee.1/node.3/accel# cluster and input signals in the \verb#/granul8.1/grain.1# cluster.
+
+Once the two signals that are to be connected are in view then the user switches to the \emph{edit mode}, clicks on one output signal and one input signal, enters in the pertinent information to define a functional transformation (if necessary), and then clicks the \emph{update} button to tell the Webmapper server to request a connection between the two selected signals. Any device linking that is necessary to create the needed Libmapper routers to manage the connection is done automatically without user intervention.
+
+As of this thesis, Libmapper allows network monitors to specify a functional transformation with the several properties. Vizmapper provides an interface to a subset of these properties to simplify the choices of the user:
+
+\begin{description}
+\item{Mode} - There are 5 modes that can be selected.
+\begin{description}
+\item{None} - This acts as a default in Vizmapper. If the min and max range of the output and input signals is defined then Libmapper will request a Line transformation with the Expression of the line chosen to cover both ranges linearly. Otherwise, it will request a Bypass transformation.
+\item{Line} - This mode applies a linear transformation defined by the specified Expression, Source Range, and Destination Range.
+\item{Bypass} - This mode represents a lack of functional transformation and applies no conditioning to the output signal before sending the data to the input signal.
+\item{Expression} - This mode accepts an arbritrary expression to condition the signal.
+\item{Calibrate} - If the input signal has a defined range. This mode monitors the data over the connection until a Line or Expression mode request is sent and constructs a transformation calibrated to the data transmitted during this time. If the destination signal has no defined range it defaults to a Bypass.
+\end{description}
+\item{Expression} - The expression used in a Line or Expression transformation.
+\item{Source range} - The range that the output signal data is restricted to.
+\item{Destination range} - The range that the input signal data is restricted to.
+\end{description}
+
+The user can view the functional transformation properties of a connection at any time by clicking on the curved line that represents the connection while in edit mode. Clicking on a connection while in view mode does nothing.
+
+Figure \ref{fig:vizSeven} shows the result of creating a default \emph{None} connection between the \verb#x# output signal in the \verb#/minibee.1/node.3/accel# cluster and the \verb#beginratio# in the \verb#/granul8.1/grain.1# cluster.
 
 To break a connection between two signals or view the active functional transformation over the a connection, the user clicks on a connection between two signals to select the connection. To finish breaking the connection, the user clicks the \emph{remove} button.
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperEight.png}
-\caption{/source.3 branch of second level of output signals and first level of input signals in Vizmapper}
+\caption{Creation between two more pairs of signals in same branch as first connection}
 \label{fig:vizEight}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperNine.png}
-\caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
+\caption{After more connections between the other 3 Minibees and \textbf{/minibee.1/node.7}, \textbf{/minibee.1/node.8}, \textbf{/minibee.1/node.9} branches}
 \label{fig:vizNine}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperTen.png}
-\caption{First level of output signals and first level of input signals in Vizmapper}
+\caption{Top level view of Mapper network signal hierarchy with all new connections summarized as 4 visual connections}
 \label{fig:vizTen}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperEleven.png}
-\caption{/source.3 branch of second level of output signals and first level of input signals in Vizmapper}
+\caption{Use of signal filter in top view to focus on relevant signal clusters}
 \label{fig:vizEleven}
 \end{figure}
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.88\textwidth]{maxmapperSecond.png}
-\caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
+\caption{Same connections shown in Maxmapper}
 \label{fig:maxTwo}
 \end{figure}
 
