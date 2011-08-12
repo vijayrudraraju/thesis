@@ -33,7 +33,7 @@ It is clear from Tanaka's definitions that Vizmapper serves as a tool rather tha
 
 To see this, the complex task of designing a musical instrument is deconstructed using an analysis process called \emph{hierarchical task analysis} \cite{annett1967}. 
 
-Mark Marshall nicely distills the last decade of thinking into understanding the abstract components of a digital musical instruments by decomposing a digital musical instrument into 3 main components \cite{marshall2008}:
+Wanderley and Depalle nicely distill the last decade of thinking into understanding the abstract components of a digital musical instruments by decomposing a digital musical instrument into 3 main components \cite{wanderley2004}:
 
 \begin{description}
 \item \emph{The physical interface} containing the sensors, actuators, and physical body of the instrument.
@@ -41,7 +41,7 @@ Mark Marshall nicely distills the last decade of thinking into understanding the
 \item \emph{The mapping system} in which connections are made between parameters of the physical interface and those of the synthesis system.
 \end{description}
 
-The design of these 3 components can be regarded as the 3 main subtasks of the overall task of designing a musical instrument. Each of these subtasks are themselves composed of more granular tasks, thus forming the beginnings of a hierarchical structure representing an analysis of the overall task.
+The design of these 3 components can be regarded as the 3 main subtasks of the overall task of designing a digital musical instrument. Each of these subtasks are themselves composed of more granular tasks, thus forming the beginnings of a hierarchical structure representing an analysis of the overall task.
 
 \begin{description}
 \item \emph{Designing the physical interface}
@@ -84,21 +84,7 @@ As a piece of software, there are a limited number of options for implementing t
 
 This is not an exhaustive list, however the point is that it is not practical (especially in a research context) to develop and maintain several versions of a software system that will work on a wide variety of operating systems and devices. However, the fact is that people will use whatever system they have available and the variety of devices that an artist or engineer is likely to use to interact with a sensor network is increasing. To design a practical system that is meant to work in a collaborative context, it is crucial to adapt to this reality.
 
-There are a number of terms that are used in the remainder of the chapter that are helpful to define. The specifics of the definitions are debatable and are not cited because they are based on experience and may not even be terms that are widely used, however they remain helpful for understanding the rest of this chapter. Treat them as placeholders for their definitions.
-
-\begin{description}
-\item[Development environment] a sofware/hardware environment that the developer uses to write programmer code and executables
-\item[Deployment environment] a software/hardware environment that the user uses to run executables
-\item[Operating system] a program that manages hardware resources and the computer processor - from the developer's point of view, reduces the complexity and risk of writting programmer code that interfaces with the physical hardware and computer processor by providing an easier to use set of operations that provide a higher level interface (called system calls) to the processor and other hardware - system calls prevent programmer code from generating machine code that executes low-level processor and hardware operations in such a way that would destablize the system
-\item[Progammer code] human readable text that is written by the developer in a specific computer language and translated to produce an executable
-\item[Machine code] machine readable code that is often produced by a compiler and requires no further translation to be understood by a physical computer processor
-\item[Executable] a file or collection of files that the user can \emph{run} without any further manual translation within their deployment environment - can be programmer code, machine code, or other forms of executable code  
-\item[Machine] a physical computer processor that provides a stable interface of machine operations that can be executed by machine code
-\item[Compiler] a software program that takes programmer code as input and produces machine code or machine code executables as output
-\item[Interpreter] a software program that takes programmer code as an executable to run a program
-\end{description}
-
-Before beginning development on a software system, it is necessary to choose a development environment and a deployment environment. There are any number of very stable development environments that enable a software developer to write a single collection of programmer code and translate the code into executables that can run on Windows, OSX, and Linux machines. These choices effect the developer of the software and not the user of the software. The choice of deployment environment is much more consequential to the user because it effects how they will actually run the executable.
+Before beginning development on a software system, it is necessary to choose a development environment and a deployment environment. There are any number of very stable development environments that enable a software developer to write a single collection of programmer code and translate the code into executables that can run on Windows, OSX, and Linux machines. These choices effect the developer of the software and not the user of the software. The choice of deployment environment is much more consequential to the user because it effects how they will actually run the executable. For an explaination of technical terms pertaining to this chapter review the appendix.
 
 There are three common methods for a user to run software on their chosen machine.
 
@@ -131,7 +117,7 @@ As a reminder, the subtask of \emph{Designing the Mapping} was further broken do
 	\item create mappings that specify how (if at all) to modify source signals from outputs to generate the desired destination signals for the inputs
 \end{description}
 
-The task of designing a mapping is a less complex task (but not less important) than the task of designing a physical interface or designing an audio synthesis system. This lack of complexity in the task is one of the reasons why it is possible to even contemplate performing the other task through a single interface. Building an interface for the task of designing a physical interface or designing an audio synthesis system is less manageable in this way.
+From the hierarchical task analysis of designing a DMI, it can be argued that the task of designing a mapping is a less complex task (but not less important) than the task of designing a physical interface or designing an audio synthesis system. This lack of complexity in the task is one of the reasons why it is possible to even contemplate performing the other task through a single interface. Building an interface for the task of designing a physical interface or designing an audio synthesis system is less manageable in this way.
 
 Instead, the complexity of the task lies in the complexity of the Mapper network and what the task of \emph{choosing} actually entails. Since the focus is now on the mapping task, it is helpful to see if it is possible to be even more granular in the hierarchical decomposition of the task. 
 
@@ -167,7 +153,7 @@ Typically, interfaces that allow the user to browse data using text queries allo
 
 \section{Application of Data Visualization Design Principles}
 
-Following the graphical perception research in section \ref{sec:Graphical Perception} of chapter 3, before making decisions about the visualization of the network the data set of a Mapper network needs to be analyzed using the three stage process of Bertin.
+Following the graphical perception research in section \ref{sec:Graphical Perception} of chapter 3, before making decisions about the visualization of the network the data set of a Mapper network needs to be analyzed using the three stage process of Bertin \cite{semiology1983}.
 
 This involves determining the \emph{components} in the data, the \emph{length} of each component, and the \emph{level of organization} (nominal, ordinal, or quantitative).
 
@@ -181,20 +167,18 @@ There are three easily distinguishable sets of data that a user concerns themsel
 
 It is useful to note that the most complex elements are the elements of the set of functional transformations. The least complex elements are the OSC names of the signals. This is taken simply from the number of variables that must be defined to fully define each element.
 
-So the data set can be decomposed into \emph{three}, but it might also be decomposed into \emph{four}. The first component, the set of signals, can be split into one component for output signals and one component for input signals. The question is whether one decomposition is more effective than the other. If it is assumed that the source of a connection will always be an output signal of a device and the destination of a connection will always be an input signal of a device then it makes sense to use \emph{four} because it will always be necessary to select a source and a destination to form any connection and it will be efficient to graphically distinguish between the two types of signal. Therefore, there are \emph{four} components in the data set.
+So the data set can be decomposed into \emph{three} components, but it might also be decomposed into \emph{four}. The first component, the set of signals, can be split into one component for output signals and one component for input signals. The question is whether one decomposition is more effective than the other. If it is assumed that the source of a connection will always be an output signal of a device and the destination of a connection will always be an input signal of a device then it makes sense to use \emph{four} because it will always be necessary to select a source and a destination to form any connection and it will be efficient to graphically distinguish between the two types of signal. Therefore, there are \emph{four} components in the data set. The first component of the previous decomposition can be further split into:
 
 \begin{enumerate}
 \item set of output signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
 \item set of input signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
-\item set of associative connections between pairs of signals, each connection is defined by a source and a destination (the source of the data is typically an output signal and the destination is typically an input signal)
-\item set of function transformations that are paired with each associative connection, which are defined using a function type, a mathematical function, and an allowable range of values for the input of the function (actually an output signal in Mapper terminology) and output of the function (actually an input signal in Mapper terminology)
 \end{enumerate}
 
 The length of the output signals component and the input signals component are assumed to be \emph{large} and within an order of magnitude of each other. There might be many more output signals than input signals or vice versa, however since there will be roughly one control mechanism device with output signals for each sound generation mechanism device with input signals in a scenario with DMIs, this is a reasonable assumption.
 
 The length of the set of associative connections is bounded by the length of the set of output signals. This is because the Mapper protocol only handles \emph{one-to-many} and \emph{one-to-one} mappings as explained in chapter 2. Therefore, there can be at most one connection for every output signal.
 
-The length of the set of function transformations is equal to the length of the set of associative connections because there every connection is paired with a functional transformation governing data transmission over the connection.
+The length of the set of function transformations is equal to the length of the set of associative connections because every connection is paired with a functional transformation governing data transmission over the connection. This is not strictly true, however it is simpler to treat those connections with no active transformation as utilizing the function of \begin{math}x = y\end{math} to indicate the lack of any signal conditioning.  
 
 The level of organization of all four components is \emph{nominal}. None of the components have elements that can be ordered or manipulated with arithmetic.
 
@@ -240,7 +224,7 @@ Inspired by Holten's own exploration of visualizing similarly structured data, t
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.6\textwidth]{holten_balloon.png}
-\caption{Example of a balloon tree visualization with dark lines for inclusion relations and light lines for the adjacency relations}
+\caption{Example of a balloon tree visualization with dark lines for inclusion relations and light lines for the adjacency relations - inspired by \cite{edgebundles2006}}
 \label{fig:balloonTree}
 \end{figure}
 
@@ -272,56 +256,129 @@ It may be possible to use a different graphical property entirely. However, it i
 
 \begin{figure}[htb]
 \centering
-\subfloat[First level of hierarchy][First level of hierarchy]{
-\includegraphics[width=0.45\textwidth]{uncluttered_balloon.png}
+\subfloat[Top level][Top level]{
+\includegraphics[width=0.33\textwidth]{firstLevelBalloon.png}
 \label{fig:unclutteredBalloon}}
-\subfloat[One branch of the second level][One branch of the second level]{
-\includegraphics[width=0.45\textwidth]{interactive_balloon.png}
+\subfloat[Branch of the second level][Branch of the second level]{
+\includegraphics[width=0.33\textwidth]{secondLevelBalloon.png}
 \label{fig:secondUnclutteredBalloon}}
+\subfloat[Branch on the third level][Branch on the third level]{
+\includegraphics[width=0.33\textwidth]{thirdLevelBalloon.png}
+\label{fig:thirdUnclutteredBalloon}}
 \caption{Interactive balloon tree visualization of hierarchy}
 \label{fig:interactiveBalloon}
 \end{figure}
 
-Look at Figure \ref{fig:unclutteredBalloon}. Clearly, this figure leaves out information present in the other visualizations even though it is supposed to visualize the same data set as the other three figures. However, it displays all the adjacency relations between groups on single level of the hierarchy and displays the inclusion relation between the root of the hierarchy and the first level of the hierarchy. If the user clicks on gray circle representing the branch of that drops to the deepest in the hierarchy than the interface can modify the visualization to Figure \ref{fig:secondUnclutteredBalloon}.
+In Figure \ref{fig:unclutteredBalloon}, it is clear that it leaves out information present in the other visualizations even though it is supposed to visualize the same data set as the other three figures. However, it displays all the adjacency relations between groups on single level of the hierarchy and displays the inclusion relation between the root of the hierarchy and the first level of the hierarchy. If the user clicks on gray circle in Figure \ref{fig:unclutteredBalloon} representing a branch of the hierarchy on the second level, then the interface can modify the visualization to Figure \ref{fig:secondUnclutteredBalloon}. The user can then click on the gray circle in Figure \ref{fig:secondUnclutteredBalloon} to proceed into the deepest level (which in Figure \ref{fig:clutterBalloon} is the third level) in the whole hierarchy shown in Figure \ref{fig:thirdUnclutteredBalloon}. 
 
-The user can then click on the gray circle in Figure \ref{fig:secondUnclutteredBalloon} to proceed into the deepest level in the whole hierarchy. However, this interactive visualization has lost information about the adjacency relations between the current level of the hierarchy and a higher level of the hierarchy. It only displays adjacency relations between the groups on the same level. Therefore, even though Figure \ref{fig:unclutteredBalloon} shows the gray circle having adjacency relations between all the other groups and elements on the top level of the hierarchy, Figure \ref{fig:secondUnclutteredBalloon} loses this information completely and there is no way to recover exactly what terminal elements are connected to each other.
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.88\textwidth]{root_level.png}
-\caption{First level of output signals and first level of input signals in Vizmapper}
-\label{fig:firstLevel}
-\end{figure}
+However, this interactive visualization has lost information about the adjacency relations between the current level of the hierarchy and a higher level of the hierarchy. It only displays adjacency relations between the groups on the same level. Therefore, even though Figure \ref{fig:unclutteredBalloon} shows the gray circle having adjacency relations between all the other groups and elements on the top level of the hierarchy, Figure \ref{fig:secondUnclutteredBalloon} loses this information completely and there is no way to recover exactly what terminal elements are connected to each other.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.88\textwidth]{left_first_level.png}
-\caption{/source.3 branch of second level of output signals and first level of input signals in Vizmapper}
-\label{fig:secondLevel}
-\end{figure}
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.88\textwidth]{right_second_level.png}
+\includegraphics[width=0.88\textwidth]{maxmapperFirst.png}
 \caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
-\label{fig:thirdLevel}
+\label{fig:maxOne}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperFirst.png}
+\caption{First level of output signals and first level of input signals in Vizmapper}
+\label{fig:vizOne}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperSecond.png}
+\caption{/source.3 branch of second level of output signals and first level of input signals in Vizmapper}
+\label{fig:vizTwo}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperThird.png}
+\caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
+\label{fig:vizThree}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperFour.png}
+\caption{First level of output signals and first level of input signals in Vizmapper}
+\label{fig:vizFour}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperFive.png}
+\caption{/source.3 branch of second level of output signals and first level of input signals in Vizmapper}
+\label{fig:vizFive}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperSix.png}
+\caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
+\label{fig:vizSix}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperSeven.png}
+\caption{First level of output signals and first level of input signals in Vizmapper}
+\label{fig:vizSeven}
 \end{figure}
 
 Fortunately, a decision made in Section \ref{sec:userInterface} allows this problem to be circumvented. The problem of lost information in this scenario is a result of all of the elements belonging to the same component. Since the decision is made in Vizmapper to separate the potential sources of a connection from the potention destinations of a connection and any given signal can only be an output (source) or input (destination) then this problem is nonexistent.
+
+\section{Vizmapper}
 
 The best way to see how this is to see the visualization used in Vizmapper. Figures \ref{fig:firstLevel}, \ref{fig:secondLevel}, and \ref{fig:thirdLevel} show screenshots of an example traversal down the output signal hierarchy and the input signal hierarchy. The inclusion relations between signals on the Mapper network are inferred from the OSC namespace of the Mapper network. This places a premium on a wisely constructed OSC namespace for the signals that reduces the number of signals at any given level of a branch of the hierarchy. As explained in Chapter 3, this type of visual hierarchical organization reduces the number of elements that a user has to decide between on any given level of a branch of the hierarchy and should mean a more effective interface. Notice the use of whether the circle is filled or not to represent whether the circle represents a terminal signal or a group of signals in an intermediate level of the complete hierarchy. Also, the Vizmapper visualization of the network displays two levels of the hierarchy at any given point, giving the user more context then a single level view like in Figure \ref{fig:interactiveBalloon}.
 
 The center of the screen displays two columns of buttons that display a trace of the path taken in the OSC namespace hierarchy for the output signals and for the input signals. Clicking on one of the buttons returns the visualization to a previous position in the current traversal. Clicking on the always present \emph{output signals} or \emph{input signals} buttons returns the visualization of that set of signals to the first level of the hierarchy. The left and right columns of text display the names of the currently accessible groups and/or signals at the current level of the hierarchy. The hierarchical visualization and text-matching filter at the top of the screen work together by removing any groups or signals from the visualization whose paths to not match the text filter.
 
-In order to make a connection, a user uses the \emph{view interface} to navigate down to a level of both the output signal hierarchy and input signal hierarchy that have at least one terminal signal in each. This is because the current view of the network is frozen when the user switches to the edit interface by clicking the edit tab at the top left of the screen. Once the two signals that are to be connected are in view then the user switches to the \emph{edit interface}, clicks on one output signal and one input signal, enters in the pertinent information to define a functional transformation (if necessary), and then clicks the \emph{update} button to tell the Webmapper server to request a connection between the two selected signals. Any device linking that is necessary to create the needed Libmapper routers to manage the connection is done automatically without user intervention.
+In order to make a connection, a user uses the \emph{view interface} to navigate down to a level of both the output signal hierarchy and input signal hierarchy that have at least one terminal signal in each. This is because the current view of the network is frozen when the user switches to the edit interface by clicking the edit tab at the top left of the screen. 
+
+Once the two signals that are to be connected are in view then the user switches to the \emph{edit interface}, clicks on one output signal and one input signal, enters in the pertinent information to define a functional transformation (if necessary), and then clicks the \emph{update} button to tell the Webmapper server to request a connection between the two selected signals. Any device linking that is necessary to create the needed Libmapper routers to manage the connection is done automatically without user intervention.
+
+
+To break a connection between two signals or view the active functional transformation over the a connection, the user clicks on a connection between two signals to select the connection. To finish breaking the connection, the user clicks the \emph{remove} button.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperEight.png}
+\caption{/source.3 branch of second level of output signals and first level of input signals in Vizmapper}
+\label{fig:vizEight}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperNine.png}
+\caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
+\label{fig:vizNine}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperTen.png}
+\caption{First level of output signals and first level of input signals in Vizmapper}
+\label{fig:vizTen}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.88\textwidth]{vizmapperEleven.png}
+\caption{/source.3 branch of second level of output signals and first level of input signals in Vizmapper}
+\label{fig:vizEleven}
+\end{figure}
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.88\textwidth]{editInterface.png}
-\caption{Edit interface of Vizmapper}
-\label{fig:editInterface}
+\includegraphics[width=0.88\textwidth]{maxmapperSecond.png}
+\caption{/source.3 branch of second level of output signals and /dest.3/synth1 branch of third level of input signals in Vizmapper}
+\label{fig:maxTwo}
 \end{figure}
 
-To break a connection between two signals or view the active functional transformation over the a connection, the user clicks on a connection between two signals to select the connection. To finish breaking the connection, the user clicks the \emph{remove} button.
+\section{Summary}
 
 The Vizmapper interface provides all the functionality necessary to create a mapping on a Mapper network. The central argument is that through the process of understanding the mapping task and researching user interface design principles, data visualization principles, and human cognitive processes, this thesis research has resulted in an effective interface for configuring mappings that scales to a MSN with many signals.
