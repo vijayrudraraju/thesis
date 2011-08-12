@@ -53,7 +53,7 @@ The design of these 3 components can be regarded as the 3 main subtasks of the o
 \item choose structural/aesthetic materials that combined with the sensors and actuators will form the composite form of the physical interface
 \item design the shape, look, feel of the composite physical interface
 \end{description}
-\item \emph{Designing the software audio synthesis system}
+\item \emph{Designing the software synthesis system}
 \begin{description}
 \item choose a mechanism/algorithm for performing sound synthesis in software
 \item choose a mechanism/algorithm for generating visual, haptic, and/or vibrotactile feedback
@@ -100,7 +100,7 @@ A web application is essentially an interpreted executable because a web browser
 
 Assuming the intent is for multiple team members to be running the Vizmapper interface to enable simultaneous work on the mapping of a network and that there is presumably a local network available to allow the various devices on the sensor network to communicate with each other, suggests Vizmapper ought to be implemented as a web application. 
 
-A web application is typically distributed as a two part software system where one part is called the \emph{client} and the other part is called the \emph{server}. One server can serve the web application to a large number of clients. This is the source of another advantage of web applications. A web client runs in a web browser and therefore can be run on any machine that includes a modern web browser, which includes every operating system listed at the beginning of this section. All modern web browsers provide an increasingly identical deployment environment. Since Libmapper is compiled code, the server software can take care of interfacing with the library and communicating through the Mapper Protocol with the rest of the network. Despite the fact that the server is more restricted as to what deployment environment it can be run on because of the Libmapper dependency, the server needs to run on only one machine. Also, a web application is much easier to deploy on a collection of heterogenous machines. At this point in time, a web client reduces the likelihood that the team will be forced to huddle around the chosen few machines that can run the client, even if all machines cannot run the server with a more restrictive deployment environment.
+A web application is typically distributed as a two part software system where one part is called the \emph{client} and the other part is called the \emph{server}. One server can serve the web application to a large number of clients. This is the source of another advantage of web applications. A web client runs in a web browser and therefore can be run on any machine that includes a modern web browser, which includes every operating system listed at the beginning of this section. All modern web browsers provide an increasingly identical deployment environment. Since Libmapper is compiled code, the server software can take care of interfacing with the library and communicating through the Mapper Protocol with the rest of the Mapper network. Despite the fact that the server is more restricted as to what deployment environment it can be run on because of the Libmapper dependency, the server needs to run on only one machine. Also, a web application is much easier to deploy on a collection of heterogenous machines. At this point in time, a web application reduces the likelihood that the team will be forced to huddle around the chosen few machines that can run the client, even if all machines cannot run a server with a more restrictive deployment environment.
 
 Stephen Sinclair, the developer of Libmapper and a member of IDMIL, also developed a basic server written in Python (a popular interpreted language) that interfaces with Libmapper and provides a convenient interface for a web browser client to indirectly speak the Mapper Protocol to the local network of devices by communicating with the server. This web server is called Webmapper. Together, Webmapper/Vizmapper provides a server/client web application that can be used to configure a Mapper network.
 
@@ -143,21 +143,21 @@ Instead, the complexity of the task lies in the complexity of the Mapper network
 
 This clarifies the individual steps implicit in the overall task and suggests how to distribute the steps needed in the interface. Since the screen space on a monitor is limited and the most important data about the Mapper network are the names of the signals and the mappings between them, devoting as much space to the visualization of the signals and their connections is a priority.
 
-The first decision made is to separate the viewing and browsing of the MSN from the editing of mappings. Vizmapper treats these two set of subtasks as two different modes. Entering viewing and browsing mode means that it is not possible to modify the mappings of the signals being browsed. Entering editing mode focusing the view on a subset of signals from the complete set and means that it is not possible to browse the larger set of signals. This decision is made because viewing and browsing does not actually effect the Mapper network, only editing a mapping effects the network. Preventing both modes from being accessed on the same screen makes the conceptual separation between the modes clear and reduces the amount of accidental modifications.
+The first decision made is to separate the viewing and browsing of the MSN from the editing of mappings. Vizmapper treats these two sets of subtasks as two different modes. Entering viewing and browsing mode means that it is not possible to modify the mappings of the signals being browsed. Entering editing mode, focusing the view on a subset of signals from the complete set and means that it is not possible to browse the larger set of signals. This decision is made because viewing and browsing does not actually effect the Mapper network, only editing a mapping effects the network. Preventing both modes from being accessed on the same screen makes the conceptual separation between the modes clear and reduces the amount of accidental modifications.
 
 When it comes to viewing and browsing, since the interface is being designed with larger MSNs in mind, there should be a way to filter the complete set of signals to a subset of signals. As discussed in chapter 3, this can be accomplished with pointing and clicking to utilize recognition processes or it can be accomplished by typing to encourage the use of recall processes. Although finding a specific signal through name recognition is less straining then remembering the name of a specific signal and typing it, it is not necessarily a simple decision. In the case where a user has been working with the same Mapper network for an extended period of time, it may become tedious to point, click, and browse their way to a specific signal even though they know the exact name of the signal they are looking for. In this case, the physical process involved to select the signal becomes more consciously cumbersome than the cognitive process involved in recognition or recall.
 
 A single text input box for entering a text matching filter query, occupies very little vertical space and adds functionality that is helpful for this type of user. The user can type in a portion of the complete OSC name of a signal and limit the view to only the signals that match the text in the input box. In order to display the union of more than one text query (show the signals that match the first text query OR second query OR third query, etc.), the user uses a space character to delimit the separate filter queries. 
 
-Typically, interfaces that allow the user to browse data using text queries allow the user to compose more complex queries (like ANDs or NOTs in addition to ORs). However, this functionality seems to deviate from the scope of the interface and add syntax complexity without a substantial benefit to the central task. Since the user is only searching within a set names of signals and not a set of large text documents (like one might do with a database or the internet) it is likely a type of power that is not required for most users. Additional features and complexity are avoided in Vizmapper, unless the functionality that is added is significant to the mapping task as it has been analyzed.
+Typically, interfaces that allow the user to browse data using text queries allow the user to compose more complex queries (like ANDs or NOTs in addition to ORs). However, this functionality seems to deviate from the scope of the interface and add syntax complexity without a substantial benefit to the central task. Since the user is only searching within a set of names of signals and not a set of large text documents (like one might do with a database or the internet) it is likely a type of power that is not required for most users. Additional features and complexity are avoided in Vizmapper, unless the functionality that is added is significant to the mapping task as it has been analyzed.
 
 \section{Application of Data Visualization Design Principles}
 
-Following the graphical perception research in section \ref{sec:Graphical Perception} of chapter 3, before making decisions about the visualization of the network the data set of a Mapper network needs to be analyzed using the three stage process of Bertin \cite{semiology1983}.
+Following the graphical perception research in Section \ref{sec:Graphical Perception}, before making decisions about the visualization of the network, the data set of a Mapper network will be analyzed using the three stage process of Bertin \cite{semiology1983}.
 
 This involves determining the \emph{components} in the data, the \emph{length} of each component, and the \emph{level of organization} (nominal, ordinal, or quantitative).
 
-There are three easily distinguishable sets of data that a user concerns themselves with when mapping signals.
+There are 3 easily distinguishable sets of data that a user concerns themselves with when mapping signals.
 
 \begin{enumerate}
 \item set of signals on the Mapper network, which are defined as OSC names that are part of a hierarchical namespace
@@ -176,9 +176,9 @@ So the data set can be decomposed into \emph{three} components, but it might als
 
 The length of the output signals component and the input signals component are assumed to be \emph{large} and within an order of magnitude of each other. There might be many more output signals than input signals or vice versa, however since there will be roughly one control mechanism device with output signals for each sound generation mechanism device with input signals in a scenario with DMIs, this is a reasonable assumption.
 
-The length of the set of associative connections is bounded by the length of the set of output signals. This is because the Mapper protocol only handles \emph{one-to-many} and \emph{one-to-one} mappings as explained in chapter 2. Therefore, there can be at most one connection for every output signal.
+The length of the set of associative connections is bounded by the length of the set of output signals. This is because the Mapper protocol only handles \emph{one-to-many} and \emph{one-to-one} mappings as explained in Chapter 2. Therefore, there can be, at most, one connection for every output signal.
 
-The length of the set of function transformations is equal to the length of the set of associative connections because every connection is paired with a functional transformation governing data transmission over the connection. This is not strictly true, however it is simpler to treat those connections with no active transformation as utilizing the function of \begin{math}x = y\end{math} to indicate the lack of any signal conditioning.  
+The length of the set of function transformations is equal to the length of the set of associative connections because every connection is paired with a functional transformation governing data transmission over the connection. This is not strictly true, however it is simpler to treat those connections with no active transformation as utilizing the function of \begin{math}x = y\end{math} with no bounded ranges (also known as a bypass) to indicate the lack of any signal conditioning.  
 
 The level of organization of all four components is \emph{nominal}. None of the components have elements that can be ordered or manipulated with arithmetic.
 
@@ -195,11 +195,11 @@ So the conclusion of a Bertin-like analysis of a typical Mapper network data set
 \item \emph{Level of organization} - all four components are nominal
 \end{description}
 
-This analysis comes with one caveat in light of chapters 2 and 3. There is one level of organization that Bertin does not address - hierarchical organization. This is a type of organization that seems relevant, especially given the importance of hierarchical organization in human cognition, yet seems to not be directly addressed by the nominal/ordinal/quantitative categorization scheme. Due to the nature of OSC namespaces, the set of output signals and the set of input signals can be grouped hierarchically. This suggests a type of relation between signals that is not simply = or NOT =.
+This analysis comes with one caveat in light of Chapters 2 and 3. There is one level of organization that Bertin does not address - hierarchical organization. This is a type of organization that seems relevant, especially given the importance of hierarchical organization in human cognition, yet seems to not be directly addressed by the nominal/ordinal/quantitative categorization scheme. Due to the nature of OSC namespaces, the set of output signals and the set of input signals can be grouped hierarchically. This suggests a type of relation between signals that is not simply = or NOT =.
 
-The problem of visualizing an abstract data set that has both hierarchical relationships between elements and connections between elements as components is problem that has been tackled in data visualization literature \cite{edgebundles2006}. Holten refers the hierarchically organized component as a set of \emph{inclusion relations} and the set of connections as a set of \emph{adjacency relations}. One example of a data set exhibiting a structure similar to a Mapper network data set is an academic citation network where publications are the lowest level elements of the hierarchy and departments and universities are represented by higher level groupings in the hierarchy. Connections between publications would represent one publication citing another \cite{edgebundles2006}.
+The problem of visualizing an abstract data set that has both hierarchical relationships between elements and connections between elements as components is problem that has been tackled in data visualization literature \cite{edgebundles2006}. Holten refers to the hierarchically organized component as a set of \emph{inclusion relations} and the set of connections as a set of \emph{adjacency relations}. One example of a data set exhibiting a structure similar to a Mapper network data set is an academic citation network where publications are the lowest level elements of the hierarchy and departments and universities are represented by higher level groupings in the hierarchy. Connections between publications would represent one publication citing another \cite{edgebundles2006}.
 
-Since we are dealing with nominal data with some hierarchical organization, let us focus on the most discerning perceptual tasks for nominal data using the ranking presented in section \ref{sec:Graphical Perception}.
+Since we are dealing with nominal data with some hierarchical organization, let us focus on the most discerning perceptual tasks for nominal data using the ranking presented in Section \ref{sec:Graphical Perception}. This reduced set of ranked perceptual tasks is shown in Table \ref{tab:perceptualNominal}.
 
 \begin{table}
     \begin{center}
@@ -219,7 +219,7 @@ Since we are dealing with nominal data with some hierarchical organization, let 
     \label{tab:perceptualNominal}
 \end{table}
 
-Inspired by Holten's own exploration of visualizing similarly structured data, the decision is made to represent signals with circles occupying different points in space. The heuristic reasons for this decision is that the shape of a circle lends itself to a symmetrical and aesthetically pleasing presentation of the data and makes for an easy target for the user to click (more on this shortly). There are four components and it is important to distinguish between these four components, first and foremost. Since position is already being used to distinguish between signals and at least one output signal and one input signal will need to be displayed for the connection and functional transformation components to be relevant, it makes sense to place a constraint on the \emph{position} of signals that forces the output signals to be confined to the left side of the display and input signals to be confined to the right.
+Inspired by Holten's own exploration of visualizing similarly structured data, the decision is made to represent signals with circles occupying different points in space. The heuristic reason for this decision is that the shape of a circle lends itself to a symmetrical and aesthetically pleasing presentation of the data and makes for an easy target for the user to click (more on this shortly). There are four components and it is important to distinguish between these four components, first and foremost. Since position is already being used to distinguish between signals and at least one output signal and one input signal will need to be displayed for the connection and functional transformation components to be relevant, it makes sense to place a constraint on the \emph{position} of signals that forces the output signals to be confined to the left side of the display and input signals to be confined to the right.
 
 \begin{figure}[htb]
 \centering
@@ -228,7 +228,7 @@ Inspired by Holten's own exploration of visualizing similarly structured data, t
 \label{fig:balloonTree}
 \end{figure}
 
-The decision is made to use containment to represent the inclusion relations between hierarchically organized elements. This is taken from the use of a \emph{balloon tree} visualization by Holten in his own research. An example of a balloon tree is shown in Figure \ref{fig:balloonTree}. Examining the figure, notice that \emph{connection}, \emph{containment}, and \emph{density} are used to communicate specific relationships between elements. Again, there are two components being displayed: a set of inclusion relations and a set of adjacency relations. In this example there are only two adjacency relations shown in the figure. 
+The decision is made to use \emph{containment} to represent the inclusion relations between hierarchically organized elements. This is taken from the use of a \emph{balloon tree} visualization by Holten in his own research. An example of a balloon tree is shown in Figure \ref{fig:balloonTree}. Examining the figure, notice that \emph{connection}, \emph{containment}, and \emph{density} are used to communicate specific relationships between elements. Again, there are two components being displayed: a set of inclusion relations and a set of adjacency relations. In this example there are only two adjacency relations shown in the figure. 
 
 Connection is used to communicate both adjacency and inclusion. The curved, lighter lines represent adjacency relations between terminal elements (for example, citations between publications). The straight, dark lines represent inclusion relations between different levels in the hierarchy. Density and shape are used to distinguish between the two. Density is also used to distinguish between terminal elements in the hierarchy (dark dots) and intermediate elements in the hierarchy (light dots, for example, representing departments and universities). 
 
@@ -250,9 +250,9 @@ The balloon tree used in Figure \ref{fig:balloonTree} is not as uncluttered as i
 \label{fig:clutterBalloon}
 \end{figure}
 
-When the number of elements in the data set grows large and there are many adjacency relations between the elements, there is a different type of clutter that arises involving the lines representing the adjacency relations like in Figure \ref{fig:clutterBalloon}. This is a type of clutter that is more difficult to reduce. One can be more specific about how the connnections are drawn, using bezier curves and bundling to organize the connections like one might bundle wires between mixers. This is the method that Holten uses \cite{edgebundles2006}. 
+When the number of elements in the data set grows large and there are many adjacency relations between the elements, there is a different type of clutter that arises involving the lines representing the adjacency relations like in Figure \ref{fig:clutterBalloon}. This is a type of clutter that is more difficult to reduce. One can be more specific about how the connnections are drawn, using bezier curves and bundling to organize the connections like one might bundle wires between mixers. This is the method that Holten uses \cite{edgebundles2006}. In future work, using Holten's connection clustering algorithm in Vizmapper would be a net benefit, however it is not included at the time of this thesis. 
 
-It may be possible to use a different graphical property entirely. However, it is difficult to conceive of a graphical property that communicates connections between signals better than the graphical property of connection. One potential way out is realizing that there is no need to treat the visualization as static. It is already possible to use a text-matching filter to modify the visualization by typing within the interface as described in Section \ref{sec:userInterface}. Perhaps it would make sense to allow the user to filter the visualization by pointing and clicking as well.
+As an alternative to Holten's method, it may be possible to use a different graphical property entirely. However, it is difficult to conceive of a graphical property that communicates connections between signals better than the graphical property of connection. One potential way out is realizing that there is no need to treat the visualization as static. It is already possible to use a text-matching filter to modify the visualization by typing within the interface as described in Section \ref{sec:userInterface}. Perhaps it would make sense to allow the user to filter the visualization by pointing and clicking as well.
 
 \begin{figure}[htb]
 \centering
@@ -269,7 +269,7 @@ It may be possible to use a different graphical property entirely. However, it i
 \label{fig:interactiveBalloon}
 \end{figure}
 
-In Figure \ref{fig:unclutteredBalloon}, it is clear that it leaves out information present in the other visualizations even though it is supposed to visualize the same data set as the other three figures. However, it displays all the adjacency relations between groups on single level of the hierarchy and displays the inclusion relation between the root of the hierarchy and the first level of the hierarchy. If the user clicks on gray circle in Figure \ref{fig:unclutteredBalloon} representing a branch of the hierarchy on the second level, then the interface can modify the visualization to Figure \ref{fig:secondUnclutteredBalloon}. The user can then click on the gray circle in Figure \ref{fig:secondUnclutteredBalloon} to proceed into the deepest level (which in Figure \ref{fig:clutterBalloon} is the third level) in the whole hierarchy shown in Figure \ref{fig:thirdUnclutteredBalloon}. 
+Figure \ref{fig:unclutteredBalloon} only displays details of the hierarchy at the top level of the current view. It is clear that this alternative bubble tree leaves out information present in the other visualizations even though it is supposed to visualize the same data set as Figure \ref{fig:clutterBalloon}. However, it displays all the adjacency relations between groups on single level of the hierarchy and displays the inclusion relation between the root of the hierarchy and the first level of the hierarchy. If the user clicks on gray circle in Figure \ref{fig:unclutteredBalloon} representing a branch of the hierarchy on the second level, then the interface can modify the visualization to Figure \ref{fig:secondUnclutteredBalloon}. The user can then click on the gray circle in Figure \ref{fig:secondUnclutteredBalloon} to proceed into the deepest level (which in Figure \ref{fig:clutterBalloon} is the third level) in the whole hierarchy shown in Figure \ref{fig:thirdUnclutteredBalloon}. 
 
 However, this interactive visualization has lost information about the adjacency relations between the current level of the hierarchy and a higher level of the hierarchy. It only displays adjacency relations between the groups on the same level. Therefore, even though Figure \ref{fig:unclutteredBalloon} shows the gray circle having adjacency relations between all the other groups and elements on the top level of the hierarchy, Figure \ref{fig:secondUnclutteredBalloon} loses this information completely and there is no way to recover exactly what terminal elements are connected to each other.
 
@@ -287,6 +287,12 @@ However, this interactive visualization has lost information about the adjacency
 \label{fig:maxThree}
 \end{figure}
 
+Fortunately, a decision made in Section \ref{sec:userInterface} allows this problem to be circumvented. The problem of lost information in this scenario is a result of all of the elements indiscriminately belonging to the same component. Since the decision is made in Vizmapper to separate the potential sources of a connection from the potential destinations of a connection and any given signal can only be an output (source) or input (destination) then this problem is nonexistent.
+
+\section{Vizmapper}
+
+The best way to see this is to see the visualization used in Vizmapper. The example Mapper network that will be used in the remainder of this chapter features Serge de Laubier's Meta-Instrument \cite{metainstrument1998} and a collection of four wireless Minibee transmitters each with a 3-axis acceleromter as the control devices. The synthesizer devices are the Granul8 granular synthesizer and a modal synthesizer, both developed at IDMIL and implemented using Max/MSP. 
+
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperFirst.png}
@@ -297,7 +303,7 @@ However, this interactive visualization has lost information about the adjacency
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperSecond.png}
-\caption{First level of the Meta-Instrument with the \textbf{raw} signal cluster highlighted}
+\caption{Top level of the Meta-Instrument with the \textbf{raw} signal cluster highlighted}
 \label{fig:vizTwo}
 \end{figure}
 
@@ -329,87 +335,89 @@ However, this interactive visualization has lost information about the adjacency
 \label{fig:vizSix}
 \end{figure}
 
-\begin{figure}[p]
+Figure \ref{fig:maxOne} shows Maxmapper displaying the Meta-Instrument output signals in the \emph{Source} column and the Granul8 input signals in the \emph{Destination} column. As shown at the bottom of the interface, the Meta-Instrument declares 101 output signals and the Granul8 synthesizer declares 191 input signals. Figure \ref{fig:maxThree} shows the 4 Minibees with a total of 12 output signals (3 signals each) and the modal synthesizer with 39 signals. The idea is that Vizmapper presents a different view of this large system, which makes more clear the relationships between signals.
+
+Figures \ref{fig:vizOne} through \ref{fig:vizFive} show screenshots of a Figure \ref{fig:interactiveBalloon}-style branch traversal down the Meta-Instrument in Vizmapper. Every highlighted cluster in these figures indicate a user click on the cluster to transition to the next screen in the interface. This series of screenshots shows the implementation of the new interactive balloon visualization arrived at in Figure \ref{fig:interactiveBalloon}. 
+
+The inclusion relations between all signals on the Mapper network are inferred by Vizmapper from the OSC namespace of the Mapper network. This places a premium on a wisely constructed OSC namespace for the signals that reduces the number of signals at any given level of a branch of the hierarchy. The OSC namespace of the Mapper-enabled Meta-Instrument is an example of a well-constructed namespace. As explained in Chapter 3, this type of visual hierarchical organization reduces the number of elements that a user has to decide between on any given level of a branch of the hierarchy and should mean a more effective interface. Notice the use of whether the circle is filled or not to represent whether the circle represents a terminal signal or a cluster of signals at an intermediate level of one branch of the complete hierarchy. For this reason, \emph{cluster} and \emph{branch} will be used interchangeably to refer to a specific position in the network hierarchy. Additionally, the Vizmapper visualization of the network displays two levels of the hierarchy at any given point, giving the user more context then the one level view used in Figure \ref{fig:interactiveBalloon}.
+
+The center of the screen displays two columns of buttons that display a trace of the path taken in the OSC namespace hierarchy for the output signals and for the input signals. Clicking on one of the buttons in a column returns the visualization of either the outputs signals or input signals to a previous position in the current traversal. Clicking on the always present \emph{output signals} or \emph{input signals} buttons returns the visualization of that set of signals to the first level of the hierarchy. The left and right columns of text display the names of the currently accessible groups and/or signals at the current level of the hierarchy. The hierarchical visualization and text-matching filter at the top of the screen work together by removing any groups or signals from the visualization whose paths do not match the text filter.
+
+In order to make a connection, a user uses the \emph{view mode} to navigate down to a level of both the output signal hierarchy and input signal hierarchy that have at least one terminal signal in each. This is because the current view of the network is frozen when the user switches to the \emph{edit mode} by clicking the edit tab at the top left of the screen. Hierarchy traversal is limited to the view mode. Figure \ref{fig:vizSix} shows an example traversal in view mode to prepare for connections between output signals in the \verb#/minibee.1/node.3/accel# cluster and input signals in the \verb#/granul8.1/grain.1# cluster.
+
+\begin{figure}[htb]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperSeven.png}
 \caption{Creation of new connection between \textbf{/minibee.1/node.3/accel/x} signal and \textbf{/granul8.1/grain.1/beginratio} signal in edit mode}
 \label{fig:vizSeven}
 \end{figure}
 
-Fortunately, a decision made in Section \ref{sec:userInterface} allows this problem to be circumvented. The problem of lost information in this scenario is a result of all of the elements belonging to the same component. Since the decision is made in Vizmapper to separate the potential sources of a connection from the potention destinations of a connection and any given signal can only be an output (source) or input (destination) then this problem is nonexistent.
-
-\section{Vizmapper}
-
-The best way to see this is to see the visualization used in Vizmapper. The example Mapper network that will be used in the remainder of this chapter features Serge de Laubier's Meta-Instrument \cite{metainstrument1998} and a collection of four wireless Minibee transmitters each with a 3-axis acceleromter as the control devices. The synthesizer devices are the Granul8 granular synthesizer and a modal synthesizer. 
-
-Figure \ref{fig:maxOne} shows Maxmapper displaying the Meta-Instrument output signals in the \emph{Source} column and the Granul8 input signals in the \emph{Destination} column. As shown at the bottom of the interface, the Meta-Instrument declares 101 output signals and the Granul8 synthesizer declares 191 input signals. Figure \ref{fig:maxThree} shows the 4 minibees with a total of 12 output signals (3 signals each) and the modal synthesizer with 39 signals. The idea is that Vizmapper presents a different view of this large system which makes more clear the relationships between signals.
-
-Figures \ref{fig:vizOne} through \ref{fig:vizFive} show screenshots of an example branch traversal down the Meta-Instrument. Every highlighted cluster in these figures indicate a user click on the cluster to transition to the next screen in the interface. This series of screenshots shows the implementation of the new interactive balloon visualization arrived at in Figure \ref{fig:interactiveBalloon}. 
-
-The inclusion relations between all signals on the Mapper network are inferred by Vizmapper from the OSC namespace of the Mapper network. This places a premium on a wisely constructed OSC namespace for the signals that reduces the number of signals at any given level of a branch of the hierarchy. The OSC namespace of the Mapper-enabled Meta-Instrument is an example of a well-constructed namespace. As explained in Chapter 3, this type of visual hierarchical organization reduces the number of elements that a user has to decide between on any given level of a branch of the hierarchy and should mean a more effective interface. Notice the use of whether the circle is filled or not to represent whether the circle represents a terminal signal or a group of signals in an intermediate level of the complete hierarchy. Also, the Vizmapper visualization of the network displays two levels of the hierarchy at any given point, giving the user more context then a single level view like in Figure \ref{fig:interactiveBalloon}.
-
-The center of the screen displays two columns of buttons that display a trace of the path taken in the OSC namespace hierarchy for the output signals and for the input signals. Clicking on one of the buttons in a column returns the visualization of either the outputs signals or input signals to a previous position in the current traversal. Clicking on the always present \emph{output signals} or \emph{input signals} buttons returns the visualization of that set of signals to the first level of the hierarchy. The left and right columns of text display the names of the currently accessible groups and/or signals at the current level of the hierarchy. The hierarchical visualization and text-matching filter at the top of the screen work together by removing any groups or signals from the visualization whose paths to not match the text filter.
-
-In order to make a connection, a user uses the \emph{view mode} to navigate down to a level of both the output signal hierarchy and input signal hierarchy that have at least one terminal signal in each. This is because the current view of the network is frozen when the user switches to the edit interface by clicking the edit tab at the top left of the screen. Hierarchy traversal is limited to the view mode. Figure \ref{fig:vizSix} shows an example traversal in view mode to prepare for connections between output signals in the \verb#/minibee.1/node.3/accel# cluster and input signals in the \verb#/granul8.1/grain.1# cluster.
-
-Once the two signals that are to be connected are in view then the user switches to the \emph{edit mode}, clicks on one output signal and one input signal, enters in the pertinent information to define a functional transformation (if necessary), and then clicks the \emph{update} button to tell the Webmapper server to request a connection between the two selected signals. Any device linking that is necessary to create the needed Libmapper routers to manage the connection is done automatically without user intervention.
-
-As of this thesis, Libmapper allows network monitors to specify a functional transformation with the several properties. Vizmapper provides an interface to a subset of these properties to simplify the choices of the user:
-
-\begin{description}
-\item{Mode} - There are 5 modes that can be selected.
-\begin{description}
-\item{None} - This acts as a default in Vizmapper. If the min and max range of the output and input signals is defined then Libmapper will request a Line transformation with the Expression of the line chosen to cover both ranges linearly. Otherwise, it will request a Bypass transformation.
-\item{Line} - This mode applies a linear transformation defined by the specified Expression, Source Range, and Destination Range.
-\item{Bypass} - This mode represents a lack of functional transformation and applies no conditioning to the output signal before sending the data to the input signal.
-\item{Expression} - This mode accepts an arbritrary expression to condition the signal.
-\item{Calibrate} - If the input signal has a defined range. This mode monitors the data over the connection until a Line or Expression mode request is sent and constructs a transformation calibrated to the data transmitted during this time. If the destination signal has no defined range it defaults to a Bypass.
-\end{description}
-\item{Expression} - The expression used in a Line or Expression transformation.
-\item{Source range} - The range that the output signal data is restricted to.
-\item{Destination range} - The range that the input signal data is restricted to.
-\end{description}
-
-The user can view the functional transformation properties of a connection at any time by clicking on the curved line that represents the connection while in edit mode. Clicking on a connection while in view mode does nothing.
-
-Figure \ref{fig:vizSeven} shows the result of creating a default \emph{None} connection between the \verb#x# output signal in the \verb#/minibee.1/node.3/accel# cluster and the \verb#beginratio# in the \verb#/granul8.1/grain.1# cluster.
-
-To break a connection between two signals or view the active functional transformation over the a connection, the user clicks on a connection between two signals to select the connection. To finish breaking the connection, the user clicks the \emph{remove} button.
-
-\begin{figure}[p]
+\begin{figure}[hp]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperEight.png}
 \caption{Creation between two more pairs of signals in same branch as first connection}
 \label{fig:vizEight}
 \end{figure}
 
-\begin{figure}[p]
+\begin{figure}[hp]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperNine.png}
 \caption{After more connections between the other 3 Minibees and \textbf{/minibee.1/node.7}, \textbf{/minibee.1/node.8}, \textbf{/minibee.1/node.9} branches}
 \label{fig:vizNine}
 \end{figure}
 
-\begin{figure}[p]
+Once the two signals that are to be connected are in view, the user switches to the \emph{edit mode}, clicks on one output signal and one input signal, enters the pertinent information into the form on the left side of the screen to define a functional transformation (if necessary), and then clicks the \emph{update} button to tell the Webmapper server to request a connection between the two selected signals. Any device linking that is necessary to create the needed Libmapper routers to manage the connection is done automatically without user intervention.
+
+As of this thesis, Libmapper allows network monitors to specify a functional transformation with the several properties. Vizmapper provides an interface to a subset of these properties to simplify the choices of the user:
+
+\begin{description}
+\item{Mode} - There are 5 modes that can be selected.
+\begin{description}
+\item{None} - This acts as a default in Vizmapper. If the min and max range of the output and input signals are defined in the signal declaration then Libmapper will request a line transformation with the expression of the line chosen to cover both ranges linearly. Otherwise, it will request a bypass transformation.
+\item{Line} - This mode applies a linear transformation defined by the specified expression, source range, and destination range.
+\item{Bypass} - This mode represents a lack of functional transformation and applies no conditioning to the output signal before sending the data to the input signal.
+\item{Expression} - This mode accepts an arbitrary single-variable expression to condition the signal.
+\item{Calibrate} - If the input signal has a defined range, this mode monitors the data over the connection until a line or expression mode request is sent and constructs a transformation calibrated to the data transmitted over the connection during this time. If the destination signal has no defined range it defaults to a bypass.
+\end{description}
+\item{Expression} - The expression used in a line or expression transformation.
+\item{Source range} - The range that the output signal data is restricted to.
+\item{Destination range} - The range that the input signal data is restricted to.
+\end{description}
+
+The user can view the functional transformation properties of a connection at any time by clicking on the curved line that represents the connection while in edit mode. Clicking on a connection while in view mode does nothing.
+
+To break a connection between two signals or view the active functional transformation over the a connection, the user clicks on a connection between two signals to select the connection. To finish breaking the connection, the user clicks the \emph{remove} button.
+
+Figure \ref{fig:vizSeven} shows the result of creating a default \emph{None} connection between the \verb#x# output signal in the \verb#/minibee.1/node.3/accel# cluster and the \verb#beginratio# input signal in the \verb#/granul8.1/grain.1# cluster. The mode, expression, source range, and destination range have been automatically calculated by Libmapper to fit the ranges of the signals that were connected. After making two more connections between the \verb#y# and \verb#length# signals, and the \verb#z# and \verb#gain# signals, the interface looks like Figure \ref{fig:vizEight}.
+
+The same three signal connections are made for each of three more pairs of clusters: \verb#/minibee.1/node.7# and \verb#/granul8.1/grain.2#, \verb#/minibee.1/node.8# and \verb#/granul8.1/grain.3#, \verb#/minibee.1/node.9# and \verb#/granul8.1/grain.4#. If the user navigates to the top level of \verb#/minibee.1# and \verb#/granul8.1# in view mode, the resulting display looks like Figure \ref{fig:vizNine}.
+
+\begin{figure}[hp]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperTen.png}
 \caption{Top level view of Mapper network signal hierarchy with all new connections summarized as 4 visual connections}
 \label{fig:vizTen}
 \end{figure}
 
-\begin{figure}[p]
+\begin{figure}[hp]
 \centering
 \includegraphics[width=0.88\textwidth]{vizmapperEleven.png}
 \caption{Use of signal filter in top view to focus on relevant signal clusters}
 \label{fig:vizEleven}
 \end{figure}
 
-\begin{figure}[htb]
+Anecdotally, after working with this particular Mapper network for some time, the visual patterns representing clusters of signals begin to be recognizable and it is possible to navigate through the network without paying too much attention to the textual labels of clusters and signals while in view mode. This is not the case when two clusters contain a similar arrangement of subclusters and signals, which is one shortcoming of this visualization. In future work, it may be fruitful to explore the idea of automatically generating a distinct visual pattern for each cluster and signal that guarantees elements in the same branch of the hierarchy are readily distinguishable from each other.
+
+At the top level of the whole Mapper network, the amount of visual clutter is reduced because the 12 connections that were created are reduced to 4 visual connections (one curved line per Minibee node/Granul8 synth grain pair) as shown in Figure \ref{fig:vizTen}. Figure \ref{fig:vizEleven} shows the result of reducing the visual clutter further by using the signal filter functionality of the text input box at the top of the interface. This filtering mechanism can be used at any point in either the view or edit mode.
+
+\begin{figure}[hp]
 \centering
 \includegraphics[width=0.88\textwidth]{maxmapperSecond.png}
 \caption{Same connections shown in Maxmapper}
 \label{fig:maxTwo}
 \end{figure}
+
+Comparing these screenshots of the Vizmapper with the Maxmapper display of the same Mapper network as shown in Figure \ref{fig:maxTwo}, there is a clear difference in the structural knowledge of the network that each interface provides. A benefit of the Libmapper system is that it allows multiple monitors using different GUIs to operate on the same Mapper network at the same time. Therefore, different team members can use different interfaces depending on their personal preferences. 
 
 \section{Summary}
 
